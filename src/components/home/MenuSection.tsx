@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
 import { Product, addReview, fetchProducts } from '@/lib/api';
@@ -46,13 +47,13 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
         transform: card.visible ? 'translateY(0)' : 'translateY(30px)',
       }}
     >
-      <div className="aspect-[4/3] overflow-hidden bg-stone relative">
+      <Link to={`/product/${product.id}`} className="block aspect-[4/3] overflow-hidden bg-stone relative">
         {images.map((img, i) => (
           <img
             key={img.id || i}
             src={img.url}
             alt={product.name}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${active === i ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${active === i ? 'opacity-100' : 'opacity-0'}`}
           />
         ))}
         {!product.images.length && (
@@ -60,6 +61,9 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
             <Icon name="Image" size={32} />
           </div>
         )}
+        <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition">
+          <Icon name="ArrowUpRight" size={14} />
+        </div>
 
         {product.badge && (
           <div className="absolute top-3 left-3">
@@ -79,21 +83,26 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
         {product.images.length > 1 && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
             {product.images.map((_, i) => (
-              <button
+              <span
                 key={i}
-                onClick={() => setActive(i)}
+                onMouseEnter={(e) => {
+                  e.preventDefault();
+                  setActive(i);
+                }}
                 className={`h-1.5 rounded-full transition-all ${active === i ? 'w-6 bg-snow' : 'w-1.5 bg-snow/60'}`}
                 aria-label={`Фото ${i + 1}`}
               />
             ))}
           </div>
         )}
-      </div>
+      </Link>
 
       <div className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h4 className="font-sans text-[16px] sm:text-[17px] tracking-tight font-medium leading-snug">{product.name}</h4>
+            <Link to={`/product/${product.id}`} className="block">
+              <h4 className="font-sans text-[16px] sm:text-[17px] tracking-tight font-medium leading-snug hover:text-accent2 transition">{product.name}</h4>
+            </Link>
             {product.portion && <div className="text-[12px] text-ash mt-0.5">{product.portion}</div>}
           </div>
           {product.price > 0 && (
@@ -118,12 +127,15 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
             className="text-[12px] text-ash hover:text-graphite inline-flex items-center gap-1.5 transition"
           >
             <Icon name="Star" size={13} className={avgRating ? 'text-lime fill-lime' : ''} />
-            {avgRating ? `${avgRating} · ${product.reviews.length}` : 'Оставить отзыв'}
+            {avgRating ? `${avgRating} · ${product.reviews.length}` : 'Нет отзывов'}
           </button>
-          <a href="#contacts" className="text-[12px] font-medium bg-graphite text-snow px-3.5 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5">
-            Заказать
-            <Icon name="ArrowUpRight" size={11} />
-          </a>
+          <Link
+            to={`/product/${product.id}`}
+            className="text-[12px] font-medium bg-graphite text-snow px-3.5 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+          >
+            Подробнее
+            <Icon name="ArrowRight" size={11} />
+          </Link>
         </div>
 
         {product.reviews.length > 0 && (
