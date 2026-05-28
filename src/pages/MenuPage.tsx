@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
+import Logo from '@/components/Logo';
 import { Product, fetchProducts } from '@/lib/api';
 
 const MAX_LINK = 'https://max.ru/join/IXMk3u0BPhokEDCdyrtOZn591m-jXLVNcrU02S-hkxo';
@@ -55,12 +56,7 @@ const MenuPage = () => {
             <Icon name="ArrowLeft" size={16} />
             <span className="hidden sm:inline">На главную</span>
           </Link>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-graphite flex items-center justify-center">
-              <Icon name="Package" size={14} className="text-lime" />
-            </span>
-            <span className="font-semibold tracking-[0.08em] text-[12px] uppercase">Furshet in Box</span>
-          </Link>
+          <Logo size="sm" to="/" />
           <a
             href={MAX_LINK}
             target="_blank"

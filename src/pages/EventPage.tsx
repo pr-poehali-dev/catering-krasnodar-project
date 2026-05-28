@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
+import Logo from '@/components/Logo';
 import { getEventById, events } from '@/data/events';
 
 const EventPage = () => {
@@ -28,12 +29,9 @@ const EventPage = () => {
       {/* NAV */}
       <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
         <div className="glass border border-graphite/10 rounded-full px-3 py-2 flex items-center justify-between shadow-sm">
-          <Link to="/" className="flex items-center gap-2 pl-3">
-            <span className="w-7 h-7 rounded-full bg-graphite flex items-center justify-center">
-              <Icon name="Package" size={14} className="text-lime" />
-            </span>
-            <span className="font-semibold tracking-[0.08em] text-[12px] lg:text-[13px] uppercase">Furshet in Box</span>
-          </Link>
+          <div className="pl-3">
+            <Logo size="sm" to="/" />
+          </div>
           <Link to="/#events" className="hidden md:inline-flex text-[13px] text-graphite/80 hover:text-graphite transition items-center gap-1.5">
             <Icon name="ArrowLeft" size={13} />
             Все события

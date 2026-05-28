@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+import Logo from '@/components/Logo';
 
 const GALINA_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/36795b0f-4957-461e-ae4a-b8d8c106b9ed.jpg';
 
@@ -11,12 +12,9 @@ const HeroSection = () => {
       {/* NAV */}
       <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-5xl">
         <div className="glass border border-graphite/10 rounded-full pl-2 pr-2 py-2 flex items-center justify-between shadow-sm">
-          <a href="#" className="flex items-center gap-2 pl-2">
-            <span className="w-7 h-7 rounded-full bg-graphite flex items-center justify-center shrink-0">
-              <Icon name="Package" size={14} className="text-lime" />
-            </span>
-            <span className="font-semibold tracking-[0.08em] text-[11px] sm:text-[12px] lg:text-[13px] uppercase whitespace-nowrap">Furshet in Box</span>
-          </a>
+          <div className="pl-2">
+            <Logo size="sm" to="/" />
+          </div>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
             {[
               { l: 'Полное меню', h: '/menu' },
