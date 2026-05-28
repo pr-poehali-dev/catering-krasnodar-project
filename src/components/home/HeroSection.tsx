@@ -83,9 +83,9 @@ const HeroSection = () => {
 
               <div className="relative h-full flex flex-col justify-center items-center text-center px-6 lg:px-10 py-24 lg:py-32 xl:py-40">
                 <h2 className="font-sans text-[clamp(2.25rem,7vw,8rem)] leading-[0.92] tracking-tightest font-medium text-balance text-graphite">
-                  Гастробоксы,
+                  Фуршетный
                   <br />
-                  которые <span className="font-serif italic font-normal">влюбляют</span>
+                  мастер <span className="font-serif italic font-normal">Галина</span>
                   <span className="inline-block ml-2 align-middle w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-accent2 animate-pulse-glow" />
                 </h2>
 
