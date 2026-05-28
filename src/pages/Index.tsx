@@ -122,9 +122,7 @@ const Index = () => {
               <div className="absolute inset-0 dotted-bg opacity-40" />
 
               <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
-                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] font-medium border border-graphite/10">
-                  Авторская подача
-                </div>
+                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] font-medium border border-graphite/10">Принимаем заказы на лето 2026</div>
                 <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] border border-graphite/10 flex items-center gap-1.5">
                   <Icon name="Sparkles" size={12} className="text-accent2" />
                   Шеф Иван Петров
