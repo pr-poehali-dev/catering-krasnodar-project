@@ -19,7 +19,7 @@ const HeroSection = () => {
           </a>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
             {[
-              { l: 'Меню', h: '#menu' },
+              { l: 'Меню', h: '/menu' },
               { l: 'События', h: '#events' },
               { l: 'Отзывы', h: '#reviews' },
               { l: 'Контакты', h: '#contacts' },
