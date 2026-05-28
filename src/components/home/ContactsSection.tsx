@@ -71,11 +71,11 @@ const ContactsSection = () => {
             {/* Form */}
             <form className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
               <img
-                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
-                alt="Галина"
-                className="absolute inset-0 w-full h-full object-cover object-top opacity-40"
+                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/8023e15d-f418-4b05-9642-8982b7773886.jpg"
+                alt="Фуршет"
+                className="absolute inset-0 w-full h-full object-cover opacity-50"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-graphite/40 via-graphite/80 to-graphite" />
+              <div className="absolute inset-0 bg-gradient-to-b from-graphite/60 via-graphite/85 to-graphite" />
 
               <div className="relative">
                 <h3 className="font-sans text-2xl tracking-tight font-medium">Расскажите о празднике</h3>
