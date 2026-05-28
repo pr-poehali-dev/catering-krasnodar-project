@@ -87,9 +87,9 @@ const ProductPage = () => {
       {/* Top bar */}
       <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10">
         <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2 text-[13px] hover:opacity-70 transition">
+          <Link to="/menu" className="flex items-center gap-2 text-[13px] hover:opacity-70 transition">
             <Icon name="ArrowLeft" size={16} />
-            <span className="hidden sm:inline">К каталогу</span>
+            <span className="hidden sm:inline">К меню</span>
           </Link>
           <Link to="/" className="flex items-center gap-2">
             <span className="w-7 h-7 rounded-full bg-graphite flex items-center justify-center">
