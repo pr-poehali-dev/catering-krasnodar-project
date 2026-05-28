@@ -312,12 +312,12 @@ const MenuSection = () => {
         )}
 
         <div className="text-center mt-10 sm:mt-12">
-          <a href="#contacts" className="inline-flex items-center gap-2 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition group">
+          <Link to="/menu" className="inline-flex items-center gap-2 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition group">
             Открыть полное меню
             <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
               <Icon name="ArrowRight" size={11} className="text-graphite" />
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
