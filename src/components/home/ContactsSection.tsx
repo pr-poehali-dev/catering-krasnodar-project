@@ -5,27 +5,40 @@ import { useReveal } from '@/hooks/use-reveal';
 
 const MAX_PHONE = '79144821555';
 const MAX_LINK = 'https://max.ru/join/IXMk3u0BPhokEDCdyrtOZn591m-jXLVNcrU02S-hkxo';
+const VK_LINK = 'https://vk.com/write/galina.cherepanova';
 
 const ContactsSection = () => {
   const head = useReveal();
   const [form, setForm] = useState({ name: '', phone: '', type: '', details: '' });
 
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const lines = [
+  const buildText = () =>
+    [
       'Здравствуйте, Галина! Заявка с сайта:',
       form.name && `Имя: ${form.name}`,
       form.phone && `Телефон: ${form.phone}`,
       form.type && `Событие: ${form.type}`,
       form.details && `Детали: ${form.details}`,
-    ].filter(Boolean);
-    const text = lines.join('\n');
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+  const copyText = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(buildText());
     } catch {
       /* пользователь сможет вписать вручную */
     }
+  };
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await copyText();
     window.open(MAX_LINK, '_blank', 'noopener,noreferrer');
+  };
+
+  const onSendVK = async () => {
+    await copyText();
+    window.open(VK_LINK, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -153,18 +166,31 @@ const ContactsSection = () => {
                     placeholder="Дата, количество гостей, пожелания"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
                   />
-                  <button
-                    type="submit"
-                    className="w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
-                  >
-                    <span className="w-5 h-5 rounded-md bg-graphite text-lime text-[10px] font-bold flex items-center justify-center">M</span>
-                    Отправить в MAX
-                    <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                      <Icon name="ArrowRight" size={11} />
-                    </span>
-                  </button>
+                  <div className="grid grid-cols-2 gap-2.5">
+                    <button
+                      type="submit"
+                      className="bg-lime text-graphite py-4 rounded-2xl font-semibold text-[13px] sm:text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
+                    >
+                      <span className="w-5 h-5 rounded-md bg-graphite text-lime text-[10px] font-bold flex items-center justify-center">M</span>
+                      <span className="hidden sm:inline">Отправить в</span> MAX
+                      <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
+                        <Icon name="ArrowRight" size={11} />
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={onSendVK}
+                      className="bg-[#0077FF] text-snow py-4 rounded-2xl font-semibold text-[13px] sm:text-[14px] hover:bg-[#0077FF]/90 transition flex items-center justify-center gap-2 group"
+                    >
+                      <Icon name="Send" size={14} />
+                      <span className="hidden sm:inline">Написать во</span> ВКонтакте
+                      <span className="w-5 h-5 rounded-full bg-snow text-[#0077FF] flex items-center justify-center group-hover:translate-x-1 transition">
+                        <Icon name="ArrowRight" size={11} />
+                      </span>
+                    </button>
+                  </div>
                   <p className="text-[11px] text-snow/50 text-center pt-2">
-                    Откроется чат в MAX. Текст заявки скопирован — просто вставьте его в сообщение
+                    Откроется чат в MAX или ВК. Текст заявки скопирован — просто вставьте его в сообщение
                   </p>
                 </div>
 
