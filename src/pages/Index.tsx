@@ -95,8 +95,12 @@ const Index = () => {
                   </span>
                   Принимаем заказы на лето 2026
                 </div>
-                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] border border-graphite/10 flex items-center gap-1.5">
-                  <Icon name="Sparkles" size={12} className="text-accent2" />
+                <div className="glass text-graphite pl-1 pr-3 py-1 rounded-full text-[12px] border border-graphite/10 flex items-center gap-2">
+                  <img
+                    src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/02542726-4c9b-424c-aa60-84aa261e47f6.jpg"
+                    alt="Мастер Галина"
+                    className="w-6 h-6 rounded-full object-cover ring-2 ring-snow"
+                  />
                   Мастер Галина
                 </div>
               </div>
