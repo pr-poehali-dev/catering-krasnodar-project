@@ -27,7 +27,7 @@ const ContactsSection = () => {
                     </div>
                     <div>
                       <div className="text-[12px] text-ash">Телефон · 9:00 — 22:00</div>
-                      <div className="font-sans text-xl tracking-tight font-medium">+7 (861) 200-00-00</div>
+                      <div className="font-sans text-xl tracking-tight font-medium">+7 (914) 482-15-55</div>
                     </div>
                   </a>
                   <a href="mailto:hi@vkus-co.ru" className="group flex items-center gap-4">
