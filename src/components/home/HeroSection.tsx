@@ -127,7 +127,7 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-                    <span className="font-serif italic font-normal text-lime">Рада приветствовать</span>
+                    <span className="font-serif italic font-normal text-lime">Добро пожаловать</span>
                   </div>
                   <p className="text-[14px] lg:text-[15px] text-snow/85 mt-4 max-w-sm leading-relaxed">
                     Делаю красивые и вкусные гастробоксы на заказ — от мини-бокса для двоих до выездного фуршета на сотню персон.
