@@ -127,7 +127,7 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-                    <span className="font-serif italic font-normal text-lime">Галина</span>
+                    <span className="font-serif italic font-normal text-lime">Рада приветствовать</span>
                   </div>
                   <p className="text-[14px] lg:text-[15px] text-snow/85 mt-4 max-w-sm leading-relaxed">
                     Делаю красивые и вкусные гастробоксы на заказ — от мини-бокса для двоих до выездного фуршета на сотню персон.
@@ -142,9 +142,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-graphite/90 via-graphite/40 to-transparent" />
               <div className="absolute inset-0 p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-snow">
                 <div className="flex items-center justify-between">
-                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
-                    Каталог
-                  </span>
+                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">Привет</span>
                   <span className="w-9 h-9 rounded-full bg-lime text-graphite flex items-center justify-center group-hover:rotate-45 transition">
                     <Icon name="ArrowUpRight" size={15} />
                   </span>
