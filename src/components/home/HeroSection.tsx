@@ -113,12 +113,12 @@ const HeroSection = () => {
                   <br />
                   <span className="inline-block overflow-hidden align-bottom">
                     <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.35s' }}>
-                      от которых&nbsp;
+                      в которые&nbsp;
                     </span>
                   </span>
                   <span className="inline-block overflow-hidden align-bottom">
                     <span className="inline-block font-serif italic font-normal animate-reveal-up opacity-0" style={{ animationDelay: '0.5s' }}>
-                      ахают
+                      влюбляются
                     </span>
                   </span>
                   <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
