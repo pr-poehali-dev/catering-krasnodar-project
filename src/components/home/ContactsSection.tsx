@@ -92,21 +92,12 @@ const ContactsSection = () => {
 
                 <div className="mt-10 flex flex-wrap gap-2">
                   <a
-                    href={MAX_LINK}
+                    href={VK_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-graphite text-snow border border-graphite text-[13px] hover:bg-lime hover:text-graphite hover:border-lime transition inline-flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full bg-[#0077FF] text-snow border border-[#0077FF] text-[13px] hover:bg-[#0077FF]/90 transition inline-flex items-center gap-1.5"
                   >
-                    <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center">M</span>
-                    MAX
-                  </a>
-                  <a href={`https://wa.me/${MAX_PHONE}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
-                    WhatsApp
-                  </a>
-                  <a href="https://t.me/+79144821555" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
-                    Telegram
-                  </a>
-                  <a href="https://vk.com/foodinboxvrn" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                    <Icon name="Send" size={12} />
                     ВКонтакте
                   </a>
                 </div>
