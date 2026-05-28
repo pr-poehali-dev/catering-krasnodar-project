@@ -64,7 +64,7 @@ const Logo = ({
             className={`relative font-serif italic font-normal tracking-tight ${s.text} ${wordClr} whitespace-nowrap leading-[0.95]`}
             style={{ fontFamily: '"Caveat", "Dancing Script", "Cormorant Garamond", cursive' }}
           >
-            Furshet in <span className={accent}>B</span>ox
+            Furshet in Box
             {/* подчёркивающий росчерк под словом */}
             <svg
               viewBox="0 0 200 8"
