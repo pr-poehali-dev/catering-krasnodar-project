@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/b2163239-4ec3-4791-b1b8-87e0712ecd1f.jpg';
@@ -6,277 +6,254 @@ const WEDDING_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b
 const CORP_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/a23a2735-2a81-4111-9781-c5416847d3e8.jpg';
 
 const events = [
-  { id: 'wedding', title: 'Свадьбы', emoji: '💍', img: WEDDING_IMG, color: 'bg-coral' },
-  { id: 'corporate', title: 'Корпоративы', emoji: '🥂', img: CORP_IMG, color: 'bg-mustard' },
-  { id: 'fourchette', title: 'Фуршеты', emoji: '🍤', img: HERO_IMG, color: 'bg-ink' },
-  { id: 'birthday', title: 'Дни рождения', emoji: '🎂', img: WEDDING_IMG, color: 'bg-coral-light' },
+  { id: 'wedding', title: 'Свадьбы', subtitle: 'Изысканные банкеты', img: WEDDING_IMG },
+  { id: 'corporate', title: 'Корпоративы', subtitle: 'Деловые мероприятия', img: CORP_IMG },
+  { id: 'fourchette', title: 'Фуршеты', subtitle: 'Лёгкая подача', img: HERO_IMG },
+  { id: 'birthday', title: 'Дни рождения', subtitle: 'Личные праздники', img: WEDDING_IMG },
 ];
 
 const menuItems = [
-  { name: 'Канапе с лососем', price: '180₽', tag: 'Хит', img: HERO_IMG },
-  { name: 'Тарталетки с икрой', price: '220₽', tag: 'Премиум', img: HERO_IMG },
-  { name: 'Брускетта с пармой', price: '160₽', tag: 'Новинка', img: HERO_IMG },
-  { name: 'Мини-десерты', price: '140₽', tag: 'Любимое', img: WEDDING_IMG },
-  { name: 'Сырная тарелка', price: '380₽', tag: 'Хит', img: CORP_IMG },
-  { name: 'Шеф-салат', price: '290₽', tag: 'Сезонное', img: CORP_IMG },
+  { name: 'Канапе с лососем', price: 180, category: 'Холодные закуски', img: HERO_IMG },
+  { name: 'Тарталетки с икрой', price: 220, category: 'Премиум', img: HERO_IMG },
+  { name: 'Брускетта с пармой', price: 160, category: 'Холодные закуски', img: HERO_IMG },
+  { name: 'Мини-десерты', price: 140, category: 'Десерты', img: WEDDING_IMG },
+  { name: 'Сырная тарелка', price: 380, category: 'Холодные закуски', img: CORP_IMG },
+  { name: 'Шеф-салат', price: 290, category: 'Салаты', img: CORP_IMG },
 ];
 
 const reviews = [
-  { name: 'Анна К.', event: 'Свадьба на 80 гостей', text: 'Гости до сих пор спрашивают, где мы заказывали еду! Канапе исчезли за 15 минут.', rating: 5 },
-  { name: 'Дмитрий М.', event: 'Корпоратив Газпром', text: 'Безупречная подача, вкус и сервис. Работали как часы — ни одной заминки за вечер.', rating: 5 },
-  { name: 'Елена С.', event: 'День рождения', text: 'Заказывали фуршет на 30 человек. Красиво, вкусно, всё точно в срок. Рекомендую!', rating: 5 },
+  { name: 'Анна Кузнецова', event: 'Свадьба, 80 гостей', text: 'Гости до сих пор спрашивают, где мы заказывали еду. Канапе исчезли за 15 минут.' },
+  { name: 'Дмитрий Морозов', event: 'Корпоратив Газпром', text: 'Безупречная подача, вкус и сервис. Работали как часы — ни одной заминки за вечер.' },
+  { name: 'Елена Соколова', event: 'День рождения', text: 'Заказывали фуршет на 30 человек. Красиво, вкусно, всё точно в срок. Рекомендую.' },
 ];
 
 const Index = () => {
-  const [activeEvent, setActiveEvent] = useState('wedding');
   const [scrollY, setScrollY] = useState(0);
+  const heroImgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-cream text-ink overflow-x-hidden noise">
+    <div className="min-h-screen bg-snow text-graphite">
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-cream/70 border-b border-ink/10">
-        <div className="container mx-auto flex items-center justify-between py-4">
-          <a href="#" className="flex items-center gap-2 font-display font-black text-xl tracking-tight">
-            <span className="w-9 h-9 rounded-full bg-coral text-cream flex items-center justify-center text-lg">●</span>
-            ВКУС&Co
+      <nav className="fixed top-0 left-0 right-0 z-50 glass border-b hairline">
+        <div className="container mx-auto flex items-center justify-between h-14">
+          <a href="#" className="font-display text-xl tracking-tighter font-medium">
+            ВКУС<span className="text-accent2">&</span>Co
           </a>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#menu" className="hover:text-coral transition">Меню</a>
-            <a href="#events" className="hover:text-coral transition">События</a>
-            <a href="#reviews" className="hover:text-coral transition">Отзывы</a>
-            <a href="#contacts" className="hover:text-coral transition">Контакты</a>
+          <div className="hidden md:flex items-center gap-8 text-[13px] text-graphite/80">
+            <a href="#menu" className="hover:text-graphite transition">Меню</a>
+            <a href="#events" className="hover:text-graphite transition">События</a>
+            <a href="#reviews" className="hover:text-graphite transition">Отзывы</a>
+            <a href="#contacts" className="hover:text-graphite transition">Контакты</a>
           </div>
-          <a href="#contacts" className="bg-ink text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-coral transition-all hover:scale-105">
+          <a href="#contacts" className="text-[13px] bg-graphite text-snow px-4 py-1.5 rounded-full hover:bg-graphite/90 transition">
             Заказать
           </a>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="relative pt-32 pb-20 min-h-screen flex items-center grid-bg overflow-hidden">
-        {/* floating blobs */}
-        <div className="absolute top-32 right-10 w-80 h-80 bg-coral/20 animate-blob animate-float-slow blur-2xl" />
-        <div className="absolute bottom-20 left-10 w-64 h-64 bg-mustard/30 animate-blob animate-float blur-2xl" style={{ animationDelay: '2s' }} />
-
-        <div className="container mx-auto relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center gap-2 bg-ink/5 border border-ink/10 px-4 py-2 rounded-full text-sm font-medium animate-fade-up">
-                <span className="w-2 h-2 rounded-full bg-coral animate-pulse" />
-                Кейтеринг №1 в Краснодаре
-              </div>
-
-              <h1 className="font-display font-black text-[12vw] lg:text-[7.5rem] leading-[0.9] tracking-tight animate-fade-up" style={{ animationDelay: '0.1s', opacity: 0 }}>
-                Еда, которая
-                <br />
-                <span className="text-coral italic font-handwriting font-bold text-[14vw] lg:text-[9rem]">влюбляет</span>
-                <br />
-                с первой ложки
-              </h1>
-
-              <p className="text-lg lg:text-xl text-ink/70 max-w-xl leading-relaxed animate-fade-up" style={{ animationDelay: '0.3s', opacity: 0 }}>
-                Свадьбы, корпоративы, фуршеты. Готовим, сервируем и заботимся
-                о ваших гостях так, будто это наш собственный праздник.
-              </p>
-
-              <div className="flex flex-wrap gap-4 animate-fade-up" style={{ animationDelay: '0.5s', opacity: 0 }}>
-                <a href="#menu" className="group bg-coral text-cream px-7 py-4 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-ink transition-all hover:scale-105">
-                  Посмотреть меню
-                  <Icon name="ArrowRight" size={18} className="group-hover:translate-x-1 transition" />
-                </a>
-                <a href="#contacts" className="border-2 border-ink text-ink px-7 py-4 rounded-full font-semibold inline-flex items-center gap-2 hover:bg-ink hover:text-cream transition">
-                  Рассчитать стоимость
-                </a>
-              </div>
-
-              <div className="flex flex-wrap gap-8 pt-6 animate-fade-up" style={{ animationDelay: '0.7s', opacity: 0 }}>
-                <div>
-                  <div className="font-display font-black text-3xl">500+</div>
-                  <div className="text-sm text-ink/60">мероприятий</div>
-                </div>
-                <div className="w-px bg-ink/20" />
-                <div>
-                  <div className="font-display font-black text-3xl">8 лет</div>
-                  <div className="text-sm text-ink/60">на рынке</div>
-                </div>
-                <div className="w-px bg-ink/20" />
-                <div>
-                  <div className="font-display font-black text-3xl">4.9★</div>
-                  <div className="text-sm text-ink/60">средний рейтинг</div>
-                </div>
-              </div>
+      <section className="pt-32 pb-24 lg:pt-40 lg:pb-32">
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-[13px] text-ash mb-8 animate-fade-in">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
+              Кейтеринг в Краснодаре · с 2018 года
             </div>
 
-            <div className="lg:col-span-5 relative animate-scale-in" style={{ animationDelay: '0.4s', opacity: 0 }}>
-              <div
-                className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl"
-                style={{ transform: `translateY(${scrollY * -0.1}px) rotate(${2 - scrollY * 0.01}deg)` }}
-              >
-                <img src={HERO_IMG} alt="Кейтеринг" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent" />
-              </div>
+            <h1 className="font-display text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] tracking-tightest font-light text-balance animate-fade-up opacity-0">
+              Гастрономия,
+              <br />
+              <span className="italic font-normal text-accent2">созданная</span>
+              <br />
+              для впечатлений.
+            </h1>
 
-              {/* floating cards */}
-              <div className="absolute -top-6 -left-6 bg-cream border-2 border-ink rounded-2xl px-4 py-3 shadow-xl animate-float">
-                <div className="text-xs text-ink/60">сегодня заказали</div>
-                <div className="font-display font-bold text-lg">+24 банкета</div>
-              </div>
+            <p className="mt-8 text-lg lg:text-xl text-ash max-w-2xl mx-auto leading-relaxed animate-fade-up opacity-0" style={{ animationDelay: '0.15s' }}>
+              Полный цикл выездного обслуживания: от продуманного меню
+              до сервировки, которой восхищаются гости.
+            </p>
 
-              <div className="absolute -bottom-8 -right-4 bg-mustard rounded-2xl p-4 shadow-xl animate-float-slow rotate-6">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">⭐</span>
-                  <div>
-                    <div className="font-display font-bold">4.9 / 5</div>
-                    <div className="text-xs">320+ отзывов</div>
-                  </div>
-                </div>
-              </div>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 animate-fade-up opacity-0" style={{ animationDelay: '0.3s' }}>
+              <a href="#menu" className="group bg-graphite text-snow px-6 py-3 rounded-full text-[14px] font-medium inline-flex items-center gap-2 hover:bg-graphite/90 transition">
+                Посмотреть меню
+                <Icon name="ArrowRight" size={15} className="group-hover:translate-x-0.5 transition" />
+              </a>
+              <a href="#contacts" className="px-6 py-3 rounded-full text-[14px] font-medium text-graphite border hairline hover:bg-graphite hover:text-snow transition">
+                Рассчитать стоимость
+              </a>
+            </div>
+          </div>
 
-              <div className="absolute top-1/2 -right-8 w-16 h-16 bg-coral rounded-full flex items-center justify-center animate-spin-slow">
-                <span className="font-handwriting text-cream text-xl rotate-12">new</span>
+          {/* hero image with parallax */}
+          <div
+            ref={heroImgRef}
+            className="mt-20 lg:mt-28 relative max-w-6xl mx-auto animate-scale-in opacity-0"
+            style={{ animationDelay: '0.4s' }}
+          >
+            <div className="relative aspect-[16/9] overflow-hidden rounded-[2rem] soft-shadow bg-stone">
+              <img
+                src={HERO_IMG}
+                alt="Кейтеринг"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ transform: `translateY(${scrollY * 0.08}px) scale(1.1)` }}
+              />
+            </div>
+
+            {/* stats overlay */}
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 glass soft-shadow rounded-2xl px-6 py-4 hidden md:flex items-center gap-8 border hairline">
+              <div className="text-center">
+                <div className="font-display text-2xl tracking-tighter">500+</div>
+                <div className="text-[11px] text-ash uppercase tracking-wider">мероприятий</div>
+              </div>
+              <div className="w-px h-8 bg-graphite/10" />
+              <div className="text-center">
+                <div className="font-display text-2xl tracking-tighter">4.9</div>
+                <div className="text-[11px] text-ash uppercase tracking-wider">средний рейтинг</div>
+              </div>
+              <div className="w-px h-8 bg-graphite/10" />
+              <div className="text-center">
+                <div className="font-display text-2xl tracking-tighter">8 лет</div>
+                <div className="text-[11px] text-ash uppercase tracking-wider">опыта</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <section className="bg-ink text-cream py-6 overflow-hidden border-y border-ink">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-12 px-6 font-display font-bold text-2xl">
-              <span>СВАДЬБЫ</span><span className="text-coral">✦</span>
-              <span>КОРПОРАТИВЫ</span><span className="text-coral">✦</span>
-              <span>ФУРШЕТЫ</span><span className="text-coral">✦</span>
-              <span>ДНИ РОЖДЕНИЯ</span><span className="text-coral">✦</span>
-              <span>ВЫЕЗДНЫЕ БАНКЕТЫ</span><span className="text-coral">✦</span>
-              <span>КОФЕ-БРЕЙКИ</span><span className="text-coral">✦</span>
-            </div>
-          ))}
+      {/* PRINCIPLES */}
+      <section className="py-24 lg:py-32 border-t hairline">
+        <div className="container mx-auto">
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-4">Принципы</div>
+            <h2 className="font-display text-5xl lg:text-6xl tracking-tighter font-light text-balance">
+              Качество, которое
+              <span className="italic text-accent2"> чувствуется</span>.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-px bg-graphite/10 rounded-3xl overflow-hidden">
+            {[
+              { icon: 'Leaf', title: 'Свежие продукты', desc: 'Закупка в день мероприятия у локальных краснодарских фермеров.' },
+              { icon: 'ChefHat', title: 'Шеф с 15-летним опытом', desc: 'Авторские блюда, отточенные в ресторанах высокой кухни.' },
+              { icon: 'Sparkles', title: 'Премиальная сервировка', desc: 'Фарфор, лён, авторские композиции. Эстетика в каждой детали.' },
+            ].map((f, i) => (
+              <div key={i} className="bg-snow p-10 lg:p-12">
+                <div className="w-10 h-10 rounded-full border hairline flex items-center justify-center mb-6">
+                  <Icon name={f.icon} size={18} />
+                </div>
+                <h3 className="font-display text-2xl tracking-tighter mb-3">{f.title}</h3>
+                <p className="text-ash leading-relaxed text-[15px]">{f.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* EVENTS */}
-      <section id="events" className="py-24 bg-cream-dark relative">
+      <section id="events" className="py-24 lg:py-32 border-t hairline">
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
             <div>
-              <div className="font-handwriting text-coral text-3xl mb-2">меню под событие</div>
-              <h2 className="font-display font-black text-5xl lg:text-7xl tracking-tight max-w-2xl">
-                Каждый праздник — особенный
+              <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-4">События</div>
+              <h2 className="font-display text-5xl lg:text-6xl tracking-tighter font-light text-balance max-w-2xl">
+                Каждый формат —
+                <span className="italic"> своё меню</span>.
               </h2>
             </div>
-            <p className="text-ink/70 max-w-md text-lg">
-              Подбираем меню под формат события, количество гостей и ваш бюджет.
+            <p className="text-ash max-w-sm text-[15px] leading-relaxed">
+              Подбираем подачу под характер события, состав гостей и атмосферу.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {events.map((e, i) => (
-              <button
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {events.map((e) => (
+              <a
                 key={e.id}
-                onClick={() => setActiveEvent(e.id)}
-                className={`group relative aspect-[3/4] rounded-3xl overflow-hidden text-left transition-all duration-500 ${
-                  activeEvent === e.id ? 'scale-105 shadow-2xl' : 'hover:scale-[1.02]'
-                }`}
-                style={{ animationDelay: `${i * 0.1}s` }}
+                href="#menu"
+                className="group block relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone"
               >
-                <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className={`absolute inset-0 ${e.color} mix-blend-multiply opacity-80 group-hover:opacity-60 transition`} />
-                <div className="absolute inset-0 p-6 flex flex-col justify-between text-cream">
-                  <div className="text-5xl">{e.emoji}</div>
-                  <div>
-                    <div className="font-display font-black text-2xl">{e.title}</div>
-                    <div className="flex items-center gap-1 mt-2 text-sm opacity-90">
-                      Смотреть меню <Icon name="ArrowRight" size={14} />
-                    </div>
+                <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out" />
+                <div className="absolute inset-0 bg-gradient-to-t from-graphite/80 via-graphite/10 to-transparent" />
+                <div className="absolute inset-0 p-6 flex flex-col justify-end text-snow">
+                  <div className="text-[12px] uppercase tracking-[0.2em] opacity-80 mb-1">{e.subtitle}</div>
+                  <div className="font-display text-2xl tracking-tighter">{e.title}</div>
+                  <div className="mt-3 inline-flex items-center gap-1.5 text-[13px] opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    Смотреть меню <Icon name="ArrowRight" size={13} />
                   </div>
                 </div>
-              </button>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
       {/* MENU */}
-      <section id="menu" className="py-24 relative">
-        <div className="absolute top-20 right-0 w-72 h-72 bg-coral/10 rounded-full blur-3xl" />
-        <div className="container mx-auto relative">
-          <div className="text-center mb-16">
-            <div className="font-handwriting text-coral text-3xl mb-2">наша гордость</div>
-            <h2 className="font-display font-black text-5xl lg:text-7xl tracking-tight">
-              Каталог <span className="italic text-coral">блюд</span>
+      <section id="menu" className="py-24 lg:py-32 border-t hairline">
+        <div className="container mx-auto">
+          <div className="max-w-3xl mb-16">
+            <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-4">Каталог</div>
+            <h2 className="font-display text-5xl lg:text-6xl tracking-tighter font-light text-balance">
+              Меню
+              <span className="italic text-accent2"> от шефа</span>.
             </h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {menuItems.map((item, i) => (
-              <article key={i} className="group bg-card rounded-3xl overflow-hidden border border-ink/10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                <div className="aspect-[4/3] overflow-hidden bg-cream-dark relative">
-                  <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 bg-cream text-ink text-xs font-semibold px-3 py-1.5 rounded-full">
-                    {item.tag}
-                  </div>
+              <article key={i} className="group">
+                <div className="aspect-[4/3] overflow-hidden rounded-2xl bg-stone mb-4 relative">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1000ms] ease-out" />
                 </div>
-                <div className="p-6 flex items-center justify-between">
+                <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="font-display font-bold text-lg leading-tight">{item.name}</h3>
-                    <p className="text-sm text-ink/60 mt-1">за порцию</p>
+                    <div className="text-[11px] uppercase tracking-[0.15em] text-ash mb-1">{item.category}</div>
+                    <h3 className="font-display text-xl tracking-tighter leading-tight">{item.name}</h3>
                   </div>
-                  <div className="text-right">
-                    <div className="font-display font-black text-2xl text-coral">{item.price}</div>
+                  <div className="font-display text-lg tracking-tighter whitespace-nowrap">
+                    {item.price} ₽
                   </div>
                 </div>
               </article>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <a href="#contacts" className="inline-flex items-center gap-2 bg-ink text-cream px-7 py-4 rounded-full font-semibold hover:bg-coral transition-all hover:scale-105">
-              Заказать дегустацию <Icon name="Sparkles" size={18} />
+          <div className="text-center mt-16">
+            <a href="#contacts" className="inline-flex items-center gap-2 text-[14px] font-medium border-b border-graphite/30 pb-1 hover:border-graphite transition">
+              Открыть полное меню <Icon name="ArrowUpRight" size={15} />
             </a>
           </div>
         </div>
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="py-24 bg-ink text-cream relative overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-coral/20 rounded-full blur-3xl animate-float-slow" />
-        <div className="container mx-auto relative">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
-            <div>
-              <div className="font-handwriting text-mustard text-3xl mb-2">что говорят клиенты</div>
-              <h2 className="font-display font-black text-5xl lg:text-7xl tracking-tight">
-                Отзывы, которым
-                <br />
-                <span className="text-coral italic">мы верим</span>
-              </h2>
-            </div>
+      <section id="reviews" className="py-24 lg:py-32 border-t hairline bg-stone">
+        <div className="container mx-auto">
+          <div className="max-w-3xl mb-16">
+            <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-4">Отзывы</div>
+            <h2 className="font-display text-5xl lg:text-6xl tracking-tighter font-light text-balance">
+              Клиенты говорят
+              <span className="italic"> искреннее</span>.
+            </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {reviews.map((r, i) => (
-              <div key={i} className="bg-cream/5 backdrop-blur border border-cream/10 rounded-3xl p-7 hover:bg-cream/10 transition-all hover:-translate-y-2">
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: r.rating }).map((_, j) => (
-                    <span key={j} className="text-mustard text-xl">★</span>
+              <div key={i} className="bg-snow rounded-2xl p-8 soft-shadow flex flex-col">
+                <div className="flex gap-0.5 mb-6">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Icon key={j} name="Star" size={14} className="fill-accent2 text-accent2" />
                   ))}
                 </div>
-                <p className="text-lg leading-relaxed mb-6">«{r.text}»</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-cream/10">
-                  <div className="w-11 h-11 rounded-full bg-coral flex items-center justify-center font-display font-bold">
-                    {r.name[0]}
-                  </div>
-                  <div>
-                    <div className="font-semibold">{r.name}</div>
-                    <div className="text-sm text-cream/60">{r.event}</div>
-                  </div>
+                <p className="text-[15px] leading-relaxed text-graphite/90 flex-1">«{r.text}»</p>
+                <div className="mt-6 pt-6 border-t hairline">
+                  <div className="font-medium text-[15px]">{r.name}</div>
+                  <div className="text-[13px] text-ash mt-0.5">{r.event}</div>
                 </div>
               </div>
             ))}
@@ -285,69 +262,57 @@ const Index = () => {
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="py-24 bg-coral text-cream relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-40 h-40 border-4 border-cream/30 rounded-full animate-spin-slow" />
-        <div className="absolute bottom-10 left-10 text-9xl animate-float-slow opacity-20">🍽️</div>
-
-        <div className="container mx-auto relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section id="contacts" className="py-24 lg:py-32 border-t hairline">
+        <div className="container mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div>
-              <div className="font-handwriting text-cream/80 text-3xl mb-2">давайте знакомиться</div>
-              <h2 className="font-display font-black text-5xl lg:text-7xl tracking-tight mb-8">
-                Готовы устроить
-                <br />
-                <span className="italic">праздник?</span>
+              <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-4">Контакты</div>
+              <h2 className="font-display text-5xl lg:text-6xl tracking-tighter font-light text-balance mb-10">
+                Давайте обсудим
+                <span className="italic text-accent2"> ваш праздник</span>.
               </h2>
 
-              <div className="space-y-5 text-lg">
-                <a href="tel:+78612000000" className="flex items-center gap-4 group">
-                  <span className="w-12 h-12 rounded-full bg-cream/20 flex items-center justify-center group-hover:bg-cream group-hover:text-coral transition">
-                    <Icon name="Phone" size={20} />
-                  </span>
-                  <div>
-                    <div className="text-cream/70 text-sm">Звоните каждый день 9:00–22:00</div>
-                    <div className="font-display font-bold text-2xl">+7 (861) 200-00-00</div>
+              <div className="space-y-8">
+                <a href="tel:+78612000000" className="block group">
+                  <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-2">Телефон</div>
+                  <div className="font-display text-3xl tracking-tighter group-hover:text-accent2 transition">
+                    +7 (861) 200-00-00
                   </div>
                 </a>
 
-                <a href="mailto:hi@vkus-co.ru" className="flex items-center gap-4 group">
-                  <span className="w-12 h-12 rounded-full bg-cream/20 flex items-center justify-center group-hover:bg-cream group-hover:text-coral transition">
-                    <Icon name="Mail" size={20} />
-                  </span>
-                  <div>
-                    <div className="text-cream/70 text-sm">Пишите письма с ТЗ и пожеланиями</div>
-                    <div className="font-display font-bold text-xl">hi@vkus-co.ru</div>
+                <a href="mailto:hi@vkus-co.ru" className="block group">
+                  <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-2">Почта</div>
+                  <div className="font-display text-3xl tracking-tighter group-hover:text-accent2 transition">
+                    hi@vkus-co.ru
                   </div>
                 </a>
 
-                <div className="flex items-center gap-4">
-                  <span className="w-12 h-12 rounded-full bg-cream/20 flex items-center justify-center">
-                    <Icon name="MapPin" size={20} />
-                  </span>
-                  <div>
-                    <div className="text-cream/70 text-sm">Производство и офис</div>
-                    <div className="font-display font-bold text-xl">Краснодар, ул. Красная, 100</div>
+                <div className="block">
+                  <div className="text-[12px] uppercase tracking-[0.2em] text-ash mb-2">Адрес</div>
+                  <div className="font-display text-2xl tracking-tighter">
+                    Краснодар, ул. Красная, 100
                   </div>
+                  <div className="text-[14px] text-ash mt-1">Каждый день 9:00 — 22:00</div>
                 </div>
               </div>
             </div>
 
-            <form className="bg-cream text-ink rounded-3xl p-8 lg:p-10 shadow-2xl">
-              <h3 className="font-display font-black text-3xl mb-2">Оставить заявку</h3>
-              <p className="text-ink/60 mb-6">Перезвоним за 15 минут и рассчитаем смету.</p>
+            <form className="bg-stone rounded-3xl p-8 lg:p-10">
+              <h3 className="font-display text-3xl tracking-tighter mb-2">Заявка</h3>
+              <p className="text-ash text-[14px] mb-8">Перезвоним за 15 минут и составим смету.</p>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <input
                   type="text"
-                  placeholder="Ваше имя"
-                  className="w-full px-5 py-4 rounded-2xl bg-cream-dark border-2 border-transparent focus:border-coral outline-none transition font-medium"
+                  placeholder="Имя"
+                  className="w-full px-5 py-4 rounded-xl bg-snow border hairline focus:border-graphite outline-none transition text-[15px]"
                 />
                 <input
                   type="tel"
                   placeholder="+7 (___) ___-__-__"
-                  className="w-full px-5 py-4 rounded-2xl bg-cream-dark border-2 border-transparent focus:border-coral outline-none transition font-medium"
+                  className="w-full px-5 py-4 rounded-xl bg-snow border hairline focus:border-graphite outline-none transition text-[15px]"
                 />
-                <select className="w-full px-5 py-4 rounded-2xl bg-cream-dark border-2 border-transparent focus:border-coral outline-none transition font-medium">
+                <select className="w-full px-5 py-4 rounded-xl bg-snow border hairline focus:border-graphite outline-none transition text-[15px] text-graphite/70">
                   <option>Тип события</option>
                   <option>Свадьба</option>
                   <option>Корпоратив</option>
@@ -356,17 +321,17 @@ const Index = () => {
                 </select>
                 <textarea
                   rows={3}
-                  placeholder="Дата, количество гостей, пожелания..."
-                  className="w-full px-5 py-4 rounded-2xl bg-cream-dark border-2 border-transparent focus:border-coral outline-none transition font-medium resize-none"
+                  placeholder="Дата, количество гостей, пожелания"
+                  className="w-full px-5 py-4 rounded-xl bg-snow border hairline focus:border-graphite outline-none transition text-[15px] resize-none"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-ink text-cream py-4 rounded-2xl font-display font-bold text-lg hover:bg-coral transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+                  className="w-full bg-graphite text-snow py-4 rounded-xl font-medium text-[15px] hover:bg-graphite/90 transition flex items-center justify-center gap-2"
                 >
-                  Отправить заявку
-                  <Icon name="Send" size={18} />
+                  Отправить
+                  <Icon name="ArrowRight" size={15} />
                 </button>
-                <p className="text-xs text-ink/50 text-center">
+                <p className="text-[11px] text-ash text-center pt-2">
                   Нажимая кнопку, вы соглашаетесь с обработкой персональных данных
                 </p>
               </div>
@@ -376,17 +341,18 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-ink text-cream/70 py-10">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-2 font-display font-black text-cream text-lg">
-            <span className="w-7 h-7 rounded-full bg-coral flex items-center justify-center text-xs">●</span>
-            ВКУС&Co
-          </div>
-          <div>© 2026 Кейтеринг в Краснодаре. Все права защищены.</div>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-coral transition"><Icon name="Instagram" size={20} /></a>
-            <a href="#" className="hover:text-coral transition"><Icon name="Send" size={20} /></a>
-            <a href="#" className="hover:text-coral transition"><Icon name="MessageCircle" size={20} /></a>
+      <footer className="border-t hairline py-12">
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[13px] text-ash">
+            <div className="font-display text-lg tracking-tighter text-graphite">
+              ВКУС<span className="text-accent2">&</span>Co
+            </div>
+            <div>© 2026 Кейтеринг в Краснодаре</div>
+            <div className="flex gap-5">
+              <a href="#" className="hover:text-graphite transition"><Icon name="Instagram" size={16} /></a>
+              <a href="#" className="hover:text-graphite transition"><Icon name="Send" size={16} /></a>
+              <a href="#" className="hover:text-graphite transition"><Icon name="MessageCircle" size={16} /></a>
+            </div>
           </div>
         </div>
       </footer>
