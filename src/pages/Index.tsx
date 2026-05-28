@@ -75,7 +75,7 @@ const Index = () => {
           {/* BENTO GRID */}
           <div className="grid grid-cols-12 gap-3 animate-scale-in opacity-0" style={{ animationDelay: '0.2s' }}>
             {/* Big hero card */}
-            <div className="col-span-12 lg:col-span-8 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-2 group bg-stone relative">
+            <div className="col-span-12 lg:col-span-7 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-3 group bg-stone relative">
               <div className="absolute inset-0 gradient-mesh" />
               <div
                 className="absolute -top-20 -right-20 w-96 h-96 bg-lime/40 rounded-full blur-[100px]"
@@ -128,7 +128,7 @@ const Index = () => {
             </div>
 
             {/* Stats card */}
-            <div className="col-span-6 lg:col-span-4 bento-card p-6 lg:p-7 bg-graphite text-snow">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-5 bento-card p-6 lg:p-7 bg-graphite text-snow flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] uppercase tracking-[0.2em] text-snow/50">Опыт</span>
                 <Icon name="TrendingUp" size={16} className="text-lime" />
@@ -137,7 +137,7 @@ const Index = () => {
                 500<span className="text-lime">+</span>
               </div>
               <div className="text-snow/60 text-[14px] mt-2">мероприятий в Краснодаре</div>
-              <div className="mt-6 pt-6 border-t border-snow/10 flex items-center gap-4">
+              <div className="mt-auto pt-6 border-t border-snow/10 flex items-center gap-4">
                 <div className="flex -space-x-2">
                   {['А', 'Д', 'Е', 'М'].map((l, i) => (
                     <div key={i} className="w-7 h-7 rounded-full bg-snow text-graphite text-[11px] font-semibold flex items-center justify-center border-2 border-graphite">
@@ -150,19 +150,42 @@ const Index = () => {
             </div>
 
             {/* Lime CTA card */}
-            <div className="col-span-6 lg:col-span-4 bento-card p-6 lg:p-7 bg-lime text-graphite group cursor-pointer relative">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-5 bento-card p-6 lg:p-7 bg-lime text-graphite group cursor-pointer relative overflow-hidden flex flex-col">
               <div className="text-[11px] uppercase tracking-[0.2em] mb-3 text-graphite/60">Бесплатно</div>
               <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium leading-tight">
-                Дегустация для пары<br />перед свадьбой
+                Дегустация перед<br />свадьбой
               </div>
-              <div className="mt-6 inline-flex items-center gap-2 text-[13px] font-medium">
+              <div className="mt-auto pt-6 inline-flex items-center gap-2 text-[13px] font-medium">
                 Записаться
                 <span className="w-7 h-7 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
                   <Icon name="ArrowRight" size={13} />
                 </span>
               </div>
-              <Icon name="Wine" size={64} className="absolute -right-2 -bottom-2 text-graphite/10" />
+              <Icon name="Wine" size={88} className="absolute -right-3 -bottom-3 text-graphite/10" />
             </div>
+
+            {/* Menu preview card */}
+            <a href="#menu" className="col-span-12 lg:col-span-5 bento-card group relative aspect-[16/9] lg:aspect-auto overflow-hidden">
+              <img src={WEDDING_IMG} alt="Меню" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms]" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-graphite/85 via-graphite/30 to-transparent" />
+              <div className="absolute inset-0 p-6 lg:p-7 flex flex-col justify-between text-snow">
+                <div className="flex items-center justify-between">
+                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
+                    Каталог
+                  </span>
+                  <span className="w-9 h-9 rounded-full bg-lime text-graphite flex items-center justify-center group-hover:rotate-45 transition">
+                    <Icon name="ArrowUpRight" size={15} />
+                  </span>
+                </div>
+                <div>
+                  <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium leading-tight">
+                    120+ блюд<br />
+                    <span className="font-serif italic font-normal text-lime">от шефа</span>
+                  </div>
+                  <div className="text-[13px] text-snow/70 mt-2">Канапе · Тарталетки · Десерты</div>
+                </div>
+              </div>
+            </a>
           </div>
 
           {/* trust strip */}
