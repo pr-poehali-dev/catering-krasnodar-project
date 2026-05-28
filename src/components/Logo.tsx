@@ -26,17 +26,25 @@ const LogoMark = ({ size = 'md', variant = 'dark' }: { size: 'sm' | 'md' | 'lg';
       className={`${px} relative inline-flex items-center justify-center shrink-0`}
       aria-hidden
     >
-      <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
+      {/* Мягкое свечение при наведении на родительский логотип */}
+      <span className="logo-glow absolute inset-0 rounded-full bg-lime/40 blur-lg opacity-0 transition-opacity duration-500 pointer-events-none" />
+      <svg
+        viewBox="0 0 40 40"
+        className="logo-svg w-full h-full relative transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        fill="none"
+      >
         {/* Скруглённая коробка — современный «squircle» */}
         <path
           d="M20 3.5 C32.5 3.5 36.5 7.5 36.5 20 C36.5 32.5 32.5 36.5 20 36.5 C7.5 36.5 3.5 32.5 3.5 20 C3.5 7.5 7.5 3.5 20 3.5 Z"
           className={boxFill}
         />
         {/* Лента-ручка коробки (акцент) */}
-        <rect x="3.5" y="14.5" width="33" height="2.2" className={accent} />
-        {/* Узелок ленты */}
-        <circle cx="20" cy="15.6" r="2.6" className={accent} />
-        <circle cx="20" cy="15.6" r="1" className={boxFill} />
+        <rect x="3.5" y="14.5" width="33" height="2.2" className={`${accent} logo-ribbon origin-center transition-transform duration-500`} />
+        {/* Узелок ленты — пульсирует при hover */}
+        <g className="logo-knot origin-center" style={{ transformOrigin: '20px 15.6px' }}>
+          <circle cx="20" cy="15.6" r="2.6" className={accent} />
+          <circle cx="20" cy="15.6" r="1" className={boxFill} />
+        </g>
         {/* Буква F — «вырезана» из нижней части */}
         <g transform="translate(14.6 22.4)">
           <rect x="0" y="0" width="2.2" height="10" rx="0.6" className={textFill} />
@@ -60,7 +68,7 @@ const Logo = ({
   const s = sizeMap[size];
   const textClr = variant === 'dark' ? 'text-graphite' : 'text-snow';
   const content = (
-    <span className={`inline-flex items-center ${s.gap} ${className}`}>
+    <span className={`logo group inline-flex items-center ${s.gap} ${className}`}>
       <LogoMark size={size} variant={variant} />
       {showWordmark && (
         <span
@@ -74,7 +82,7 @@ const Logo = ({
 
   if (!to) return content;
   return (
-    <Link to={to} className="inline-flex hover:opacity-80 transition">
+    <Link to={to} className="inline-flex transition">
       {content}
     </Link>
   );
