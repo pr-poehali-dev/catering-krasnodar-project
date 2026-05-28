@@ -156,6 +156,51 @@ const EventPage = () => {
         </div>
       </section>
 
+      {/* GALLERY */}
+      <section className="pb-24 lg:pb-32 border-t border-graphite/10 pt-16 lg:pt-24">
+        <div className="container mx-auto">
+          <div className="flex items-end justify-between gap-4 mb-10">
+            <div>
+              <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4">
+                <span className="w-6 h-px bg-ash" />
+                Галерея
+              </div>
+              <h2 className="font-sans text-3xl lg:text-5xl tracking-tightest font-medium">
+                С прошлых <span className="font-serif italic font-normal">мероприятий</span>
+              </h2>
+            </div>
+            <div className="text-[13px] text-ash hidden md:block">{event.gallery.length} фото</div>
+          </div>
+
+          <div className="grid grid-cols-12 gap-3">
+            {event.gallery.map((src, i) => {
+              const layouts = [
+                'col-span-12 md:col-span-8 aspect-[16/10]',
+                'col-span-6 md:col-span-4 aspect-square',
+                'col-span-6 md:col-span-4 aspect-square',
+                'col-span-12 md:col-span-4 aspect-[4/3] md:aspect-square',
+                'col-span-6 md:col-span-4 aspect-square',
+                'col-span-6 md:col-span-4 aspect-square',
+              ];
+              return (
+                <div key={i} className={`bento-card group relative ${layouts[i % layouts.length]} overflow-hidden`}>
+                  <img
+                    src={src}
+                    alt={`${event.title} — фото ${i + 1}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
+                  />
+                  <div className="absolute inset-0 bg-graphite/0 group-hover:bg-graphite/10 transition" />
+                  <div className="absolute top-3 left-3 glass-dark text-snow text-[10px] uppercase tracking-wider px-2 py-1 rounded-full border hairline-light">
+                    {String(i + 1).padStart(2, '0')} / {String(event.gallery.length).padStart(2, '0')}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* OTHER EVENTS */}
       <section className="pb-24 lg:pb-32 border-t border-graphite/10 pt-16 lg:pt-24">
         <div className="container mx-auto">

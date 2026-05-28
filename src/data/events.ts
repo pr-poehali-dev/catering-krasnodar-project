@@ -10,11 +10,16 @@ export type EventData = {
   guests: string;
   includes: string[];
   menu: string[];
+  gallery: string[];
 };
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/b2163239-4ec3-4791-b1b8-87e0712ecd1f.jpg';
 const WEDDING_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/a0c3eada-d236-47e1-ac30-78632794e646.jpg';
 const CORP_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/a23a2735-2a81-4111-9781-c5416847d3e8.jpg';
+
+const KANAPE_1 = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/7e767775-7b54-426b-a9d9-5dafb80c1da9.jpg';
+const KANAPE_2 = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/80630363-ea63-4f79-902c-0fc92d3da22f.jpg';
+const KANAPE_3 = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/9d6eeafc-6164-465c-9d77-de9ffc8b3b5d.jpg';
 
 export const events: EventData[] = [
   {
@@ -42,6 +47,7 @@ export const events: EventData[] = [
       'Свадебный торт от наших кондитеров',
       'Кофе-брейк после первого танца',
     ],
+    gallery: [WEDDING_IMG, KANAPE_1, KANAPE_2, HERO_IMG, KANAPE_3, CORP_IMG],
   },
   {
     id: 'corporate',
@@ -68,6 +74,7 @@ export const events: EventData[] = [
       'Бар: чай, кофе, соки, минеральная вода',
       'Капкейки или брауни с логотипом компании',
     ],
+    gallery: [CORP_IMG, KANAPE_2, HERO_IMG, KANAPE_1, KANAPE_3, WEDDING_IMG],
   },
   {
     id: 'fourchette',
@@ -94,6 +101,7 @@ export const events: EventData[] = [
       'Гастробоксы с мини-десертами',
       'Лимонады, морсы, просекко',
     ],
+    gallery: [KANAPE_1, KANAPE_3, HERO_IMG, KANAPE_2, WEDDING_IMG, CORP_IMG],
   },
   {
     id: 'birthday',
@@ -120,6 +128,7 @@ export const events: EventData[] = [
       'Праздничный торт',
       'Бар: лимонады, чай, кофе',
     ],
+    gallery: [WEDDING_IMG, KANAPE_3, KANAPE_1, CORP_IMG, KANAPE_2, HERO_IMG],
   },
 ];
 
