@@ -108,28 +108,32 @@ const Index = () => {
 
           {/* BENTO GRID */}
           <div className="mt-20 lg:mt-28 grid grid-cols-12 gap-3 animate-scale-in opacity-0" style={{ animationDelay: '0.4s' }}>
-            {/* Big hero image */}
-            <div className="col-span-12 lg:col-span-8 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-2 group">
-              <img
-                src={HERO_IMG}
-                alt="Кейтеринг"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{ transform: `translateY(${scrollY * 0.05}px) scale(1.08)` }}
+            {/* Big hero card */}
+            <div className="col-span-12 lg:col-span-8 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-2 group bg-stone relative">
+              <div className="absolute inset-0 gradient-mesh" />
+              <div
+                className="absolute -top-20 -right-20 w-96 h-96 bg-lime/40 rounded-full blur-[100px]"
+                style={{ transform: `translateY(${scrollY * 0.05}px)` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-transparent to-transparent" />
+              <div
+                className="absolute -bottom-20 -left-20 w-80 h-80 bg-accent2/30 rounded-full blur-[100px]"
+                style={{ transform: `translateY(${scrollY * -0.03}px)` }}
+              />
+              <div className="absolute inset-0 dotted-bg opacity-40" />
+
               <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
-                <div className="glass-dark text-snow px-3 py-1.5 rounded-full text-[12px] font-medium border hairline-light">
+                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] font-medium border border-graphite/10">
                   Авторская подача
                 </div>
-                <div className="glass-dark text-snow px-3 py-1.5 rounded-full text-[12px] border hairline-light flex items-center gap-1.5">
-                  <Icon name="Sparkles" size={12} className="text-lime" />
+                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] border border-graphite/10 flex items-center gap-1.5">
+                  <Icon name="Sparkles" size={12} className="text-accent2" />
                   Шеф Иван Петров
                 </div>
               </div>
-              <div className="absolute bottom-6 left-6 right-6 text-snow">
+              <div className="absolute bottom-6 left-6 right-6 text-graphite">
                 <div className="font-sans text-3xl lg:text-5xl tracking-tighter font-medium leading-tight">
                   Меню от шефа<br />
-                  <span className="font-serif italic font-normal text-lime">с характером</span>
+                  <span className="font-serif italic font-normal">с характером</span>
                 </div>
               </div>
             </div>
