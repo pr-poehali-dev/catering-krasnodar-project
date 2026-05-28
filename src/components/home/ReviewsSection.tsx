@@ -59,9 +59,9 @@ const ReviewsSection = () => {
               <span className="w-6 h-px bg-snow/30" />
               Отзывы клиентов
             </div>
-            <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
+            <h2 className="text-display text-[clamp(2.2rem,7.5vw,5.5rem)] font-medium text-balance">
               Слова, которые
-              <span className="font-serif italic font-normal text-lime"> греют сердце</span>
+              <span className="italic font-normal text-lime drop-shadow-[0_0_20px_rgba(212,245,66,0.4)]"> греют сердце</span>
             </h2>
           </div>
           <div className="flex items-center gap-3 sm:gap-4 bg-snow/5 border hairline-light rounded-2xl px-5 py-3.5 backdrop-blur">

@@ -47,9 +47,9 @@ const ContactsSection = () => {
                   <span className="w-6 h-px bg-ash" />
                   Свяжитесь со мной
                 </div>
-                <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
+                <h2 className="text-display text-[clamp(2.2rem,7.5vw,5.5rem)] font-medium text-balance">
                   Обсудим
-                  <span className="font-serif italic font-normal"> ваше торжество</span>
+                  <span className="italic font-normal gradient-text"> ваше торжество</span>
                 </h2>
 
                 <div className="mt-10 space-y-5">

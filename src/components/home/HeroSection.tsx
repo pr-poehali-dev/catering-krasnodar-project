@@ -11,24 +11,24 @@ const HeroSection = () => {
     <>
       {/* NAV */}
       <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-5xl">
-        <div className="glass border border-graphite/10 rounded-full pl-2 pr-2 py-2 flex items-center justify-between shadow-sm">
+        <div className="glass rounded-full pl-2 pr-2 py-2 flex items-center justify-between">
           <div className="pl-2">
             <Logo size="sm" to="/" />
           </div>
-          <div className="hidden md:flex items-center gap-1 text-[13px]">
+          <div className="hidden md:flex items-center gap-0.5 text-[13px] font-medium">
             {[
               { l: 'Полное меню', h: '/menu' },
               { l: 'События', h: '#events' },
               { l: 'Отзывы', h: '#reviews' },
               { l: 'Контакты', h: '#contacts' },
             ].map((i) => (
-              <a key={i.h} href={i.h} className="px-3 py-1.5 rounded-full hover:bg-graphite/5 transition">
+              <a key={i.h} href={i.h} className="nav-link px-3.5 py-1.5 rounded-full hover:bg-graphite/5 transition">
                 {i.l}
               </a>
             ))}
           </div>
           <div className="flex items-center gap-1.5">
-            <a href="#contacts" className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5">
+            <a href="#contacts" className="btn-glow text-[12px] sm:text-[13px] font-medium bg-graphite text-snow px-3.5 sm:px-4 py-2 rounded-full hover:bg-graphite/90 transition inline-flex items-center gap-1.5">
               Заказать
               <Icon name="ArrowUpRight" size={13} />
             </a>
@@ -102,7 +102,7 @@ const HeroSection = () => {
                   Фуршетный мастер · Краснодар
                 </div>
 
-                <h1 className="font-sans text-[clamp(2rem,8vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
+                <h1 className="text-display text-[clamp(2.4rem,9vw,6rem)] font-medium text-balance text-graphite">
                   <span className="inline-block overflow-hidden align-bottom">
                     <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.2s' }}>
                       Гастробоксы,
@@ -115,11 +115,11 @@ const HeroSection = () => {
                     </span>
                   </span>
                   <span className="inline-block overflow-hidden align-bottom">
-                    <span className="inline-block font-serif italic font-normal animate-reveal-up opacity-0" style={{ animationDelay: '0.5s' }}>
+                    <span className="inline-block italic font-normal animate-reveal-up opacity-0 gradient-text" style={{ animationDelay: '0.5s' }}>
                       влюбляются
                     </span>
                   </span>
-                  <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
+                  <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow shadow-[0_0_20px_rgba(255,92,43,0.7)]" />
                 </h1>
 
                 <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
@@ -129,16 +129,16 @@ const HeroSection = () => {
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
                   <a
                     href="#menu"
-                    className="group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                    className="btn-glow group bg-graphite text-snow px-6 sm:px-7 py-4 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2.5 hover:bg-graphite/90 transition"
                   >
                     Смотреть боксы
-                    <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
+                    <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition shadow-[0_0_12px_rgba(212,245,66,0.7)]">
                       <Icon name="ArrowRight" size={11} className="text-graphite" />
                     </span>
                   </a>
                   <a
                     href="#contacts"
-                    className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
+                    className="glass-card px-6 sm:px-7 py-4 rounded-full text-[14px] font-medium text-graphite hover:scale-[1.02] hover:-translate-y-0.5 transition-all inline-flex items-center justify-center gap-2"
                   >
                     Рассчитать стоимость
                   </a>

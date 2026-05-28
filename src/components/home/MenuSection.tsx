@@ -258,8 +258,8 @@ const MenuSection = () => {
               <span className="w-6 h-px bg-ash" />
               Каталог
             </div>
-            <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
-              Каталог <span className="font-serif italic font-normal">авторских</span> боксов
+            <h2 className="text-display text-[clamp(2.2rem,7.5vw,5.5rem)] font-medium text-balance">
+              Каталог <span className="italic font-normal gradient-text">авторских</span> боксов
             </h2>
             <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
               Готовим свежие порционные канапе, тарталетки и мини-десерты в день мероприятия. Подача — как на обложке кулинарного журнала.
