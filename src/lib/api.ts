@@ -4,6 +4,7 @@ export const API = {
   auth: funcUrls.auth,
   products: funcUrls.products,
   upload: funcUrls.upload,
+  preorders: funcUrls.preorders,
 };
 
 const TOKEN_KEY = 'admin_token';
@@ -109,6 +110,68 @@ export const addReview = async (
 
 export const deleteReview = async (id: number) => {
   const res = await fetch(`${API.products}?action=review&id=${id}`, {
+    method: 'DELETE',
+    headers: { 'X-Auth-Token': getToken() },
+  });
+  if (!res.ok) throw new Error('Ошибка');
+  return res.json();
+};
+
+export type Preorder = {
+  id: number;
+  name: string;
+  phone: string;
+  event_type: string | null;
+  event_date: string | null;
+  guests_count: number | null;
+  budget: string | null;
+  details: string | null;
+  status: string;
+  created_at: string;
+};
+
+export type PreorderPayload = {
+  name: string;
+  phone: string;
+  event_type?: string;
+  event_date?: string;
+  guests_count?: number | string;
+  budget?: string;
+  details?: string;
+};
+
+export const createPreorder = async (payload: PreorderPayload) => {
+  const res = await fetch(API.preorders, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Не удалось отправить заявку');
+  return data;
+};
+
+export const fetchPreorders = async (): Promise<Preorder[]> => {
+  const res = await fetch(API.preorders, {
+    headers: { 'X-Auth-Token': getToken() },
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Ошибка загрузки');
+  return data.preorders || [];
+};
+
+export const updatePreorderStatus = async (id: number, status: string) => {
+  const res = await fetch(API.preorders, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', 'X-Auth-Token': getToken() },
+    body: JSON.stringify({ id, status }),
+  });
+  if (!res.ok) throw new Error('Ошибка');
+  return res.json();
+};
+
+export const deletePreorder = async (id: number) => {
+  const res = await fetch(`${API.preorders}?id=${id}`, {
     method: 'DELETE',
     headers: { 'X-Auth-Token': getToken() },
   });

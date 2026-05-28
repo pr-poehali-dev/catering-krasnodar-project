@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
 import {
+  Preorder,
   Product,
   clearToken,
+  deletePreorder,
   deleteProduct,
   deleteReview,
+  fetchPreorders,
   fetchProducts,
   getToken,
   login,
   saveProduct,
   setToken,
+  updatePreorderStatus,
   uploadImage,
 } from '@/lib/api';
 
@@ -31,6 +35,8 @@ const AdminPage = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
+  const [preorders, setPreorders] = useState<Preorder[]>([]);
+  const [tab, setTab] = useState<'catalog' | 'preorders'>('preorders');
   const [form, setForm] = useState({ ...emptyForm });
   const [editId, setEditId] = useState<number | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -39,6 +45,7 @@ const AdminPage = () => {
     if (getToken()) {
       setAuthed(true);
       loadProducts();
+      loadPreorders();
     }
   }, []);
 
@@ -51,6 +58,37 @@ const AdminPage = () => {
     }
   };
 
+  const loadPreorders = async () => {
+    try {
+      const list = await fetchPreorders();
+      setPreorders(list);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const onChangeStatus = async (id: number, status: string) => {
+    try {
+      await updatePreorderStatus(id, status);
+      setPreorders((arr) => arr.map((p) => (p.id === id ? { ...p, status } : p)));
+    } catch (err) {
+      toast.error((err as Error).message);
+    }
+  };
+
+  const onDeletePreorder = async (id: number) => {
+    if (!confirm('Удалить заявку?')) return;
+    try {
+      await deletePreorder(id);
+      setPreorders((arr) => arr.filter((p) => p.id !== id));
+      toast.success('Удалена');
+    } catch (err) {
+      toast.error((err as Error).message);
+    }
+  };
+
+  const newPreordersCount = preorders.filter((p) => p.status === 'new').length;
+
   const onLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -58,7 +96,7 @@ const AdminPage = () => {
       const token = await login(password);
       setToken(token);
       setAuthed(true);
-      await loadProducts();
+      await Promise.all([loadProducts(), loadPreorders()]);
       toast.success('Добро пожаловать!');
     } catch (err) {
       toast.error((err as Error).message);
@@ -189,27 +227,164 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-stone">
       <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10">
-        <div className="container mx-auto py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-graphite flex items-center justify-center">
-              <Icon name="Package" size={16} className="text-lime" />
-            </div>
-            <div>
-              <div className="font-sans text-lg tracking-tight font-medium">Каталог</div>
-              <div className="text-[11px] text-ash">{products.length} позиций</div>
-            </div>
+        <div className="container mx-auto py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 bg-stone rounded-full p-1">
+            <button
+              onClick={() => setTab('preorders')}
+              className={`relative px-4 py-2 rounded-full text-[13px] font-medium transition inline-flex items-center gap-2 ${
+                tab === 'preorders' ? 'bg-graphite text-snow' : 'text-graphite hover:bg-graphite/5'
+              }`}
+            >
+              <Icon name="Inbox" size={14} /> Заявки
+              {newPreordersCount > 0 && (
+                <span className={`text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center ${tab === 'preorders' ? 'bg-lime text-graphite' : 'bg-accent2 text-snow'}`}>
+                  {newPreordersCount}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setTab('catalog')}
+              className={`px-4 py-2 rounded-full text-[13px] font-medium transition inline-flex items-center gap-2 ${
+                tab === 'catalog' ? 'bg-graphite text-snow' : 'text-graphite hover:bg-graphite/5'
+              }`}
+            >
+              <Icon name="Package" size={14} /> Каталог · {products.length}
+            </button>
           </div>
           <div className="flex gap-2">
             <a href="/" className="px-4 py-2 rounded-full text-[13px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5">
-              <Icon name="ExternalLink" size={13} /> Сайт
+              <Icon name="ExternalLink" size={13} /> <span className="hidden sm:inline">Сайт</span>
             </a>
             <button onClick={onLogout} className="px-4 py-2 rounded-full text-[13px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5">
-              <Icon name="LogOut" size={13} /> Выйти
+              <Icon name="LogOut" size={13} /> <span className="hidden sm:inline">Выйти</span>
             </button>
           </div>
         </div>
       </header>
 
+      {tab === 'preorders' && (
+        <main className="container mx-auto py-8 space-y-3">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="font-sans text-3xl tracking-tightest font-medium">Заявки на предзаказ</h1>
+              <p className="text-[13px] text-ash mt-1">
+                Всего: {preorders.length}{' '}
+                {newPreordersCount > 0 && (
+                  <span className="text-accent2 font-medium">· новых: {newPreordersCount}</span>
+                )}
+              </p>
+            </div>
+            <button
+              onClick={loadPreorders}
+              className="px-4 py-2 rounded-full text-[13px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+            >
+              <Icon name="RefreshCw" size={13} /> Обновить
+            </button>
+          </div>
+
+          {preorders.length === 0 ? (
+            <div className="bento-card bg-snow p-12 text-center text-ash">
+              <Icon name="Inbox" size={32} className="mx-auto mb-3 opacity-50" />
+              Заявок пока нет
+            </div>
+          ) : (
+            <div className="grid gap-3">
+              {preorders.map((p) => (
+                <div key={p.id} className={`bento-card bg-snow p-5 sm:p-6 ${p.status === 'new' ? 'ring-2 ring-lime/60' : ''}`}>
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-sans text-xl tracking-tight font-medium">{p.name}</h3>
+                        {p.status === 'new' && (
+                          <span className="text-[10px] uppercase tracking-wider bg-lime text-graphite px-2 py-0.5 rounded-full font-bold">
+                            Новая
+                          </span>
+                        )}
+                        {p.status === 'done' && (
+                          <span className="text-[10px] uppercase tracking-wider bg-stone text-ash px-2 py-0.5 rounded-full">
+                            Обработана
+                          </span>
+                        )}
+                      </div>
+                      <a href={`tel:${p.phone}`} className="text-[14px] text-graphite/80 hover:text-graphite inline-flex items-center gap-1.5 mt-1">
+                        <Icon name="Phone" size={12} /> {p.phone}
+                      </a>
+                    </div>
+                    <div className="text-[11px] text-ash text-right">
+                      {new Date(p.created_at).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-4 gap-3 text-[13px] mb-3">
+                    {p.event_type && (
+                      <div>
+                        <div className="text-[11px] text-ash uppercase tracking-wider">Событие</div>
+                        <div className="font-medium">{p.event_type}</div>
+                      </div>
+                    )}
+                    {p.event_date && (
+                      <div>
+                        <div className="text-[11px] text-ash uppercase tracking-wider">Дата</div>
+                        <div className="font-medium">{new Date(p.event_date).toLocaleDateString('ru-RU')}</div>
+                      </div>
+                    )}
+                    {p.guests_count && (
+                      <div>
+                        <div className="text-[11px] text-ash uppercase tracking-wider">Гостей</div>
+                        <div className="font-medium">{p.guests_count}</div>
+                      </div>
+                    )}
+                    {p.budget && (
+                      <div>
+                        <div className="text-[11px] text-ash uppercase tracking-wider">Бюджет</div>
+                        <div className="font-medium">{p.budget}</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {p.details && (
+                    <div className="text-[13px] text-graphite/80 bg-stone rounded-2xl p-3 mb-3 whitespace-pre-line">
+                      {p.details}
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-graphite/5">
+                    {p.status !== 'done' ? (
+                      <button
+                        onClick={() => onChangeStatus(p.id, 'done')}
+                        className="px-3 py-1.5 rounded-full text-[12px] bg-graphite text-snow hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+                      >
+                        <Icon name="Check" size={12} /> Обработана
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => onChangeStatus(p.id, 'new')}
+                        className="px-3 py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+                      >
+                        <Icon name="RotateCcw" size={12} /> Вернуть в новые
+                      </button>
+                    )}
+                    <a
+                      href={`tel:${p.phone}`}
+                      className="px-3 py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+                    >
+                      <Icon name="Phone" size={12} /> Позвонить
+                    </a>
+                    <button
+                      onClick={() => onDeletePreorder(p.id)}
+                      className="ml-auto px-3 py-1.5 rounded-full text-[12px] text-ash hover:text-accent2 transition inline-flex items-center gap-1.5"
+                    >
+                      <Icon name="Trash2" size={12} /> Удалить
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </main>
+      )}
+
+      {tab === 'catalog' && (
       <main className="container mx-auto py-8 grid lg:grid-cols-5 gap-6">
         {/* Form */}
         <form onSubmit={onSave} className="lg:col-span-2 bento-card bg-snow p-6 lg:sticky lg:top-24 lg:self-start space-y-3">
@@ -361,6 +536,7 @@ const AdminPage = () => {
           ))}
         </div>
       </main>
+      )}
     </div>
   );
 };

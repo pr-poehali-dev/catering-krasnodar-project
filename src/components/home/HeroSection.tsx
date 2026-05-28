@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
+import PreorderModal from '@/components/PreorderModal';
 
 const GALINA_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/36795b0f-4957-461e-ae4a-b8d8c106b9ed.jpg';
 
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [preorderOpen, setPreorderOpen] = useState(false);
 
   return (
     <>
@@ -28,10 +30,14 @@ const HeroSection = () => {
             ))}
           </div>
           <div className="flex items-center gap-1.5">
-            <a href="#contacts" className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setPreorderOpen(true)}
+              className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            >
               Заказать
               <Icon name="ArrowUpRight" size={13} />
-            </a>
+            </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center"
@@ -128,10 +134,11 @@ const HeroSection = () => {
                       <Icon name="ArrowRight" size={11} className="text-graphite" />
                     </span>
                   </a>
-                  <a
-                    href="#contacts"
+                  <button
+                    type="button"
+                    onClick={() => setPreorderOpen(true)}
                     className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
-                  >Оформить предзаказ</a>
+                  >Оформить предзаказ</button>
                 </div>
 
                 {/* Mini-stats */}
@@ -193,6 +200,8 @@ const HeroSection = () => {
           ))}
         </div>
       </section>
+
+      <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
     </>
   );
 };

@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "Create preorder",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тест Иван",
+        "phone": "+79991234567",
+        "event_type": "Свадьба",
+        "event_date": "2026-06-15",
+        "guests_count": 30,
+        "budget": "50-100 тыс",
+        "details": "Хочу красивый фуршет"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"ok": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Reject empty",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "", "phone": ""},
+      "expectedStatus": 400
+    },
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
