@@ -97,7 +97,7 @@ const Index = () => {
                 </div>
                 <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] border border-graphite/10 flex items-center gap-1.5">
                   <Icon name="Sparkles" size={12} className="text-accent2" />
-                  Шеф Иван Петров
+                  Мастер Галина
                 </div>
               </div>
 
