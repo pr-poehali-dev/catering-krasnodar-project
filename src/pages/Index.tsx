@@ -75,7 +75,7 @@ const Index = () => {
           {/* BENTO GRID */}
           <div className="grid grid-cols-12 gap-3 animate-scale-in opacity-0" style={{ animationDelay: '0.2s' }}>
             {/* Big hero card */}
-            <div className="col-span-12 lg:col-span-7 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-3 group bg-stone relative">
+            <div className="col-span-12 lg:col-span-7 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-2 group bg-stone relative">
               <div className="absolute inset-0 gradient-mesh" />
               <div
                 className="absolute -top-20 -right-20 w-96 h-96 bg-lime/40 rounded-full blur-[100px]"
@@ -128,25 +128,32 @@ const Index = () => {
             </div>
 
             {/* Lime CTA card */}
-            <div className="col-span-12 sm:col-span-6 lg:col-span-5 bento-card p-6 lg:p-7 bg-lime text-graphite group cursor-pointer relative overflow-hidden flex flex-col">
-              <div className="text-[11px] uppercase tracking-[0.2em] mb-3 text-graphite/60">Бесплатно</div>
-              <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium leading-tight">
-                Дегустация перед<br />свадьбой
+            <div className="col-span-12 lg:col-span-5 bento-card p-7 lg:p-9 xl:p-10 bg-lime text-graphite group cursor-pointer relative overflow-hidden flex flex-col min-h-[280px] lg:min-h-0">
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-graphite/60">Бесплатно</span>
+                <span className="text-[11px] bg-graphite text-lime px-2.5 py-1 rounded-full font-medium">5 ★</span>
               </div>
-              <div className="mt-auto pt-6 inline-flex items-center gap-2 text-[13px] font-medium">
+              <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
+                Дегустация<br />
+                <span className="font-serif italic font-normal">перед свадьбой</span>
+              </div>
+              <p className="text-[14px] lg:text-[15px] text-graphite/70 mt-4 max-w-sm leading-relaxed">
+                Для пары, бесплатно. 5 авторских блюд и подбор меню под ваш формат.
+              </p>
+              <div className="mt-auto pt-8 inline-flex items-center gap-2 text-[14px] font-semibold">
                 Записаться
-                <span className="w-7 h-7 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                  <Icon name="ArrowRight" size={13} />
+                <span className="w-8 h-8 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
+                  <Icon name="ArrowRight" size={14} />
                 </span>
               </div>
-              <Icon name="Wine" size={88} className="absolute -right-3 -bottom-3 text-graphite/10" />
+              <Icon name="Wine" size={140} className="absolute -right-6 -bottom-6 text-graphite/10" />
             </div>
 
             {/* Menu preview card */}
-            <a href="#menu" className="col-span-12 lg:col-span-5 bento-card group relative aspect-[16/9] lg:aspect-auto overflow-hidden">
+            <a href="#menu" className="col-span-12 lg:col-span-5 bento-card group relative aspect-[16/9] lg:aspect-auto overflow-hidden min-h-[280px] lg:min-h-0">
               <img src={WEDDING_IMG} alt="Меню" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms]" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-graphite/85 via-graphite/30 to-transparent" />
-              <div className="absolute inset-0 p-6 lg:p-7 flex flex-col justify-between text-snow">
+              <div className="absolute inset-0 bg-gradient-to-tr from-graphite/90 via-graphite/40 to-transparent" />
+              <div className="absolute inset-0 p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-snow">
                 <div className="flex items-center justify-between">
                   <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
                     Каталог
@@ -156,11 +163,11 @@ const Index = () => {
                   </span>
                 </div>
                 <div>
-                  <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium leading-tight">
+                  <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
                     120+ блюд<br />
                     <span className="font-serif italic font-normal text-lime">от шефа</span>
                   </div>
-                  <div className="text-[13px] text-snow/70 mt-2">Канапе · Тарталетки · Десерты</div>
+                  <div className="text-[14px] text-snow/70 mt-3">Канапе · Тарталетки · Десерты · Горячее</div>
                 </div>
               </div>
             </a>
