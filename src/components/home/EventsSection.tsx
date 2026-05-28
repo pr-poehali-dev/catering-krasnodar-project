@@ -33,7 +33,7 @@ const EventsSection = () => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {events.map((e) => (
-            <a key={e.id} href="#menu" className="group bento-card aspect-[2/3] relative">
+            <a key={e.id} href="#menu" className="group bento-card aspect-[4/3] relative">
               <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out" />
               <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/15 to-transparent" />
               <div className="absolute top-4 right-4">
