@@ -139,9 +139,7 @@ const HeroSection = () => {
                   <a
                     href="#contacts"
                     className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
-                  >
-                    Рассчитать стоимость
-                  </a>
+                  >Оформить предзаказ</a>
                 </div>
 
                 {/* Mini-stats */}
