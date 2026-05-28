@@ -97,7 +97,7 @@ const Index = () => {
                 </div>
                 <div className="glass text-graphite pl-1 pr-3 py-1 rounded-full text-[12px] border border-graphite/10 flex items-center gap-2">
                   <img
-                    src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/5c967ed9-f920-4f3d-9870-d33f027da372.jpeg"
+                    src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/36795b0f-4957-461e-ae4a-b8d8c106b9ed.jpg"
                     alt="Мастер Галина"
                     className="w-6 h-6 rounded-full object-cover ring-2 ring-snow"
                   />
@@ -132,30 +132,30 @@ const Index = () => {
             </div>
 
             {/* Chef card */}
-            <div className="col-span-12 lg:col-span-5 bento-card group relative overflow-hidden min-h-[280px] lg:min-h-0">
+            <div className="col-span-12 lg:col-span-5 bento-card group relative overflow-hidden min-h-[280px] lg:min-h-0 bg-stone">
               <img
-                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/5c967ed9-f920-4f3d-9870-d33f027da372.jpeg"
-                alt="Шеф Галина"
+                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/36795b0f-4957-461e-ae4a-b8d8c106b9ed.jpg"
+                alt="Галина — фуршетный мастер"
                 className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-[1200ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/20 to-transparent" />
               <div className="absolute inset-0 p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-snow">
                 <div className="flex items-start justify-between">
                   <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
-                    Шеф-повар
+                    Фуршетный мастер
                   </span>
                   <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5">
-                    <Icon name="Award" size={12} className="text-lime" />
-                    15 лет опыта
+                    <Icon name="Heart" size={12} className="text-lime fill-lime" />
+                    Гастробоксы
                   </span>
                 </div>
                 <div>
                   <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-                    Галина <br />
-                    <span className="font-serif italic font-normal text-lime">Соловьёва</span>
+                    Меня зовут<br />
+                    <span className="font-serif italic font-normal text-lime">Галина</span>
                   </div>
-                  <p className="text-[14px] lg:text-[15px] text-snow/80 mt-3 max-w-sm leading-relaxed">
-                    Работала в ресторанах Москвы и Петербурга. Сейчас — наш шеф и душа кейтеринга.
+                  <p className="text-[14px] lg:text-[15px] text-snow/85 mt-4 max-w-sm leading-relaxed">
+                    Делаю красивые и вкусные гастробоксы на заказ — от мини-бокса для двоих до выездного фуршета на сотню персон.
                   </p>
                 </div>
               </div>
