@@ -124,9 +124,11 @@ const MenuSection = () => {
               Каталог
             </div>
             <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
-              Блюда, в которые
-              <span className="font-serif italic font-normal"> влюбляются</span>
+              Каталог <span className="font-serif italic font-normal">авторских</span> боксов
             </h2>
+            <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
+              Готовим свежие порционные канапе, тарталетки и мини-десерты в день мероприятия. Подача — как на обложке кулинарного журнала.
+            </p>
           </div>
           <div className="flex gap-2 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
             {['Все', 'Канапе', 'Десерты', 'Премиум'].map((t, i) => (

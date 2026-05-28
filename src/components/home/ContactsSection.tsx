@@ -1,23 +1,31 @@
 import Icon from '@/components/ui/icon';
+import { useReveal } from '@/hooks/use-reveal';
 
 const ContactsSection = () => {
+  const head = useReveal();
+
   return (
     <>
       {/* CONTACTS */}
-      <section id="contacts" className="py-24 lg:py-32 relative">
+      <section id="contacts" className="py-16 sm:py-24 lg:py-32 relative">
         <div className="container mx-auto">
-          <div className="grid grid-cols-12 gap-3">
+          <div
+            ref={head.ref as never}
+            className={`grid grid-cols-12 gap-3 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
+            }`}
+          >
             {/* Heading */}
-            <div className="col-span-12 lg:col-span-7 bento-card p-8 lg:p-12 relative overflow-hidden">
-              <div className="absolute -top-20 -right-20 w-64 h-64 bg-lime/40 rounded-full blur-[80px]" />
+            <div className="col-span-12 lg:col-span-7 bento-card p-6 sm:p-8 lg:p-12 relative overflow-hidden">
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-lime/40 rounded-full blur-[80px] animate-float-y" />
               <div className="relative">
-                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-5">
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
                   <span className="w-6 h-px bg-ash" />
-                  Контакты
+                  Свяжитесь со мной
                 </div>
-                <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
+                <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
                   Обсудим
-                  <span className="font-serif italic font-normal"> ваш праздник</span>
+                  <span className="font-serif italic font-normal"> ваше торжество</span>
                 </h2>
 
                 <div className="mt-10 space-y-5">
@@ -70,8 +78,8 @@ const ContactsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-graphite/40 via-graphite/80 to-graphite" />
 
               <div className="relative">
-                <h3 className="font-sans text-2xl tracking-tight font-medium">Оставить заявку</h3>
-                <p className="text-snow/70 text-[13px] mt-1 mb-8">Галина перезвонит за 15 минут и составит смету</p>
+                <h3 className="font-sans text-2xl tracking-tight font-medium">Расскажите о празднике</h3>
+                <p className="text-snow/70 text-[13px] mt-1 mb-7 sm:mb-8 leading-relaxed">Галина свяжется за 15 минут — подберём меню и предложим стоимость без обязательств</p>
 
                 <div className="space-y-3">
                   <input

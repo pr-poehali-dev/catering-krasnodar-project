@@ -99,23 +99,36 @@ const HeroSection = () => {
 
               {/* Контент */}
               <div className="p-6 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
                   <span className="w-6 h-px bg-ash" />
-                  Фуршетный мастер
+                  Фуршетный мастер · Краснодар
                 </div>
 
                 <h1 className="font-sans text-[clamp(2rem,8vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
-                  Гастробоксы,
+                  <span className="inline-block overflow-hidden align-bottom">
+                    <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.2s' }}>
+                      Гастробоксы,
+                    </span>
+                  </span>
                   <br />
-                  которые <span className="font-serif italic font-normal">влюбляют</span>
+                  <span className="inline-block overflow-hidden align-bottom">
+                    <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.35s' }}>
+                      от которых&nbsp;
+                    </span>
+                  </span>
+                  <span className="inline-block overflow-hidden align-bottom">
+                    <span className="inline-block font-serif italic font-normal animate-reveal-up opacity-0" style={{ animationDelay: '0.5s' }}>
+                      ахают
+                    </span>
+                  </span>
                   <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
                 </h1>
 
-                <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md">
-                  Меня зовут Галина — делаю красивые и вкусные гастробоксы на заказ. От мини-бокса для двоих до выездного фуршета на сотню персон.
+                <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
+                  Меня зовут <span className="font-semibold text-graphite">Галина</span> — собираю авторские гастробоксы и выездные фуршеты. От мини-сета для двоих до банкета на 100+ гостей. Красиво, вкусно и точно в срок.
                 </p>
 
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
                   <a
                     href="#menu"
                     className="group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
@@ -127,17 +140,17 @@ const HeroSection = () => {
                   </a>
                   <a
                     href="#contacts"
-                    className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/15 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
+                    className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
                   >
-                    Заказать фуршет
+                    Рассчитать стоимость
                   </a>
                 </div>
 
                 {/* Mini-stats */}
-                <div className="mt-7 sm:mt-9 pt-6 border-t border-graphite/10 grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="mt-7 sm:mt-9 pt-6 border-t border-graphite/10 grid grid-cols-3 gap-3 sm:gap-4 animate-reveal-up opacity-0" style={{ animationDelay: '1.1s' }}>
                   <div>
                     <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">500+</div>
-                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">фуршетов</div>
+                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">довольных гостей</div>
                   </div>
                   <div>
                     <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">4.9 ★</div>
@@ -145,7 +158,7 @@ const HeroSection = () => {
                   </div>
                   <div>
                     <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">15 мин</div>
-                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">ответ Галины</div>
+                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">отвечу лично</div>
                   </div>
                 </div>
               </div>
