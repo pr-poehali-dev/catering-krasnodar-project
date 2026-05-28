@@ -116,10 +116,7 @@ const HeroSection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/20 to-transparent" />
               <div className="absolute inset-0 p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-snow">
-                <div className="flex items-start justify-between">
-                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
-                    Фуршетный мастер Галина
-                  </span>
+                <div className="flex items-start justify-end">
                   <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5">
                     <Icon name="Heart" size={12} className="text-lime fill-lime" />
                     Гастробоксы
