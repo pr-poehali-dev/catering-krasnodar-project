@@ -16,8 +16,8 @@ const sizeMap = {
 
 const LogoMark = ({ size = 'md', variant = 'dark' }: { size: 'sm' | 'md' | 'lg'; variant: 'dark' | 'light' }) => {
   const dark = variant === 'dark';
-  const stroke = dark ? 'stroke-graphite' : 'stroke-snow';
-  const fill = dark ? 'fill-graphite' : 'fill-snow';
+  const boxFill = dark ? 'fill-graphite' : 'fill-snow';
+  const textFill = dark ? 'fill-snow' : 'fill-graphite';
   const accent = 'fill-lime';
   const px = sizeMap[size].box;
 
@@ -27,34 +27,24 @@ const LogoMark = ({ size = 'md', variant = 'dark' }: { size: 'sm' | 'md' | 'lg';
       aria-hidden
     >
       <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-        {/* Корпус коробки */}
+        {/* Скруглённая коробка — современный «squircle» */}
         <path
-          d="M6 14 L20 8 L34 14 L34 30 C34 31.1 33.1 32 32 32 L8 32 C6.9 32 6 31.1 6 30 Z"
-          className={stroke}
-          strokeWidth="2.4"
-          strokeLinejoin="round"
+          d="M20 3.5 C32.5 3.5 36.5 7.5 36.5 20 C36.5 32.5 32.5 36.5 20 36.5 C7.5 36.5 3.5 32.5 3.5 20 C3.5 7.5 7.5 3.5 20 3.5 Z"
+          className={boxFill}
         />
-        {/* Створки сверху */}
-        <path
-          d="M6 14 L20 20 L34 14"
-          className={stroke}
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M20 20 L20 32"
-          className={stroke}
-          strokeWidth="2.4"
-          strokeLinejoin="round"
-        />
-        {/* Вырезанная буква F (вырез — белый по тёмному фону через mask-like эффект: рисуем буквы поверх) */}
-        <g transform="translate(11.5 22)">
-          <rect x="0" y="0" width="2" height="7.5" className={fill} rx="0.5" />
-          <rect x="0" y="0" width="5" height="1.6" className={fill} rx="0.5" />
-          <rect x="0" y="3.2" width="3.6" height="1.4" className={fill} rx="0.5" />
+        {/* Лента-ручка коробки (акцент) */}
+        <rect x="3.5" y="14.5" width="33" height="2.2" className={accent} />
+        {/* Узелок ленты */}
+        <circle cx="20" cy="15.6" r="2.6" className={accent} />
+        <circle cx="20" cy="15.6" r="1" className={boxFill} />
+        {/* Буква F — «вырезана» из нижней части */}
+        <g transform="translate(14.6 22.4)">
+          <rect x="0" y="0" width="2.2" height="10" rx="0.6" className={textFill} />
+          <rect x="0" y="0" width="6.4" height="2.1" rx="0.6" className={textFill} />
+          <rect x="0" y="4.2" width="4.6" height="1.8" rx="0.6" className={textFill} />
         </g>
-        {/* Акцентная точка */}
-        <circle cx="29" cy="11" r="2.2" className={accent} />
+        {/* Точка-акцент */}
+        <circle cx="25.6" cy="31.4" r="1.4" className={accent} />
       </svg>
     </span>
   );
@@ -76,7 +66,7 @@ const Logo = ({
         <span
           className={`font-serif italic font-normal tracking-tight ${s.text} ${textClr} whitespace-nowrap leading-none`}
         >
-          Furshet in Box
+          Furshet in <span className="text-lime">B</span>ox
         </span>
       )}
     </span>
