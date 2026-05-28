@@ -166,26 +166,26 @@ const ContactsSection = () => {
                     placeholder="Дата, количество гостей, пожелания"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
                   />
-                  <div className="grid grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-2 gap-1.5">
                     <button
                       type="submit"
-                      className="bg-lime text-graphite py-4 rounded-2xl font-semibold text-[13px] sm:text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
+                      className="bg-lime text-graphite py-2 rounded-xl font-semibold text-[11px] hover:bg-lime/90 transition flex items-center justify-center gap-1 group"
                     >
-                      <span className="w-5 h-5 rounded-md bg-graphite text-lime text-[10px] font-bold flex items-center justify-center">M</span>
+                      <span className="w-3 h-3 rounded-sm bg-graphite text-lime text-[8px] font-bold flex items-center justify-center">M</span>
                       <span className="hidden sm:inline">Отправить в</span> MAX
-                      <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                        <Icon name="ArrowRight" size={11} />
+                      <span className="w-3 h-3 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-0.5 transition">
+                        <Icon name="ArrowRight" size={7} />
                       </span>
                     </button>
                     <button
                       type="button"
                       onClick={onSendVK}
-                      className="bg-[#0077FF] text-snow py-4 rounded-2xl font-semibold text-[13px] sm:text-[14px] hover:bg-[#0077FF]/90 transition flex items-center justify-center gap-2 group"
+                      className="bg-[#0077FF] text-snow py-2 rounded-xl font-semibold text-[11px] hover:bg-[#0077FF]/90 transition flex items-center justify-center gap-1 group"
                     >
-                      <Icon name="Send" size={14} />
+                      <Icon name="Send" size={9} />
                       <span className="hidden sm:inline">Написать во</span> ВКонтакте
-                      <span className="w-5 h-5 rounded-full bg-snow text-[#0077FF] flex items-center justify-center group-hover:translate-x-1 transition">
-                        <Icon name="ArrowRight" size={11} />
+                      <span className="w-3 h-3 rounded-full bg-snow text-[#0077FF] flex items-center justify-center group-hover:translate-x-0.5 transition">
+                        <Icon name="ArrowRight" size={7} />
                       </span>
                     </button>
                   </div>
