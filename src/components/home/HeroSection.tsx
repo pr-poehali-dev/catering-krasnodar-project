@@ -127,7 +127,6 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-                    Меня зовут<br />
                     <span className="font-serif italic font-normal text-lime">Галина</span>
                   </div>
                   <p className="text-[14px] lg:text-[15px] text-snow/85 mt-4 max-w-sm leading-relaxed">
