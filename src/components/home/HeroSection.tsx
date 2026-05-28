@@ -78,16 +78,8 @@ const HeroSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
 
-                {/* Бейджи на фото */}
-                <div className="absolute top-4 left-4 right-4 flex items-start justify-between gap-2">
-                  <div className="glass text-graphite px-3 py-1.5 rounded-full text-[11px] sm:text-[12px] font-medium border border-graphite/10 inline-flex items-center gap-2">
-                    <span className="relative flex w-2 h-2">
-                      <span className="absolute inset-0 rounded-full bg-lime animate-ping opacity-75" />
-                      <span className="relative w-2 h-2 rounded-full bg-lime" />
-                    </span>
-                    <span className="hidden sm:inline">Заказы на лето 2026</span>
-                    <span className="sm:hidden">Лето 2026</span>
-                  </div>
+                {/* Бейдж на фото */}
+                <div className="absolute top-4 right-4 flex items-start justify-end">
                   <span className="glass-dark text-snow px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5">
                     <Icon name="Heart" size={11} className="text-lime fill-lime" />
                     Галина
