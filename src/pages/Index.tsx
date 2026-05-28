@@ -101,26 +101,26 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="relative h-full flex flex-col justify-center items-center text-center px-6 lg:px-10 py-20 lg:py-24">
-                <h2 className="font-sans text-[clamp(2.25rem,6vw,5.5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
+              <div className="relative h-full flex flex-col justify-center items-center text-center px-6 lg:px-10 py-24 lg:py-32 xl:py-40">
+                <h2 className="font-sans text-[clamp(2.25rem,7vw,8rem)] leading-[0.92] tracking-tightest font-medium text-balance text-graphite">
                   Кейтеринг,
                   <br />
                   который <span className="font-serif italic font-normal">помнят</span>
-                  <span className="inline-block ml-2 align-middle w-3 h-3 rounded-full bg-accent2 animate-pulse-glow" />
+                  <span className="inline-block ml-2 align-middle w-3 h-3 lg:w-4 lg:h-4 rounded-full bg-accent2 animate-pulse-glow" />
                 </h2>
 
-                <p className="mt-5 text-base lg:text-lg text-graphite/70 max-w-md leading-relaxed">
+                <p className="mt-6 lg:mt-8 text-base lg:text-xl xl:text-2xl text-graphite/70 max-w-2xl leading-relaxed">
                   Готовим и сервируем для свадеб, корпоративов и фуршетов в Краснодаре. Закрытый цикл — от меню до уборки.
                 </p>
 
-                <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
-                  <a href="#menu" className="group bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center gap-2 hover:bg-graphite/85 transition">
+                <div className="mt-8 lg:mt-10 flex flex-wrap items-center justify-center gap-3">
+                  <a href="#menu" className="group bg-graphite text-snow px-6 lg:px-7 py-3.5 lg:py-4 rounded-full text-[14px] lg:text-[15px] font-medium inline-flex items-center gap-2 hover:bg-graphite/85 transition">
                     Смотреть меню
                     <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
                       <Icon name="ArrowRight" size={11} className="text-graphite" />
                     </span>
                   </a>
-                  <a href="#contacts" className="px-5 py-3 rounded-full text-[14px] font-medium border border-graphite/15 bg-snow/80 backdrop-blur hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                  <a href="#contacts" className="px-6 lg:px-7 py-3.5 lg:py-4 rounded-full text-[14px] lg:text-[15px] font-medium border border-graphite/15 bg-snow/80 backdrop-blur hover:bg-graphite hover:text-snow hover:border-graphite transition">
                     Получить расчёт
                   </a>
                 </div>
@@ -238,7 +238,7 @@ const Index = () => {
                 <span className="w-6 h-px bg-ash" />
                 События
               </div>
-              <h2 className="font-sans text-4xl lg:text-6xl tracking-tightest font-medium text-balance">
+              <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
                 Под каждый формат —
                 <span className="font-serif italic font-normal"> своё меню</span>
               </h2>
@@ -291,7 +291,7 @@ const Index = () => {
                 <span className="w-6 h-px bg-ash" />
                 Каталог
               </div>
-              <h2 className="font-sans text-4xl lg:text-6xl tracking-tightest font-medium text-balance">
+              <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
                 Блюда, в которые
                 <span className="font-serif italic font-normal"> влюбляются</span>
               </h2>
@@ -357,7 +357,7 @@ const Index = () => {
                 <span className="w-6 h-px bg-snow/30" />
                 Отзывы
               </div>
-              <h2 className="font-sans text-4xl lg:text-6xl tracking-tightest font-medium text-balance">
+              <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
                 Клиенты говорят
                 <span className="font-serif italic font-normal text-lime"> искреннее</span>
               </h2>
@@ -414,7 +414,7 @@ const Index = () => {
                   <span className="w-6 h-px bg-ash" />
                   Контакты
                 </div>
-                <h2 className="font-sans text-4xl lg:text-6xl tracking-tightest font-medium text-balance">
+                <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
                   Обсудим
                   <span className="font-serif italic font-normal"> ваш праздник</span>
                 </h2>
