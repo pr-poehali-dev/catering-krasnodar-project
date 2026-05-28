@@ -72,42 +72,8 @@ const Index = () => {
         <div className="absolute inset-0 grid-lines opacity-60 pointer-events-none" />
 
         <div className="container mx-auto relative">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 text-[12px] font-medium bg-snow border border-graphite/10 px-3 py-1.5 rounded-full mb-8 animate-fade-in soft-shadow">
-              <span className="relative flex w-2 h-2">
-                <span className="absolute inset-0 rounded-full bg-lime animate-ping opacity-75" />
-                <span className="relative w-2 h-2 rounded-full bg-lime" />
-              </span>
-              Принимаем заказы на лето 2026
-              <Icon name="ArrowRight" size={12} />
-            </div>
-
-            <h1 className="font-sans text-[clamp(2.75rem,8.5vw,7rem)] leading-[0.95] tracking-tightest font-medium text-balance animate-fade-up opacity-0">
-              Кейтеринг,
-              <br />
-              который <span className="font-serif italic font-normal">помнят</span>
-              <span className="inline-block ml-2 align-middle w-3 h-3 rounded-full bg-accent2 animate-pulse-glow" />
-            </h1>
-
-            <p className="mt-6 text-base lg:text-lg text-ash max-w-xl mx-auto leading-relaxed animate-fade-up opacity-0" style={{ animationDelay: '0.15s' }}>
-              Готовим и сервируем для свадеб, корпоративов и фуршетов в Краснодаре. Закрытый цикл — от меню до уборки.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2 animate-fade-up opacity-0" style={{ animationDelay: '0.3s' }}>
-              <a href="#menu" className="group bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center gap-2 hover:bg-graphite/85 transition">
-                Смотреть меню
-                <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
-                  <Icon name="ArrowRight" size={11} className="text-graphite" />
-                </span>
-              </a>
-              <a href="#contacts" className="px-5 py-3 rounded-full text-[14px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow hover:border-graphite transition">
-                Получить расчёт
-              </a>
-            </div>
-          </div>
-
           {/* BENTO GRID */}
-          <div className="mt-20 lg:mt-28 grid grid-cols-12 gap-3 animate-scale-in opacity-0" style={{ animationDelay: '0.4s' }}>
+          <div className="grid grid-cols-12 gap-3 animate-scale-in opacity-0" style={{ animationDelay: '0.2s' }}>
             {/* Big hero card */}
             <div className="col-span-12 lg:col-span-8 bento-card aspect-[16/10] lg:aspect-auto lg:row-span-2 group bg-stone relative">
               <div className="absolute inset-0 gradient-mesh" />
@@ -122,10 +88,41 @@ const Index = () => {
               <div className="absolute inset-0 dotted-bg opacity-40" />
 
               <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
-                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] font-medium border border-graphite/10">Принимаем заказы на лето 2026</div>
+                <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] font-medium border border-graphite/10 inline-flex items-center gap-2">
+                  <span className="relative flex w-2 h-2">
+                    <span className="absolute inset-0 rounded-full bg-lime animate-ping opacity-75" />
+                    <span className="relative w-2 h-2 rounded-full bg-lime" />
+                  </span>
+                  Принимаем заказы на лето 2026
+                </div>
                 <div className="glass text-graphite px-3 py-1.5 rounded-full text-[12px] border border-graphite/10 flex items-center gap-1.5">
                   <Icon name="Sparkles" size={12} className="text-accent2" />
                   Шеф Иван Петров
+                </div>
+              </div>
+
+              <div className="relative h-full flex flex-col justify-center items-center text-center px-6 lg:px-10 py-20 lg:py-24">
+                <h2 className="font-sans text-[clamp(2.25rem,6vw,5.5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
+                  Кейтеринг,
+                  <br />
+                  который <span className="font-serif italic font-normal">помнят</span>
+                  <span className="inline-block ml-2 align-middle w-3 h-3 rounded-full bg-accent2 animate-pulse-glow" />
+                </h2>
+
+                <p className="mt-5 text-base lg:text-lg text-graphite/70 max-w-md leading-relaxed">
+                  Готовим и сервируем для свадеб, корпоративов и фуршетов в Краснодаре. Закрытый цикл — от меню до уборки.
+                </p>
+
+                <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
+                  <a href="#menu" className="group bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center gap-2 hover:bg-graphite/85 transition">
+                    Смотреть меню
+                    <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
+                      <Icon name="ArrowRight" size={11} className="text-graphite" />
+                    </span>
+                  </a>
+                  <a href="#contacts" className="px-5 py-3 rounded-full text-[14px] font-medium border border-graphite/15 bg-snow/80 backdrop-blur hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                    Получить расчёт
+                  </a>
                 </div>
               </div>
             </div>
