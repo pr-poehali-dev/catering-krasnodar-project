@@ -31,25 +31,23 @@ const EventsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {events.map((e) => (
-            <a
-              key={e.id}
-              href="#menu"
-              className="group relative aspect-[3/5] overflow-hidden rounded-[50%/30%] border border-graphite/10 transition-all duration-500 hover:rounded-[40%/22%] hover:shadow-2xl"
-            >
-              <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out" />
-              <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/20 to-graphite/30" />
-              <div className="absolute top-6 left-1/2 -translate-x-1/2">
-                <span className="glass-dark text-snow text-[10px] uppercase tracking-[0.15em] px-3 py-1 rounded-full border hairline-light whitespace-nowrap">
+            <a key={e.id} href="#menu" className="group bento-card aspect-[3/4] relative">
+              <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/15 to-transparent" />
+              <div className="absolute top-4 right-4">
+                <span className="glass-dark text-snow text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border hairline-light">
                   {e.badge}
                 </span>
               </div>
-              <div className="absolute inset-x-4 bottom-8 text-center text-snow">
-                <div className="font-sans text-xl lg:text-2xl xl:text-3xl tracking-tighter font-medium">{e.title}</div>
-                <div className="text-[12px] text-snow/70 mt-1">от 1 200 ₽/гость</div>
-                <div className="mt-4 inline-flex items-center justify-center w-9 h-9 rounded-full bg-lime text-graphite opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
-                  <Icon name="ArrowUpRight" size={15} />
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-snow">
+                <div>
+                  <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium">{e.title}</div>
+                  <div className="text-[13px] text-snow/70 mt-1">Меню от 1 200 ₽/гость</div>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-lime text-graphite flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
+                  <Icon name="ArrowUpRight" size={16} />
                 </div>
               </div>
             </a>
