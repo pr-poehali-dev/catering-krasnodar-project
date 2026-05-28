@@ -3,13 +3,13 @@ import Icon from '@/components/ui/icon';
 import { useReveal } from '@/hooks/use-reveal';
 
 const MAX_PHONE = '79144821555';
-const MAX_LINK = `https://max.ru/+${MAX_PHONE}`;
+const MAX_LINK = 'https://max.ru/join/IXMk3u0BPhokEDCdyrtOZn591m-jXLVNcrU02S-hkxo';
 
 const ContactsSection = () => {
   const head = useReveal();
   const [form, setForm] = useState({ name: '', phone: '', type: '', details: '' });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const lines = [
       'Здравствуйте, Галина! Заявка с сайта:',
@@ -18,8 +18,13 @@ const ContactsSection = () => {
       form.type && `Событие: ${form.type}`,
       form.details && `Детали: ${form.details}`,
     ].filter(Boolean);
-    const text = encodeURIComponent(lines.join('\n'));
-    window.open(`${MAX_LINK}?text=${text}`, '_blank', 'noopener,noreferrer');
+    const text = lines.join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      /* пользователь сможет вписать вручную */
+    }
+    window.open(MAX_LINK, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -158,7 +163,7 @@ const ContactsSection = () => {
                     </span>
                   </button>
                   <p className="text-[11px] text-snow/50 text-center pt-2">
-                    Откроется чат в мессенджере MAX с готовой заявкой
+                    Откроется чат в MAX. Текст заявки скопирован — просто вставьте его в сообщение
                   </p>
                 </div>
 
