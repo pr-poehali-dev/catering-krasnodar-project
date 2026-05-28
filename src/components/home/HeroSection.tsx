@@ -156,14 +156,14 @@ const HeroSection = () => {
           {/* trust strip */}
           <div className="mt-3 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {[
-              { icon: 'Leaf', label: 'Локальные фермеры' },
-              { icon: 'Truck', label: 'Доставка по краю' },
-              { icon: 'Clock', label: 'Ответ за 15 мин' },
-              { icon: 'ShieldCheck', label: 'Договор + чеки' },
+              { icon: 'Leaf', label: 'Всегда свежие продукты', bg: 'bg-lime/20', color: 'text-lime-700' },
+              { icon: 'Truck', label: 'Доставка по краю', bg: 'bg-stone', color: 'text-graphite' },
+              { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-stone', color: 'text-graphite' },
+              { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-stone', color: 'text-graphite' },
             ].map((t, i) => (
               <div key={i} className="bento-card p-4 sm:p-5 flex items-center gap-3">
-                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
-                  <Icon name={t.icon} size={14} />
+                <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
+                  <Icon name={t.icon} size={14} className={t.color} />
                 </div>
                 <span className="text-[13px] sm:text-[14px] font-medium leading-tight">{t.label}</span>
               </div>
