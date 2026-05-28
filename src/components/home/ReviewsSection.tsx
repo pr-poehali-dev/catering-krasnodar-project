@@ -56,7 +56,7 @@ const ReviewsSection = () => {
                   <Icon key={j} name="Star" size={12} className="fill-lime text-lime" />
                 ))}
               </div>
-              <div className="text-[12px] text-snow/60">320+ отзывов на Яндексе</div>
+              <div className="text-[12px] text-snow/60">320+ отзывов Вконтакте</div>
             </div>
           </div>
         </div>
