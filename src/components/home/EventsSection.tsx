@@ -21,9 +21,9 @@ const EventsSection = () => {
               <span className="w-6 h-px bg-ash" />
               События
             </div>
-            <h2 className="text-display text-[clamp(2.2rem,7.5vw,5.5rem)] font-medium text-balance">
+            <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
               Каждому празднику —
-              <span className="italic font-normal gradient-text"> свой характер</span>
+              <span className="font-serif italic font-normal"> свой характер</span>
             </h2>
           </div>
           <p className="text-graphite/70 max-w-sm text-[15px] leading-relaxed">
