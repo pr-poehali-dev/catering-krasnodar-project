@@ -31,35 +31,27 @@ const EventsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-12 gap-3">
-          {events.map((e, i) => {
-            const layouts = [
-              'col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[16/9]',
-              'col-span-12 md:col-span-5 aspect-[16/10] md:aspect-[16/9]',
-              'col-span-12 md:col-span-5 aspect-[16/10] md:aspect-[16/9]',
-              'col-span-12 md:col-span-7 aspect-[16/10] md:aspect-[16/9]',
-            ];
-            return (
-              <a key={e.id} href="#menu" className={`group bento-card ${layouts[i]} relative`}>
-                <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out" />
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/15 to-transparent" />
-                <div className="absolute top-4 right-4">
-                  <span className="glass-dark text-snow text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border hairline-light">
-                    {e.badge}
-                  </span>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {events.map((e) => (
+            <a key={e.id} href="#menu" className="group bento-card aspect-[3/4] relative">
+              <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out" />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/15 to-transparent" />
+              <div className="absolute top-4 right-4">
+                <span className="glass-dark text-snow text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border hairline-light">
+                  {e.badge}
+                </span>
+              </div>
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-snow">
+                <div>
+                  <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium">{e.title}</div>
+                  <div className="text-[13px] text-snow/70 mt-1">Меню от 1 200 ₽/гость</div>
                 </div>
-                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-snow">
-                  <div>
-                    <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium">{e.title}</div>
-                    <div className="text-[13px] text-snow/70 mt-1">Меню от 1 200 ₽/гость</div>
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-lime text-graphite flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
-                    <Icon name="ArrowUpRight" size={16} />
-                  </div>
+                <div className="w-10 h-10 rounded-full bg-lime text-graphite flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
+                  <Icon name="ArrowUpRight" size={16} />
                 </div>
-              </a>
-            );
-          })}
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </section>
