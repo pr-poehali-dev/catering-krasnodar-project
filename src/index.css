@@ -166,50 +166,31 @@
       0 12px 32px rgba(0, 0, 0, 0.08);
   }
 
-  /* Логотип — мягкое свечение и пульсация ленты при наведении */
-  .logo:hover .logo-glow {
-    opacity: 1;
-    animation: logo-glow-pulse 2s ease-in-out infinite;
+  /* Логотип premium catering — клоше покачивается, искры подсвечиваются */
+  .logo .logo-cloche {
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
   }
-  .logo:hover .logo-svg {
-    transform: rotate(-6deg) scale(1.06);
+  .logo:hover .logo-cloche {
+    transform: translateY(-2px) rotate(-4deg);
+    animation: logo-sparkle 2.4s ease-in-out infinite;
   }
-  .logo:hover .logo-ribbon {
-    animation: logo-ribbon-pulse 1.6s ease-in-out infinite;
+  .logo .logo-stroke {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 700ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .logo:hover .logo-knot {
-    animation: logo-knot-pulse 1.4s ease-in-out infinite;
+  .logo:hover .logo-stroke {
+    stroke-dashoffset: 0;
   }
 
-  @keyframes logo-glow-pulse {
+  @keyframes logo-sparkle {
     0%,
     100% {
-      opacity: 0.55;
-      transform: scale(1);
+      filter: drop-shadow(0 0 6px rgba(212, 245, 66, 0.45));
     }
     50% {
-      opacity: 1;
-      transform: scale(1.18);
-    }
-  }
-  @keyframes logo-ribbon-pulse {
-    0%,
-    100% {
-      transform: scaleX(1);
-      filter: drop-shadow(0 0 0 rgba(212, 245, 66, 0));
-    }
-    50% {
-      transform: scaleX(1.04);
-      filter: drop-shadow(0 0 4px rgba(212, 245, 66, 0.85));
-    }
-  }
-  @keyframes logo-knot-pulse {
-    0%,
-    100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.25);
+      filter: drop-shadow(0 0 14px rgba(212, 245, 66, 0.95));
     }
   }
 }
