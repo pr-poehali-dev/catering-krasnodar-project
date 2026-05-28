@@ -19,9 +19,9 @@ const HeroSection = () => {
         <div className="glass border border-graphite/10 rounded-full px-3 py-2 flex items-center justify-between shadow-sm">
           <a href="#" className="flex items-center gap-2 pl-3">
             <span className="w-7 h-7 rounded-full bg-graphite flex items-center justify-center">
-              <span className="w-2 h-2 rounded-full bg-lime" />
+              <Icon name="Package" size={14} className="text-lime" />
             </span>
-            <span className="font-semibold tracking-tight text-[15px]">vkus.co</span>
+            <span className="font-semibold tracking-[0.08em] text-[12px] lg:text-[13px] uppercase">Furshet in Box</span>
           </a>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
             {[
