@@ -16,10 +16,12 @@ const ProductPage = () => {
   const [form, setForm] = useState({ author_name: '', text: '', rating: 5, event: '' });
   const [sending, setSending] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [all, setAll] = useState<Product[]>([]);
 
   const load = async () => {
     try {
       const list = await fetchProducts();
+      setAll(list);
       const p = list.find((x) => String(x.id) === String(id));
       setProduct(p || null);
     } catch (e) {
@@ -381,6 +383,71 @@ const ProductPage = () => {
               </div>
             )}
           </section>
+
+          {/* Related */}
+          {(() => {
+            const related = all.filter(
+              (x) => x.id !== product.id && (product.category ? x.category === product.category : true),
+            ).slice(0, 4);
+            if (!related.length) return null;
+            return (
+              <section className="lg:col-span-12 mt-2">
+                <div className="flex items-baseline justify-between gap-3 mb-5">
+                  <h2 className="font-sans text-2xl sm:text-3xl tracking-tightest font-medium">
+                    {product.category ? `Ещё из «${product.category}»` : 'Другие позиции'}
+                  </h2>
+                  <Link to="/menu" className="text-[13px] text-ash hover:text-graphite inline-flex items-center gap-1 transition">
+                    Всё меню <Icon name="ArrowRight" size={13} />
+                  </Link>
+                </div>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                  {related.map((r) => (
+                    <Link
+                      key={r.id}
+                      to={`/product/${r.id}`}
+                      className="bento-card group bg-snow overflow-hidden flex flex-col"
+                    >
+                      <div className="aspect-square bg-stone relative overflow-hidden">
+                        {r.images[0] ? (
+                          <img
+                            src={r.images[0].url}
+                            alt={r.name}
+                            loading="lazy"
+                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[800ms]"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center text-ash">
+                            <Icon name="Image" size={24} />
+                          </div>
+                        )}
+                        {r.badge && (
+                          <span className="absolute top-2 left-2 bg-lime text-graphite text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                            {r.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-3 sm:p-4 flex-1 flex flex-col">
+                        <h3 className="font-sans text-[14px] sm:text-[15px] tracking-tight font-medium leading-snug group-hover:text-accent2 transition line-clamp-2">
+                          {r.name}
+                        </h3>
+                        {r.portion && <div className="text-[11px] text-ash mt-0.5">{r.portion}</div>}
+                        <div className="mt-auto pt-2 flex items-center justify-between">
+                          {r.price > 0 ? (
+                            <span className="text-[14px] font-semibold">{r.price} ₽</span>
+                          ) : (
+                            <span />
+                          )}
+                          <span className="w-7 h-7 rounded-full bg-stone group-hover:bg-graphite group-hover:text-snow flex items-center justify-center transition">
+                            <Icon name="ArrowUpRight" size={12} />
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
         </div>
       </main>
 
