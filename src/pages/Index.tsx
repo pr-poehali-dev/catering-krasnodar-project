@@ -127,28 +127,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Stats card */}
-            <div className="col-span-12 sm:col-span-6 lg:col-span-5 bento-card p-6 lg:p-7 bg-graphite text-snow flex flex-col">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-[11px] uppercase tracking-[0.2em] text-snow/50">Опыт</span>
-                <Icon name="TrendingUp" size={16} className="text-lime" />
-              </div>
-              <div className="font-sans text-5xl lg:text-6xl tracking-tighter font-medium">
-                500<span className="text-lime">+</span>
-              </div>
-              <div className="text-snow/60 text-[14px] mt-2">мероприятий в Краснодаре</div>
-              <div className="mt-auto pt-6 border-t border-snow/10 flex items-center gap-4">
-                <div className="flex -space-x-2">
-                  {['А', 'Д', 'Е', 'М'].map((l, i) => (
-                    <div key={i} className="w-7 h-7 rounded-full bg-snow text-graphite text-[11px] font-semibold flex items-center justify-center border-2 border-graphite">
-                      {l}
-                    </div>
-                  ))}
-                </div>
-                <div className="text-[12px] text-snow/60">320+ отзывов · 4.9 ★</div>
-              </div>
-            </div>
-
             {/* Lime CTA card */}
             <div className="col-span-12 sm:col-span-6 lg:col-span-5 bento-card p-6 lg:p-7 bg-lime text-graphite group cursor-pointer relative overflow-hidden flex flex-col">
               <div className="text-[11px] uppercase tracking-[0.2em] mb-3 text-graphite/60">Бесплатно</div>
