@@ -41,10 +41,10 @@ const menuSections = [
 const KanapeMixCard = ({ images, name, portion, description, badge }: { images: string[]; name: string; portion: string; description: string; badge?: string }) => {
   const [active, setActive] = useState(0);
   return (
-    <article className="bento-card group sm:col-span-2 lg:col-span-3 overflow-hidden">
+    <article className="bento-card group col-span-1 sm:col-span-2 lg:col-span-3 overflow-hidden">
       <div className="grid lg:grid-cols-5">
         {/* Gallery */}
-        <div className="lg:col-span-3 relative aspect-[4/3] lg:aspect-auto bg-stone overflow-hidden">
+        <div className="lg:col-span-3 relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto bg-stone overflow-hidden">
           {images.map((src, i) => (
             <img
               key={src}
@@ -54,13 +54,13 @@ const KanapeMixCard = ({ images, name, portion, description, badge }: { images: 
             />
           ))}
           {badge && (
-            <div className="absolute top-4 left-4">
+            <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
               <span className="bg-lime text-graphite text-[11px] font-semibold px-3 py-1.5 rounded-full">
                 {badge}
               </span>
             </div>
           )}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+          <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
             {images.map((_, i) => (
               <button
                 key={i}
@@ -73,9 +73,9 @@ const KanapeMixCard = ({ images, name, portion, description, badge }: { images: 
         </div>
 
         {/* Info */}
-        <div className="lg:col-span-2 p-6 lg:p-8 xl:p-10 flex flex-col">
+        <div className="lg:col-span-2 p-5 sm:p-6 lg:p-8 xl:p-10 flex flex-col">
           <div className="text-[11px] uppercase tracking-[0.2em] text-ash mb-3">{portion}</div>
-          <h3 className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
+          <h3 className="font-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
             {name.split('«')[0]}
             {name.includes('«') && (
               <>
@@ -85,17 +85,17 @@ const KanapeMixCard = ({ images, name, portion, description, badge }: { images: 
             )}
           </h3>
 
-          <ul className="mt-6 space-y-2.5">
+          <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5">
             {description.split(' · ').map((line, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-[14px] lg:text-[15px] text-graphite/80 leading-relaxed">
+              <li key={i} className="flex items-start gap-2.5 text-[13px] sm:text-[14px] lg:text-[15px] text-graphite/80 leading-relaxed">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-lime shrink-0" />
                 {line}
               </li>
             ))}
           </ul>
 
-          <div className="mt-auto pt-8 flex items-center justify-between gap-3">
-            <a href="#contacts" className="group/btn bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center gap-2 hover:bg-graphite/85 transition">
+          <div className="mt-6 sm:mt-auto pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <a href="#contacts" className="group/btn bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition">
               Заказать
               <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover/btn:rotate-45 transition">
                 <Icon name="ArrowRight" size={11} className="text-graphite" />
@@ -114,25 +114,25 @@ const KanapeMixCard = ({ images, name, portion, description, badge }: { images: 
 
 const MenuSection = () => {
   return (
-    <section id="menu" className="py-24 lg:py-32 border-t border-graphite/10 relative">
+    <section id="menu" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 relative">
       <div className="absolute inset-0 dotted-bg opacity-50 pointer-events-none" />
       <div className="container mx-auto relative">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-5">
+            <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
               <span className="w-6 h-px bg-ash" />
               Каталог
             </div>
-            <h2 className="font-sans text-4xl lg:text-6xl xl:text-7xl tracking-tightest font-medium text-balance">
+            <h2 className="font-sans text-[clamp(2rem,7vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
               Блюда, в которые
               <span className="font-serif italic font-normal"> влюбляются</span>
             </h2>
           </div>
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-2 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
             {['Все', 'Канапе', 'Десерты', 'Премиум'].map((t, i) => (
               <button
                 key={t}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition ${
+                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition whitespace-nowrap shrink-0 ${
                   i === 0 ? 'bg-graphite text-snow border-graphite' : 'bg-snow border-graphite/15 hover:border-graphite/40'
                 }`}
               >
@@ -143,16 +143,16 @@ const MenuSection = () => {
         </div>
 
         {menuSections.map((section) => (
-          <div key={section.id} className="mb-14 last:mb-0">
-            <div className="flex items-baseline gap-4 mb-6">
-              <h3 className="font-sans text-2xl lg:text-3xl xl:text-4xl tracking-tightest font-medium">
+          <div key={section.id} className="mb-12 sm:mb-14 last:mb-0">
+            <div className="flex items-baseline gap-3 sm:gap-4 mb-5 sm:mb-6">
+              <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl xl:text-4xl tracking-tightest font-medium">
                 {section.title}
               </h3>
-              <span className="text-[12px] text-ash">{section.items.length} {section.items.length === 1 ? 'позиция' : 'позиций'}</span>
+              <span className="text-[11px] sm:text-[12px] text-ash">{section.items.length} {section.items.length === 1 ? 'позиция' : 'позиций'}</span>
               <span className="flex-1 h-px bg-graphite/10" />
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {section.items.map((item, i) => {
                 if ('images' in item) {
                   return (
@@ -175,12 +175,12 @@ const MenuSection = () => {
                           {item.category}
                         </span>
                       </div>
-                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition">
                         <Icon name="Plus" size={14} />
                       </div>
                     </div>
-                    <div className="p-5 flex items-start justify-between gap-3">
-                      <h4 className="font-sans text-[16px] tracking-tight font-medium leading-tight">{item.name}</h4>
+                    <div className="p-4 sm:p-5 flex items-start justify-between gap-3">
+                      <h4 className="font-sans text-[15px] sm:text-[16px] tracking-tight font-medium leading-tight">{item.name}</h4>
                       <div className="text-[15px] font-semibold whitespace-nowrap">
                         {item.price} ₽
                       </div>

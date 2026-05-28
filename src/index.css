@@ -143,6 +143,14 @@
     border-color: rgba(0, 0, 0, 0.06);
   }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   .bento-card:hover {
     transform: translateY(-2px);
     box-shadow:
