@@ -128,12 +128,6 @@ const Index = () => {
                   Шеф Иван Петров
                 </div>
               </div>
-              <div className="absolute bottom-6 left-6 right-6 text-graphite">
-                <div className="font-sans text-3xl lg:text-5xl tracking-tighter font-medium leading-tight">
-                  Меню от шефа<br />
-                  <span className="font-serif italic font-normal">с характером</span>
-                </div>
-              </div>
             </div>
 
             {/* Stats card */}
