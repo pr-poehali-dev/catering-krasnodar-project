@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
 import { useReveal } from '@/hooks/use-reveal';
 
-const VK_LINK = 'https://vk.com/write/galina.cherepanova';
+const VK_LINK = 'https://vk.com/galina.cherepanova';
 
 const ContactsSection = () => {
   const head = useReveal();
