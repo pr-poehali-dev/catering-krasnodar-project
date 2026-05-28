@@ -9,9 +9,9 @@ type LogoProps = {
 };
 
 const sizeMap = {
-  sm: { box: 'w-7 h-7', text: 'text-[11px] sm:text-[12px]', gap: 'gap-2' },
-  md: { box: 'w-9 h-9', text: 'text-[13px]', gap: 'gap-2.5' },
-  lg: { box: 'w-12 h-12 sm:w-14 sm:h-14', text: 'text-[15px] sm:text-[17px]', gap: 'gap-3' },
+  sm: { box: 'w-7 h-7', text: 'text-[18px] sm:text-[19px]', gap: 'gap-2' },
+  md: { box: 'w-9 h-9', text: 'text-[22px]', gap: 'gap-2.5' },
+  lg: { box: 'w-12 h-12 sm:w-14 sm:h-14', text: 'text-[28px] sm:text-[32px]', gap: 'gap-3' },
 };
 
 const LogoMark = ({ size = 'md', variant = 'dark' }: { size: 'sm' | 'md' | 'lg'; variant: 'dark' | 'light' }) => {
@@ -74,9 +74,9 @@ const Logo = ({
       <LogoMark size={size} variant={variant} />
       {showWordmark && (
         <span
-          className={`font-semibold uppercase tracking-[0.14em] ${s.text} ${textClr} whitespace-nowrap leading-none`}
+          className={`font-serif italic font-normal tracking-tight ${s.text} ${textClr} whitespace-nowrap leading-none`}
         >
-          FURSHET IN BOX
+          Furshet in Box
         </span>
       )}
     </span>
