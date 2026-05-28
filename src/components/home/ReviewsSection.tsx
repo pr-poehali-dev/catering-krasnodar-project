@@ -3,22 +3,16 @@ import { useReveal } from '@/hooks/use-reveal';
 
 const reviews = [
   {
-    name: 'Анна К.',
-    event: 'Свадьба · 80 гостей',
-    text: 'Гости до сих пор пишут и спрашивают, где мы заказывали еду. Канапе разлетелись за 15 минут — пришлось докладывать. Галина — волшебница.',
-    avatar: 'А',
+    image: 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/eaad6521-676d-4f8c-8254-3b877bdf74fc.jpg',
+    caption: 'Роспись · 16 гостей',
   },
   {
-    name: 'Дмитрий М.',
-    event: 'Корпоратив · 150 человек',
-    text: 'Идеальная подача, вкус и сервис. Работали как часы — ни одной заминки за вечер. Уже бронируем на следующий год.',
-    avatar: 'Д',
+    image: 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/8023e15d-f418-4b05-9642-8982b7773886.jpg',
+    caption: 'Фруктовый бокс',
   },
   {
-    name: 'Елена С.',
-    event: 'День рождения · 30 гостей',
-    text: 'Фуршет получился стильным и невероятно вкусным. Всё привезли вовремя, разложили, забрали — нам осталось только наслаждаться вечером.',
-    avatar: 'Е',
+    image: 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/51397a55-54f5-4d48-b0f4-d2c4e06d0573.jpg',
+    caption: 'Большой фуршет',
   },
 ];
 
@@ -61,12 +55,15 @@ const ReviewsSection = () => {
           </div>
         </div>
 
-        <div ref={grid.ref as never} className="grid md:grid-cols-3 gap-3">
+        <div ref={grid.ref as never} className="grid md:grid-cols-3 gap-3 sm:gap-4">
           {reviews.map((r, i) => (
-            <div
+            <a
               key={i}
-              className={`rounded-3xl p-6 sm:p-7 border hairline-light flex flex-col transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                i === 1 ? 'bg-lime text-graphite border-lime md:scale-[1.03] md:-translate-y-3 shadow-2xl shadow-lime/20' : 'bg-snow/[0.04] backdrop-blur hover:bg-snow/[0.07]'
+              href="https://vk.com/foodinboxvrn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative rounded-3xl overflow-hidden border hairline-light bg-snow/[0.04] aspect-[9/16] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                i === 1 ? 'md:scale-[1.03] md:-translate-y-3 shadow-2xl shadow-lime/20' : ''
               }`}
               style={{
                 transitionDelay: `${i * 150}ms`,
@@ -76,20 +73,28 @@ const ReviewsSection = () => {
                   : 'translateY(40px)',
               }}
             >
-              <Icon name="Quote" size={22} className={i === 1 ? 'text-graphite/40' : 'text-snow/30'} />
-              <p className={`text-[15px] leading-relaxed mt-4 flex-1 ${i === 1 ? '' : 'text-snow/90'}`}>
-                «{r.text}»
-              </p>
-              <div className={`mt-6 pt-5 border-t flex items-center gap-3 ${i === 1 ? 'border-graphite/15' : 'border-snow/10'}`}>
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[14px] font-semibold ${i === 1 ? 'bg-graphite text-lime' : 'bg-lime text-graphite'}`}>
-                  {r.avatar}
-                </div>
-                <div>
-                  <div className="font-medium text-[14px]">{r.name}</div>
-                  <div className={`text-[12px] ${i === 1 ? 'text-graphite/60' : 'text-snow/50'}`}>{r.event}</div>
+              <img
+                src={r.image}
+                alt={r.caption}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/10 to-transparent pointer-events-none" />
+              <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-snow/95 text-graphite text-[11px] font-semibold px-2.5 py-1 rounded-full backdrop-blur">
+                <span className="flex">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Icon key={j} name="Star" size={9} className="fill-lime text-lime" />
+                  ))}
+                </span>
+                Реальный отзыв
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
+                <div className="text-snow text-[13px] font-medium">{r.caption}</div>
+                <div className="w-9 h-9 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition shrink-0">
+                  <Icon name="ArrowUpRight" size={14} className="text-graphite" />
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
