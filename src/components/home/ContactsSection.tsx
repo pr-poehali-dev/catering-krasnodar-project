@@ -61,45 +61,54 @@ const ContactsSection = () => {
             </div>
 
             {/* Form */}
-            <form className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow">
-              <h3 className="font-sans text-2xl tracking-tight font-medium">Оставить заявку</h3>
-              <p className="text-snow/60 text-[13px] mt-1 mb-8">Перезвоним за 15 минут и составим смету</p>
+            <form className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
+                alt="Галина"
+                className="absolute inset-0 w-full h-full object-cover object-top opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-graphite/40 via-graphite/80 to-graphite" />
 
-              <div className="space-y-3">
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  className="w-full px-4 py-3.5 rounded-2xl bg-snow/5 border border-snow/10 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/40"
-                />
-                <input
-                  type="tel"
-                  placeholder="+7 (___) ___-__-__"
-                  className="w-full px-4 py-3.5 rounded-2xl bg-snow/5 border border-snow/10 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/40"
-                />
-                <select className="w-full px-4 py-3.5 rounded-2xl bg-snow/5 border border-snow/10 focus:border-lime outline-none transition text-[14px] text-snow/60">
-                  <option className="bg-graphite">Тип события</option>
-                  <option className="bg-graphite">Свадьба</option>
-                  <option className="bg-graphite">Корпоратив</option>
-                  <option className="bg-graphite">День рождения</option>
-                  <option className="bg-graphite">Фуршет</option>
-                </select>
-                <textarea
-                  rows={3}
-                  placeholder="Дата, количество гостей, пожелания"
-                  className="w-full px-4 py-3.5 rounded-2xl bg-snow/5 border border-snow/10 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/40 resize-none"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
-                >
-                  Отправить заявку
-                  <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                    <Icon name="ArrowRight" size={11} />
-                  </span>
-                </button>
-                <p className="text-[11px] text-snow/40 text-center pt-2">
-                  Соглашаюсь с обработкой персональных данных
-                </p>
+              <div className="relative">
+                <h3 className="font-sans text-2xl tracking-tight font-medium">Оставить заявку</h3>
+                <p className="text-snow/70 text-[13px] mt-1 mb-8">Галина перезвонит за 15 минут и составит смету</p>
+
+                <div className="space-y-3">
+                  <input
+                    type="text"
+                    placeholder="Ваше имя"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
+                  />
+                  <input
+                    type="tel"
+                    placeholder="+7 (___) ___-__-__"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
+                  />
+                  <select className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] text-snow/70">
+                    <option className="bg-graphite">Тип события</option>
+                    <option className="bg-graphite">Свадьба</option>
+                    <option className="bg-graphite">Корпоратив</option>
+                    <option className="bg-graphite">День рождения</option>
+                    <option className="bg-graphite">Фуршет</option>
+                  </select>
+                  <textarea
+                    rows={3}
+                    placeholder="Дата, количество гостей, пожелания"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
+                  >
+                    Отправить заявку
+                    <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
+                      <Icon name="ArrowRight" size={11} />
+                    </span>
+                  </button>
+                  <p className="text-[11px] text-snow/50 text-center pt-2">
+                    Соглашаюсь с обработкой персональных данных
+                  </p>
+                </div>
               </div>
             </form>
           </div>
