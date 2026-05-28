@@ -1,8 +1,26 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useReveal } from '@/hooks/use-reveal';
 
+const MAX_PHONE = '79144821555';
+const MAX_LINK = `https://max.ru/+${MAX_PHONE}`;
+
 const ContactsSection = () => {
   const head = useReveal();
+  const [form, setForm] = useState({ name: '', phone: '', type: '', details: '' });
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const lines = [
+      'Здравствуйте, Галина! Заявка с сайта:',
+      form.name && `Имя: ${form.name}`,
+      form.phone && `Телефон: ${form.phone}`,
+      form.type && `Событие: ${form.type}`,
+      form.details && `Детали: ${form.details}`,
+    ].filter(Boolean);
+    const text = encodeURIComponent(lines.join('\n'));
+    window.open(`${MAX_LINK}?text=${text}`, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <>
@@ -59,17 +77,30 @@ const ContactsSection = () => {
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-2">
-                  {['Telegram', 'WhatsApp', 'Instagram'].map((s) => (
-                    <a key={s} href="#" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
-                      {s}
-                    </a>
-                  ))}
+                  <a
+                    href={MAX_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full bg-graphite text-snow border border-graphite text-[13px] hover:bg-lime hover:text-graphite hover:border-lime transition inline-flex items-center gap-1.5"
+                  >
+                    <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center">M</span>
+                    MAX
+                  </a>
+                  <a href={`https://wa.me/${MAX_PHONE}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                    WhatsApp
+                  </a>
+                  <a href="https://t.me/+79144821555" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                    Telegram
+                  </a>
+                  <a href="https://vk.com/foodinboxvrn" target="_blank" rel="noopener noreferrer" className="px-4 py-2 rounded-full border border-graphite/15 text-[13px] hover:bg-graphite hover:text-snow hover:border-graphite transition">
+                    ВКонтакте
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Form */}
-            <form className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
+            <form onSubmit={onSubmit} className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
               <img
                 src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/8023e15d-f418-4b05-9642-8982b7773886.jpg"
                 alt="Фуршет"
@@ -84,16 +115,26 @@ const ContactsSection = () => {
                 <div className="space-y-3">
                   <input
                     type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Ваше имя"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
                   />
                   <input
                     type="tel"
+                    required
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="+7 (___) ___-__-__"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
                   />
-                  <select className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] text-snow/70">
-                    <option className="bg-graphite">Тип события</option>
+                  <select
+                    value={form.type}
+                    onChange={(e) => setForm({ ...form, type: e.target.value })}
+                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] text-snow/70"
+                  >
+                    <option className="bg-graphite" value="">Тип события</option>
                     <option className="bg-graphite">Свадьба</option>
                     <option className="bg-graphite">Корпоратив</option>
                     <option className="bg-graphite">День рождения</option>
@@ -101,6 +142,8 @@ const ContactsSection = () => {
                   </select>
                   <textarea
                     rows={3}
+                    value={form.details}
+                    onChange={(e) => setForm({ ...form, details: e.target.value })}
                     placeholder="Дата, количество гостей, пожелания"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
                   />
@@ -108,13 +151,14 @@ const ContactsSection = () => {
                     type="submit"
                     className="w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
                   >
-                    Отправить заявку
+                    <span className="w-5 h-5 rounded-md bg-graphite text-lime text-[10px] font-bold flex items-center justify-center">M</span>
+                    Отправить в MAX
                     <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
                       <Icon name="ArrowRight" size={11} />
                     </span>
                   </button>
                   <p className="text-[11px] text-snow/50 text-center pt-2">
-                    Соглашаюсь с обработкой персональных данных
+                    Откроется чат в мессенджере MAX с готовой заявкой
                   </p>
                 </div>
 
