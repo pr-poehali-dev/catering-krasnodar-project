@@ -1,123 +1,246 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Icon from '@/components/ui/icon';
+import { toast } from 'sonner';
+import { Product, addReview, fetchProducts } from '@/lib/api';
+import { useReveal } from '@/hooks/use-reveal';
 
-const HERO_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/b2163239-4ec3-4791-b1b8-87e0712ecd1f.jpg';
-const WEDDING_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/a0c3eada-d236-47e1-ac30-78632794e646.jpg';
-const CORP_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/a23a2735-2a81-4111-9781-c5416847d3e8.jpg';
-
-const KANAPE_MIX_IMGS = [
-  'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/7e767775-7b54-426b-a9d9-5dafb80c1da9.jpg',
-  'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/80630363-ea63-4f79-902c-0fc92d3da22f.jpg',
-  'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/9d6eeafc-6164-465c-9d77-de9ffc8b3b5d.jpg',
-];
-
-const menuSections = [
-  {
-    id: 'kanape',
-    title: 'Канапе',
-    items: [
-      {
-        name: 'Канапе «Микс»',
-        portion: '36 шт',
-        description: 'Говядина и антипасто в соусе тар-тар · чизбол с вишней, орехами и ягодой · форель и огурец',
-        images: KANAPE_MIX_IMGS,
-        badge: 'Хит',
-      },
-    ],
-  },
-  {
-    id: 'other',
-    title: 'Другое',
-    items: [
-      { name: 'Тарталетки с икрой', price: 220, category: 'Премиум', img: HERO_IMG },
-      { name: 'Брускетта с пармой', price: 160, category: 'Закуски', img: HERO_IMG },
-      { name: 'Мини-десерты', price: 140, category: 'Десерты', img: WEDDING_IMG },
-      { name: 'Сырная тарелка', price: 380, category: 'Закуски', img: CORP_IMG },
-      { name: 'Шеф-салат', price: 290, category: 'Салаты', img: CORP_IMG },
-    ],
-  },
-];
-
-const KanapeMixCard = ({ images, name, portion, description, badge }: { images: string[]; name: string; portion: string; description: string; badge?: string }) => {
+const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdded: () => void }) => {
   const [active, setActive] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [form, setForm] = useState({ author_name: '', text: '', rating: 5, event: '' });
+  const [sending, setSending] = useState(false);
+  const card = useReveal();
+
+  const images = product.images.length ? product.images : [{ id: 0, url: '', sort_order: 0 }];
+  const avgRating = product.reviews.length
+    ? (product.reviews.reduce((s, r) => s + r.rating, 0) / product.reviews.length).toFixed(1)
+    : null;
+
+  const submitReview = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.author_name.trim() || !form.text.trim()) {
+      toast.error('Заполните имя и текст');
+      return;
+    }
+    setSending(true);
+    try {
+      await addReview(product.id, form);
+      toast.success('Спасибо за отзыв!');
+      setForm({ author_name: '', text: '', rating: 5, event: '' });
+      setReviewOpen(false);
+      onReviewAdded();
+    } catch (err) {
+      toast.error((err as Error).message);
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
-    <article className="bento-card group col-span-1 sm:col-span-2 lg:col-span-3 overflow-hidden">
-      <div className="grid lg:grid-cols-5">
-        {/* Gallery */}
-        <div className="lg:col-span-3 relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto bg-stone overflow-hidden">
-          {images.map((src, i) => (
-            <img
-              key={src}
-              src={src}
-              alt={name}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${active === i ? 'opacity-100' : 'opacity-0'}`}
-            />
-          ))}
-          {badge && (
-            <div className="absolute top-3 sm:top-4 left-3 sm:left-4">
-              <span className="bg-lime text-graphite text-[11px] font-semibold px-3 py-1.5 rounded-full">
-                {badge}
-              </span>
-            </div>
-          )}
-          <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {images.map((_, i) => (
+    <article
+      ref={card.ref as never}
+      className="bento-card group bg-snow overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+      style={{
+        opacity: card.visible ? 1 : 0,
+        transform: card.visible ? 'translateY(0)' : 'translateY(30px)',
+      }}
+    >
+      <div className="aspect-[4/3] overflow-hidden bg-stone relative">
+        {images.map((img, i) => (
+          <img
+            key={img.id || i}
+            src={img.url}
+            alt={product.name}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${active === i ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
+        {!product.images.length && (
+          <div className="absolute inset-0 flex items-center justify-center text-ash">
+            <Icon name="Image" size={32} />
+          </div>
+        )}
+
+        {product.badge && (
+          <div className="absolute top-3 left-3">
+            <span className="bg-lime text-graphite text-[11px] font-semibold px-3 py-1 rounded-full">
+              {product.badge}
+            </span>
+          </div>
+        )}
+        {product.category && !product.badge && (
+          <div className="absolute top-3 left-3">
+            <span className="bg-snow/90 backdrop-blur text-[11px] font-medium px-2.5 py-1 rounded-full">
+              {product.category}
+            </span>
+          </div>
+        )}
+
+        {product.images.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {product.images.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
-                className={`h-1.5 rounded-full transition-all ${active === i ? 'w-6 bg-snow' : 'w-1.5 bg-snow/50'}`}
+                className={`h-1.5 rounded-full transition-all ${active === i ? 'w-6 bg-snow' : 'w-1.5 bg-snow/60'}`}
                 aria-label={`Фото ${i + 1}`}
               />
             ))}
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* Info */}
-        <div className="lg:col-span-2 p-5 sm:p-6 lg:p-8 xl:p-10 flex flex-col">
-          <div className="text-[11px] uppercase tracking-[0.2em] text-ash mb-3">{portion}</div>
-          <h3 className="font-sans text-2xl sm:text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-            {name.split('«')[0]}
-            {name.includes('«') && (
-              <>
-                <br />
-                <span className="font-serif italic font-normal text-accent2">«{name.split('«')[1]}</span>
-              </>
-            )}
-          </h3>
-
-          <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-2.5">
-            {description.split(' · ').map((line, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-[13px] sm:text-[14px] lg:text-[15px] text-graphite/80 leading-relaxed">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-lime shrink-0" />
-                {line}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6 sm:mt-auto pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <a href="#contacts" className="group/btn bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition">
-              Заказать
-              <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover/btn:rotate-45 transition">
-                <Icon name="ArrowRight" size={11} className="text-graphite" />
-              </span>
-            </a>
-            <div className="flex items-center gap-1.5 text-[12px] text-ash">
-              <Icon name="Sparkles" size={13} className="text-accent2" />
-              Авторский набор
-            </div>
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h4 className="font-sans text-[16px] sm:text-[17px] tracking-tight font-medium leading-snug">{product.name}</h4>
+            {product.portion && <div className="text-[12px] text-ash mt-0.5">{product.portion}</div>}
           </div>
+          {product.price > 0 && (
+            <div className="text-[15px] font-semibold whitespace-nowrap">{product.price} ₽</div>
+          )}
         </div>
+
+        {product.description && (
+          <p className={`text-[13px] sm:text-[14px] text-graphite/75 mt-2.5 leading-relaxed ${open ? '' : 'line-clamp-2'}`}>
+            {product.description}
+          </p>
+        )}
+        {product.description && product.description.length > 100 && (
+          <button onClick={() => setOpen(!open)} className="text-[12px] text-graphite/60 hover:text-graphite mt-1.5 underline-offset-2 hover:underline">
+            {open ? 'Свернуть' : 'Подробнее'}
+          </button>
+        )}
+
+        <div className="mt-4 pt-4 border-t border-graphite/10 flex items-center justify-between gap-3">
+          <button
+            onClick={() => setReviewOpen(!reviewOpen)}
+            className="text-[12px] text-ash hover:text-graphite inline-flex items-center gap-1.5 transition"
+          >
+            <Icon name="Star" size={13} className={avgRating ? 'text-lime fill-lime' : ''} />
+            {avgRating ? `${avgRating} · ${product.reviews.length}` : 'Оставить отзыв'}
+          </button>
+          <a href="#contacts" className="text-[12px] font-medium bg-graphite text-snow px-3.5 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5">
+            Заказать
+            <Icon name="ArrowUpRight" size={11} />
+          </a>
+        </div>
+
+        {product.reviews.length > 0 && (
+          <div className="mt-4 space-y-2.5">
+            {product.reviews.slice(0, open ? undefined : 2).map((r) => (
+              <div key={r.id} className="bg-stone rounded-2xl p-3 text-[13px]">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-medium">{r.author_name}</span>
+                  <span className="text-lime text-[11px]">{'★'.repeat(r.rating)}</span>
+                  {r.event && <span className="text-ash text-[11px]">· {r.event}</span>}
+                </div>
+                <p className="text-graphite/80 leading-snug">{r.text}</p>
+              </div>
+            ))}
+            {product.reviews.length > 2 && !open && (
+              <button onClick={() => setOpen(true)} className="text-[12px] text-graphite/60 hover:text-graphite">
+                Ещё {product.reviews.length - 2} отзыв(ов)
+              </button>
+            )}
+          </div>
+        )}
+
+        {reviewOpen && (
+          <form onSubmit={submitReview} className="mt-4 space-y-2 bg-stone rounded-2xl p-3">
+            <input
+              type="text"
+              required
+              placeholder="Ваше имя"
+              value={form.author_name}
+              onChange={(e) => setForm({ ...form, author_name: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite"
+            />
+            <input
+              type="text"
+              placeholder="Событие (например: Свадьба, 50 гостей)"
+              value={form.event}
+              onChange={(e) => setForm({ ...form, event: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite"
+            />
+            <div className="flex items-center gap-2">
+              <span className="text-[12px] text-ash">Оценка:</span>
+              {[1, 2, 3, 4, 5].map((n) => (
+                <button
+                  type="button"
+                  key={n}
+                  onClick={() => setForm({ ...form, rating: n })}
+                  className="text-lg leading-none"
+                >
+                  <span className={n <= form.rating ? 'text-lime' : 'text-graphite/20'}>★</span>
+                </button>
+              ))}
+            </div>
+            <textarea
+              required
+              rows={3}
+              placeholder="Ваш отзыв"
+              value={form.text}
+              onChange={(e) => setForm({ ...form, text: e.target.value })}
+              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite resize-none"
+            />
+            <div className="flex gap-2">
+              <button type="submit" disabled={sending} className="flex-1 bg-graphite text-snow py-2.5 rounded-xl text-[13px] font-medium hover:bg-graphite/85 transition disabled:opacity-50">
+                {sending ? 'Отправляем…' : 'Отправить'}
+              </button>
+              <button type="button" onClick={() => setReviewOpen(false)} className="px-4 py-2.5 rounded-xl text-[13px] border border-graphite/15 hover:bg-graphite/5">
+                Отмена
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </article>
   );
 };
 
 const MenuSection = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('Все');
+  const head = useReveal();
+
+  const load = async () => {
+    try {
+      const list = await fetchProducts();
+      setProducts(list);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    products.forEach((p) => p.category && set.add(p.category));
+    return ['Все', ...Array.from(set)];
+  }, [products]);
+
+  const filtered = useMemo(
+    () => (filter === 'Все' ? products : products.filter((p) => p.category === filter)),
+    [products, filter],
+  );
+
   return (
     <section id="menu" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 relative">
       <div className="absolute inset-0 dotted-bg opacity-50 pointer-events-none" />
       <div className="container mx-auto relative">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <div
+          ref={head.ref as never}
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
+          }`}
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
               <span className="w-6 h-px bg-ash" />
@@ -130,71 +253,53 @@ const MenuSection = () => {
               Готовим свежие порционные канапе, тарталетки и мини-десерты в день мероприятия. Подача — как на обложке кулинарного журнала.
             </p>
           </div>
-          <div className="flex gap-2 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
-            {['Все', 'Канапе', 'Десерты', 'Премиум'].map((t, i) => (
-              <button
-                key={t}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium border transition whitespace-nowrap shrink-0 ${
-                  i === 0 ? 'bg-graphite text-snow border-graphite' : 'bg-snow border-graphite/15 hover:border-graphite/40'
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
+          {categories.length > 1 && (
+            <div className="flex gap-2 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
+              {categories.map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setFilter(t)}
+                  className={`px-4 py-2 rounded-full text-[13px] font-medium border transition whitespace-nowrap shrink-0 ${
+                    filter === t ? 'bg-graphite text-snow border-graphite' : 'bg-snow border-graphite/15 hover:border-graphite/40'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {menuSections.map((section) => (
-          <div key={section.id} className="mb-12 sm:mb-14 last:mb-0">
-            <div className="flex items-baseline gap-3 sm:gap-4 mb-5 sm:mb-6">
-              <h3 className="font-sans text-xl sm:text-2xl lg:text-3xl xl:text-4xl tracking-tightest font-medium">
-                {section.title}
-              </h3>
-              <span className="text-[11px] sm:text-[12px] text-ash">{section.items.length} {section.items.length === 1 ? 'позиция' : 'позиций'}</span>
-              <span className="flex-1 h-px bg-graphite/10" />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-              {section.items.map((item, i) => {
-                if ('images' in item) {
-                  return (
-                    <KanapeMixCard
-                      key={i}
-                      images={item.images}
-                      name={item.name}
-                      portion={item.portion}
-                      description={item.description}
-                      badge={item.badge}
-                    />
-                  );
-                }
-                return (
-                  <article key={i} className="bento-card group">
-                    <div className="aspect-[4/3] overflow-hidden bg-stone relative">
-                      <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1000ms] ease-out" />
-                      <div className="absolute top-3 left-3">
-                        <span className="bg-snow/90 backdrop-blur text-[11px] font-medium px-2.5 py-1 rounded-full">
-                          {item.category}
-                        </span>
-                      </div>
-                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition">
-                        <Icon name="Plus" size={14} />
-                      </div>
-                    </div>
-                    <div className="p-4 sm:p-5 flex items-start justify-between gap-3">
-                      <h4 className="font-sans text-[15px] sm:text-[16px] tracking-tight font-medium leading-tight">{item.name}</h4>
-                      <div className="text-[15px] font-semibold whitespace-nowrap">
-                        {item.price} ₽
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bento-card bg-snow animate-pulse">
+                <div className="aspect-[4/3] bg-stone" />
+                <div className="p-5 space-y-2">
+                  <div className="h-4 bg-stone rounded w-2/3" />
+                  <div className="h-3 bg-stone rounded w-full" />
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : filtered.length === 0 ? (
+          <div className="bento-card bg-snow p-12 text-center">
+            <Icon name="UtensilsCrossed" size={32} className="mx-auto text-ash mb-3" />
+            <p className="text-ash">Каталог скоро появится. Свяжитесь с Галиной для индивидуального меню.</p>
+            <a href="#contacts" className="inline-flex items-center gap-2 mt-4 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition">
+              Написать Галине
+              <Icon name="ArrowRight" size={13} />
+            </a>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            {filtered.map((p) => (
+              <ProductCard key={p.id} product={p} onReviewAdded={load} />
+            ))}
+          </div>
+        )}
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-10 sm:mt-12">
           <a href="#contacts" className="inline-flex items-center gap-2 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition group">
             Открыть полное меню
             <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">

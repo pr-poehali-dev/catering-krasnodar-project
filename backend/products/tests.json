@@ -1,0 +1,17 @@
+{
+  "tests": [
+    {
+      "name": "List products returns array",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Create product without auth fails",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Test"},
+      "expectedStatus": 401
+    }
+  ]
+}

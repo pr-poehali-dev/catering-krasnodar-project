@@ -1,0 +1,11 @@
+{
+  "tests": [
+    {
+      "name": "Upload without auth fails",
+      "method": "POST",
+      "path": "/",
+      "body": {"file": ""},
+      "expectedStatus": 401
+    }
+  ]
+}
