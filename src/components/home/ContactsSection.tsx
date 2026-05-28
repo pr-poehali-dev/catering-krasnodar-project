@@ -166,7 +166,7 @@ const ContactsSection = () => {
                     placeholder="Дата, количество гостей, пожелания"
                     className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
                   />
-                  <div className="grid grid-cols-2 gap-1.5">
+                  <div className="grid grid-cols-2 gap-1.5 rounded-none py-1 my-1 mx-[11px] px-32">
                     <button
                       type="submit"
                       className="bg-lime text-graphite py-2 rounded-xl font-semibold text-[11px] hover:bg-lime/90 transition flex items-center justify-center gap-1 group"
