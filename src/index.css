@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 60 14% 97%;
-    --foreground: 240 6% 10%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 4%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 6% 10%;
+    --card-foreground: 0 0% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 10%;
+    --popover-foreground: 0 0% 4%;
 
-    --primary: 240 6% 10%;
-    --primary-foreground: 60 14% 97%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 60 8% 94%;
-    --secondary-foreground: 240 6% 10%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
 
-    --muted: 60 8% 94%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 12 56% 51%;
-    --accent-foreground: 60 14% 97%;
+    --accent: 73 88% 61%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 60 6% 90%;
-    --input: 60 6% 90%;
-    --ring: 240 6% 10%;
+    --border: 0 0% 92%;
+    --input: 0 0% 92%;
+    --ring: 0 0% 4%;
 
     --radius: 1.25rem;
 
@@ -62,8 +62,8 @@
   }
 
   ::selection {
-    background: hsl(var(--foreground));
-    color: hsl(var(--background));
+    background: #d4f542;
+    color: #0a0a0a;
   }
 }
 
@@ -73,32 +73,80 @@
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
 
+  .glass-dark {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: saturate(180%) blur(24px);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+  }
+
   .soft-shadow {
     box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.03),
+      0 1px 2px rgba(0, 0, 0, 0.04),
       0 8px 24px rgba(0, 0, 0, 0.04),
-      0 24px 48px rgba(0, 0, 0, 0.05);
+      0 24px 48px rgba(0, 0, 0, 0.06);
   }
 
   .hairline {
     border-color: rgba(0, 0, 0, 0.08);
   }
 
+  .hairline-light {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
   .shimmer-text {
-    background: linear-gradient(
-      90deg,
-      hsl(var(--foreground)) 0%,
-      hsl(var(--muted-foreground)) 50%,
-      hsl(var(--foreground)) 100%
-    );
+    background: linear-gradient(90deg, #0a0a0a 0%, #737373 50%, #0a0a0a 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .gradient-mesh {
+    background-image:
+      radial-gradient(
+        at 20% 10%,
+        rgba(212, 245, 66, 0.25) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 80% 0%, rgba(255, 92, 43, 0.18) 0px, transparent 50%),
+      radial-gradient(
+        at 80% 100%,
+        rgba(212, 245, 66, 0.18) 0px,
+        transparent 50%
+      );
+  }
+
+  .dotted-bg {
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-3xl border bg-card transition-all duration-500;
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 12px 32px rgba(0, 0, 0, 0.08);
   }
 }
