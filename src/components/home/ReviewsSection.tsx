@@ -92,6 +92,23 @@ const ReviewsSection = () => {
             </div>
           ))}
         </div>
+
+        <div className="mt-10 sm:mt-12 flex justify-center">
+          <a
+            href="https://vk.com/foodinboxvrn"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 bg-snow text-graphite px-6 py-4 rounded-full text-[14px] font-medium hover:bg-lime transition"
+          >
+            <span className="w-7 h-7 rounded-full bg-graphite text-snow flex items-center justify-center text-[11px] font-bold tracking-tight">
+              VK
+            </span>
+            Посмотреть все отзывы
+            <span className="w-6 h-6 rounded-full bg-graphite flex items-center justify-center group-hover:rotate-45 transition">
+              <Icon name="ArrowUpRight" size={12} className="text-lime" />
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );
