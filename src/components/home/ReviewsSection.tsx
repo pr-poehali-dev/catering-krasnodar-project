@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { useReveal } from '@/hooks/use-reveal';
 
@@ -19,6 +20,27 @@ const reviews = [
 const ReviewsSection = () => {
   const head = useReveal();
   const grid = useReveal();
+  const [active, setActive] = useState<number | null>(null);
+
+  const open = (i: number) => setActive(i);
+  const close = () => setActive(null);
+  const prev = () => setActive((a) => (a === null ? a : (a - 1 + reviews.length) % reviews.length));
+  const next = () => setActive((a) => (a === null ? a : (a + 1) % reviews.length));
+
+  useEffect(() => {
+    if (active === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [active]);
 
   return (
     <section id="reviews" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 bg-graphite text-snow relative overflow-hidden">
@@ -57,12 +79,11 @@ const ReviewsSection = () => {
 
         <div ref={grid.ref as never} className="grid md:grid-cols-3 gap-3 sm:gap-4">
           {reviews.map((r, i) => (
-            <a
+            <button
               key={i}
-              href="https://vk.com/foodinboxvrn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative rounded-3xl overflow-hidden border hairline-light bg-snow/[0.04] aspect-[9/16] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              type="button"
+              onClick={() => open(i)}
+              className={`group relative rounded-3xl overflow-hidden border hairline-light bg-snow/[0.04] aspect-[9/16] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-left ${
                 i === 1 ? 'md:scale-[1.03] md:-translate-y-3 shadow-2xl shadow-lime/20' : ''
               }`}
               style={{
@@ -90,11 +111,11 @@ const ReviewsSection = () => {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
                 <div className="text-snow text-[13px] font-medium">{r.caption}</div>
-                <div className="w-9 h-9 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition shrink-0">
-                  <Icon name="ArrowUpRight" size={14} className="text-graphite" />
+                <div className="w-9 h-9 rounded-full bg-lime flex items-center justify-center group-hover:scale-110 transition shrink-0">
+                  <Icon name="Maximize2" size={13} className="text-graphite" />
                 </div>
               </div>
-            </a>
+            </button>
           ))}
         </div>
 
@@ -115,6 +136,65 @@ const ReviewsSection = () => {
           </a>
         </div>
       </div>
+
+      {active !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-graphite/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
+          onClick={close}
+        >
+          <button
+            type="button"
+            onClick={close}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-snow/10 hover:bg-snow/20 backdrop-blur text-snow flex items-center justify-center transition z-10"
+            aria-label="Закрыть"
+          >
+            <Icon name="X" size={20} />
+          </button>
+
+          {reviews.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
+                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-snow/10 hover:bg-snow/20 backdrop-blur text-snow flex items-center justify-center transition z-10"
+                aria-label="Назад"
+              >
+                <Icon name="ChevronLeft" size={22} />
+              </button>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
+                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-snow/10 hover:bg-snow/20 backdrop-blur text-snow flex items-center justify-center transition z-10"
+                aria-label="Вперёд"
+              >
+                <Icon name="ChevronRight" size={22} />
+              </button>
+            </>
+          )}
+
+          <div
+            className="relative max-w-[90vw] sm:max-w-md max-h-[90vh] flex flex-col items-center gap-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={reviews[active].image}
+              alt={reviews[active].caption}
+              className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl"
+            />
+            <div className="flex items-center gap-3 text-snow/80 text-[13px]">
+              <span>{reviews[active].caption}</span>
+              <span className="text-snow/40">·</span>
+              <span>{active + 1} / {reviews.length}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
