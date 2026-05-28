@@ -131,26 +131,34 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Lime CTA card */}
-            <div className="col-span-12 lg:col-span-5 bento-card p-7 lg:p-9 xl:p-10 bg-lime text-graphite group cursor-pointer relative overflow-hidden flex flex-col min-h-[280px] lg:min-h-0">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-[11px] uppercase tracking-[0.2em] text-graphite/60">Бесплатно</span>
-                <span className="text-[11px] bg-graphite text-lime px-2.5 py-1 rounded-full font-medium">5 ★</span>
+            {/* Chef card */}
+            <div className="col-span-12 lg:col-span-5 bento-card group relative overflow-hidden min-h-[280px] lg:min-h-0">
+              <img
+                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/02542726-4c9b-424c-aa60-84aa261e47f6.jpg"
+                alt="Шеф Галина"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1200ms]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/30 to-transparent" />
+              <div className="absolute inset-0 p-7 lg:p-9 xl:p-10 flex flex-col justify-between text-snow">
+                <div className="flex items-start justify-between">
+                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] uppercase tracking-wider border hairline-light">
+                    Шеф-повар
+                  </span>
+                  <span className="glass-dark px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5">
+                    <Icon name="Award" size={12} className="text-lime" />
+                    15 лет опыта
+                  </span>
+                </div>
+                <div>
+                  <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
+                    Галина <br />
+                    <span className="font-serif italic font-normal text-lime">Соловьёва</span>
+                  </div>
+                  <p className="text-[14px] lg:text-[15px] text-snow/80 mt-3 max-w-sm leading-relaxed">
+                    Работала в ресторанах Москвы и Петербурга. Сейчас — наш шеф и душа кейтеринга.
+                  </p>
+                </div>
               </div>
-              <div className="font-sans text-3xl lg:text-4xl xl:text-5xl tracking-tightest font-medium leading-[1.05]">
-                Дегустация<br />
-                <span className="font-serif italic font-normal">перед свадьбой</span>
-              </div>
-              <p className="text-[14px] lg:text-[15px] text-graphite/70 mt-4 max-w-sm leading-relaxed">
-                Для пары, бесплатно. 5 авторских блюд и подбор меню под ваш формат.
-              </p>
-              <div className="mt-auto pt-8 inline-flex items-center gap-2 text-[14px] font-semibold">
-                Записаться
-                <span className="w-8 h-8 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                  <Icon name="ArrowRight" size={14} />
-                </span>
-              </div>
-              <Icon name="Wine" size={140} className="absolute -right-6 -bottom-6 text-graphite/10" />
             </div>
 
             {/* Menu preview card */}
