@@ -61,22 +61,10 @@ const Logo = ({
       <span className={`inline-flex items-end ${s.gap}`}>
         {showWordmark && (
           <span
-            className={`relative font-serif italic font-normal tracking-tight ${s.text} ${wordClr} whitespace-nowrap leading-[0.95]`}
-            style={{ fontFamily: '"Caveat", "Dancing Script", "Cormorant Garamond", cursive' }}
+            className={`relative font-sans font-semibold tracking-tighter ${s.text} ${wordClr} whitespace-nowrap leading-[0.95]`}
+            style={{ fontFamily: '"Inter", "Manrope", "Helvetica Neue", system-ui, sans-serif' }}
           >
-            Furshet in Box
-            {/* подчёркивающий росчерк под словом */}
-            <svg
-              viewBox="0 0 200 8"
-              preserveAspectRatio="none"
-              className={`absolute left-0 -bottom-1.5 w-full h-[6px] ${wordClr} logo-stroke`}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            >
-              <path d="M2 5 C 50 1, 150 1, 198 4" />
-            </svg>
+            Furshet in <span className={accent}>Box</span>
           </span>
         )}
         <ClocheIcon size={s.icon} accent={accent} />
