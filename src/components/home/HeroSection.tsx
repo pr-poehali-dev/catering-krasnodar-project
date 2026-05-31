@@ -144,7 +144,7 @@ const HeroSection = () => {
                 {/* Mini-stats */}
                 <div className="mt-7 sm:mt-9 pt-6 border-t border-graphite/10 grid grid-cols-3 gap-3 sm:gap-4 animate-reveal-up opacity-0" style={{ animationDelay: '1.1s' }}>
                   <div>
-                    <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">500+</div>
+                    <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">100+</div>
                     <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">довольных гостей</div>
                   </div>
                   <div>
