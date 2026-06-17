@@ -5,7 +5,7 @@ import Logo from '@/components/Logo';
 import { toast } from 'sonner';
 import { Product, addReview, fetchProducts } from '@/lib/api';
 
-const WHATSAPP = 'https://wa.me/c/79997223938';
+const WHATSAPP = 'https://wa.me/79997223938';
 const PHONE = 'tel:+79997223938';
 const TELEGRAM = 'https://t.me/+79997223938';
 
