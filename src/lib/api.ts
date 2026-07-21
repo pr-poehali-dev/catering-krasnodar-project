@@ -128,6 +128,7 @@ export type Preorder = {
   details: string | null;
   status: string;
   created_at: string;
+  contact_method?: string;
 };
 
 export type PreorderPayload = {
@@ -138,6 +139,7 @@ export type PreorderPayload = {
   guests_count?: number | string;
   budget?: string;
   details?: string;
+  contact_method?: string;
 };
 
 export const createPreorder = async (payload: PreorderPayload) => {

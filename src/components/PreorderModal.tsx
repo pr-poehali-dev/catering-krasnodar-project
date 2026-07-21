@@ -10,6 +10,12 @@ type Props = {
 
 const EVENT_TYPES = ['Свадьба', 'День рождения', 'Корпоратив', 'Фуршет', 'Романтический ужин', 'Другое'];
 const BUDGETS = ['до 20 тыс ₽', '20–50 тыс ₽', '50–100 тыс ₽', '100+ тыс ₽', 'Подскажите'];
+const CONTACT_METHODS = [
+  { v: 'phone', l: 'Звонок', icon: 'Phone' },
+  { v: 'max', l: 'Max', icon: 'MessageCircle' },
+  { v: 'telegram', l: 'Telegram', icon: 'Send' },
+  { v: 'whatsapp', l: 'WhatsApp', icon: 'MessageSquare' },
+];
 
 const initialForm = {
   name: '',
@@ -19,6 +25,7 @@ const initialForm = {
   guests_count: '',
   budget: '',
   details: '',
+  contact_method: 'phone',
 };
 
 const PreorderModal = ({ open, onClose }: Props) => {
@@ -140,6 +147,27 @@ const PreorderModal = ({ open, onClose }: Props) => {
                   placeholder="+7 (___) ___-__-__"
                   className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] transition"
                 />
+              </div>
+            </div>
+
+            <div className="mt-5">
+              <label className="text-[12px] text-ash block mb-2">Как удобнее связаться</label>
+              <div className="flex flex-wrap gap-2">
+                {CONTACT_METHODS.map((m) => (
+                  <button
+                    type="button"
+                    key={m.v}
+                    onClick={() => setForm({ ...form, contact_method: m.v })}
+                    className={`px-4 py-2 rounded-full text-[13px] border transition inline-flex items-center gap-1.5 ${
+                      form.contact_method === m.v
+                        ? 'bg-graphite text-snow border-graphite'
+                        : 'border-graphite/15 hover:border-graphite/40'
+                    }`}
+                  >
+                    <Icon name={m.icon} size={13} />
+                    {m.l}
+                  </button>
+                ))}
               </div>
             </div>
 

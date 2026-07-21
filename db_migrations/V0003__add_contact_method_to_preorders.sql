@@ -1,0 +1,1 @@
+ALTER TABLE preorders ADD COLUMN IF NOT EXISTS contact_method VARCHAR(20) DEFAULT 'phone';

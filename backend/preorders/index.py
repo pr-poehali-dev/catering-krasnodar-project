@@ -78,6 +78,9 @@ def handler(event: dict, context) -> dict:
             guests = None
         budget = (body.get('budget') or '').strip()[:100]
         details = (body.get('details') or '').strip()[:2000]
+        contact_method = (body.get('contact_method') or 'phone').strip()[:20]
+        if contact_method not in ('phone', 'max', 'telegram', 'whatsapp'):
+            contact_method = 'phone'
 
         date_sql = f"'{_escape(event_date)}'" if event_date else 'NULL'
         guests_sql = str(guests) if guests is not None else 'NULL'
@@ -85,9 +88,9 @@ def handler(event: dict, context) -> dict:
         with _conn() as c:
             with c.cursor() as cur:
                 cur.execute(
-                    f"INSERT INTO {SCHEMA}.preorders (name, phone, event_type, event_date, guests_count, budget, details) "
+                    f"INSERT INTO {SCHEMA}.preorders (name, phone, event_type, event_date, guests_count, budget, details, contact_method) "
                     f"VALUES ('{_escape(name)[:255]}', '{_escape(phone)[:50]}', '{_escape(event_type)}', "
-                    f"{date_sql}, {guests_sql}, '{_escape(budget)}', '{_escape(details)}') RETURNING id"
+                    f"{date_sql}, {guests_sql}, '{_escape(budget)}', '{_escape(details)}', '{_escape(contact_method)}') RETURNING id"
                 )
                 new_id = cur.fetchone()[0]
                 c.commit()
@@ -99,7 +102,7 @@ def handler(event: dict, context) -> dict:
         with _conn() as c:
             with c.cursor(cursor_factory=RealDictCursor) as cur:
                 cur.execute(
-                    f"SELECT id, name, phone, event_type, event_date, guests_count, budget, details, status, created_at "
+                    f"SELECT id, name, phone, event_type, event_date, guests_count, budget, details, status, created_at, contact_method "
                     f"FROM {SCHEMA}.preorders ORDER BY created_at DESC LIMIT 500"
                 )
                 rows = [dict(r) for r in cur.fetchall()]

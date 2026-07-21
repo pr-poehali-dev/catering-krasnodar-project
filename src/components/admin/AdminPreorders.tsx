@@ -1,6 +1,13 @@
 import Icon from '@/components/ui/icon';
 import { Preorder } from '@/lib/api';
 
+const CONTACT_LABELS: Record<string, { l: string; icon: string }> = {
+  phone: { l: 'Звонок', icon: 'Phone' },
+  max: { l: 'Max', icon: 'MessageCircle' },
+  telegram: { l: 'Telegram', icon: 'Send' },
+  whatsapp: { l: 'WhatsApp', icon: 'MessageSquare' },
+};
+
 type Props = {
   preorders: Preorder[];
   newPreordersCount: number;
@@ -63,6 +70,12 @@ const AdminPreorders = ({
                   <a href={`tel:${p.phone}`} className="text-[14px] text-graphite/80 hover:text-graphite inline-flex items-center gap-1.5 mt-1">
                     <Icon name="Phone" size={12} /> {p.phone}
                   </a>
+                  {p.contact_method && p.contact_method !== 'phone' && (
+                    <span className="inline-flex items-center gap-1 text-[11px] text-ash mt-1 ml-1">
+                      <Icon name={CONTACT_LABELS[p.contact_method]?.icon || 'MessageCircle'} size={11} />
+                      предпочитает {CONTACT_LABELS[p.contact_method]?.l || p.contact_method}
+                    </span>
+                  )}
                 </div>
                 <div className="text-[11px] text-ash text-right">
                   {new Date(p.created_at).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}
