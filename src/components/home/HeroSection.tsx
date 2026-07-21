@@ -84,10 +84,6 @@ const HeroSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
 
-                {/* Бейдж на фото */}
-                <div className="absolute top-4 right-4 flex items-start justify-end">
-                  <span className="glass-dark text-snow px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5"></span>
-                </div>
               </div>
 
               {/* Контент */}
