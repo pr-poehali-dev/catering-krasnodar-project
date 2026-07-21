@@ -19,7 +19,7 @@ const HeroSection = () => {
           </div>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
             {[
-              { l: 'Полное меню', h: '/menu' },
+              { l: 'Меню', h: '/menu' },
               { l: 'События', h: '#events' },
               { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
@@ -51,7 +51,7 @@ const HeroSection = () => {
         {menuOpen && (
           <div className="md:hidden mt-2 glass border border-graphite/10 rounded-3xl p-3 shadow-sm">
             {[
-              { l: 'Полное меню', h: '/menu' },
+              { l: 'Меню', h: '/menu' },
               { l: 'События', h: '#events' },
               { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
