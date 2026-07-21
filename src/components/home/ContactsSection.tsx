@@ -1,42 +1,12 @@
-import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
 import { useReveal } from '@/hooks/use-reveal';
 
-const VK_LINK = 'https://vk.com/galina.cherepanova';
 const MAX_LINK = '#';
 const INSTAGRAM_LINK = '#';
 
 const ContactsSection = () => {
   const head = useReveal();
-  const [form, setForm] = useState({ name: '', phone: '', type: '', details: '' });
-
-  const buildText = () =>
-    [
-      'Здравствуйте, Галина! Заявка с сайта:',
-      form.name && `Имя: ${form.name}`,
-      form.phone && `Телефон: ${form.phone}`,
-      form.type && `Событие: ${form.type}`,
-      form.details && `Детали: ${form.details}`,
-    ]
-      .filter(Boolean)
-      .join('\n');
-
-  const copyText = async () => {
-    try {
-      await navigator.clipboard.writeText(buildText());
-    } catch {
-      /* пользователь сможет вписать вручную */
-    }
-  };
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await copyText();
-    window.open(VK_LINK, '_blank', 'noopener,noreferrer');
-  };
-
-  const onSendVK = onSubmit;
 
   return (
     <>
@@ -50,7 +20,7 @@ const ContactsSection = () => {
             }`}
           >
             {/* Heading */}
-            <div className="col-span-12 lg:col-span-7 bento-card p-6 sm:p-8 lg:p-12 relative overflow-hidden">
+            <div className="col-span-12 bento-card p-6 sm:p-8 lg:p-12 relative overflow-hidden">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-lime/40 rounded-full blur-[80px] animate-float-y" />
               <div className="relative">
                 <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
@@ -105,72 +75,6 @@ const ContactsSection = () => {
                 </div>
               </div>
             </div>
-
-            {/* Form */}
-            <form onSubmit={onSubmit} className="col-span-12 lg:col-span-5 bento-card p-6 sm:p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
-              <img
-                src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/8023e15d-f418-4b05-9642-8982b7773886.jpg"
-                alt="Фуршет"
-                className="absolute inset-0 w-full h-full object-cover opacity-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-graphite/60 via-graphite/85 to-graphite" />
-
-              <div className="relative">
-                <h3 className="font-sans text-xl sm:text-2xl tracking-tight font-medium">Расскажите о празднике</h3>
-                <p className="text-snow/70 text-[14px] sm:text-[13px] mt-1 mb-6 sm:mb-8 leading-relaxed">Галина свяжется за 15 минут — подберём меню и предложим стоимость без обязательств</p>
-
-                <div className="space-y-3">
-                  <input
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Ваше имя"
-                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50"
-                  />
-                  <input
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+7 (___) ___-__-__"
-                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50"
-                  />
-                  <select
-                    value={form.type}
-                    onChange={(e) => setForm({ ...form, type: e.target.value })}
-                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium text-snow/70"
-                  >
-                    <option className="bg-graphite" value="">Тип события</option>
-                    <option className="bg-graphite">Свадьба</option>
-                    <option className="bg-graphite">Корпоратив</option>
-                    <option className="bg-graphite">День рождения</option>
-                    <option className="bg-graphite">Фуршет</option>
-                  </select>
-                  <textarea
-                    rows={3}
-                    value={form.details}
-                    onChange={(e) => setForm({ ...form, details: e.target.value })}
-                    placeholder="Дата, количество гостей, пожелания"
-                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50 resize-none"
-                  />
-                  <button
-                    type="button"
-                    onClick={onSendVK}
-                    className="w-full bg-[#0077FF] text-snow py-4 rounded-2xl font-bold text-[16px] sm:text-[14px] hover:bg-[#0077FF]/90 active:scale-[0.99] transition flex items-center justify-center gap-2 group"
-                  >
-                    <Icon name="Send" size={14} />
-                    Написать во ВКонтакте
-                    <span className="w-5 h-5 rounded-full bg-snow text-[#0077FF] flex items-center justify-center group-hover:translate-x-1 transition">
-                      <Icon name="ArrowRight" size={11} />
-                    </span>
-                  </button>
-                  <p className="text-[12px] sm:text-[11px] text-snow/50 text-center pt-2">
-                    Откроется чат во ВКонтакте. Текст заявки скопирован — просто вставьте его в сообщение
-                  </p>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </section>
