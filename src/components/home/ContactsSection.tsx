@@ -22,6 +22,7 @@ const ContactsSection = () => {
             {/* Heading */}
             <div className="col-span-12 bento-card p-6 sm:p-8 lg:p-12 relative overflow-hidden">
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-lime/40 rounded-full blur-[80px] animate-float-y" />
+              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-graphite to-transparent pointer-events-none" />
               <div className="relative">
                 <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
                   <span className="w-6 h-px bg-ash" />
@@ -62,15 +63,15 @@ const ContactsSection = () => {
                   </a>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-graphite/10 flex items-center gap-3">
+                <div className="relative mt-8 pt-6 border-t border-snow/15 flex items-center gap-3">
                   <img
                     src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
                     alt="Галина"
                     className="w-11 h-11 rounded-full object-cover object-top ring-2 ring-lime/40"
                   />
                   <div className="flex-1">
-                    <div className="font-serif italic text-[15px] leading-tight">«Жду вашу заявку 🤍»</div>
-                    <div className="text-[11px] text-ash mt-1 uppercase tracking-[0.15em]">Галина · фуршетный мастер</div>
+                    <div className="font-serif italic text-[15px] leading-tight text-snow">«Жду вашу заявку 🤍»</div>
+                    <div className="text-[11px] text-snow/60 mt-1 uppercase tracking-[0.15em]">Галина · фуршетный мастер</div>
                   </div>
                 </div>
               </div>
