@@ -24,11 +24,11 @@ const AdminPreorders = ({
   onDeletePreorder,
 }: Props) => {
   return (
-    <main className="container mx-auto py-8 space-y-3">
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h1 className="font-sans text-3xl tracking-tightest font-medium">Заявки на предзаказ</h1>
-          <p className="text-[13px] text-ash mt-1">
+    <main className="container mx-auto py-5 sm:py-8 space-y-3">
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="min-w-0">
+          <h1 className="font-sans text-2xl sm:text-3xl tracking-tightest font-medium">Заявки</h1>
+          <p className="text-[12px] sm:text-[13px] text-ash mt-1">
             Всего: {preorders.length}{' '}
             {newPreordersCount > 0 && (
               <span className="text-accent2 font-medium">· новых: {newPreordersCount}</span>
@@ -37,9 +37,9 @@ const AdminPreorders = ({
         </div>
         <button
           onClick={loadPreorders}
-          className="px-4 py-2 rounded-full text-[13px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+          className="shrink-0 w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center justify-center gap-1.5 text-[13px]"
         >
-          <Icon name="RefreshCw" size={13} /> Обновить
+          <Icon name="RefreshCw" size={13} /> <span className="hidden sm:inline">Обновить</span>
         </button>
       </div>
 
@@ -51,11 +51,11 @@ const AdminPreorders = ({
       ) : (
         <div className="grid gap-3">
           {preorders.map((p) => (
-            <div key={p.id} className={`bento-card bg-snow p-5 sm:p-6 ${p.status === 'new' ? 'ring-2 ring-lime/60' : ''}`}>
-              <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                <div>
+            <div key={p.id} className={`bento-card bg-snow p-4 sm:p-6 ${p.status === 'new' ? 'ring-2 ring-lime/60' : ''}`}>
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-3 mb-3">
+                <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-sans text-xl tracking-tight font-medium">{p.name}</h3>
+                    <h3 className="font-sans text-lg sm:text-xl tracking-tight font-medium break-words">{p.name}</h3>
                     {p.status === 'new' && (
                       <span className="text-[10px] uppercase tracking-wider bg-lime text-graphite px-2 py-0.5 rounded-full font-bold">
                         Новая
@@ -67,22 +67,22 @@ const AdminPreorders = ({
                       </span>
                     )}
                   </div>
-                  <a href={`tel:${p.phone}`} className="text-[14px] text-graphite/80 hover:text-graphite inline-flex items-center gap-1.5 mt-1">
+                  <a href={`tel:${p.phone}`} className="text-[15px] sm:text-[14px] text-graphite/80 hover:text-graphite inline-flex items-center gap-1.5 mt-1">
                     <Icon name="Phone" size={12} /> {p.phone}
                   </a>
                   {p.contact_method && p.contact_method !== 'phone' && (
-                    <span className="inline-flex items-center gap-1 text-[11px] text-ash mt-1 ml-1">
+                    <span className="flex items-center gap-1 text-[11px] text-ash mt-1">
                       <Icon name={CONTACT_LABELS[p.contact_method]?.icon || 'MessageCircle'} size={11} />
                       предпочитает {CONTACT_LABELS[p.contact_method]?.l || p.contact_method}
                     </span>
                   )}
                 </div>
-                <div className="text-[11px] text-ash text-right">
+                <div className="text-[11px] text-ash sm:text-right shrink-0">
                   {new Date(p.created_at).toLocaleString('ru-RU', { dateStyle: 'short', timeStyle: 'short' })}
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-4 gap-3 text-[13px] mb-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-[13px] mb-3">
                 {p.event_type && (
                   <div>
                     <div className="text-[11px] text-ash uppercase tracking-wider">Событие</div>
@@ -119,29 +119,29 @@ const AdminPreorders = ({
                 {p.status !== 'done' ? (
                   <button
                     onClick={() => onChangeStatus(p.id, 'done')}
-                    className="px-3 py-1.5 rounded-full text-[12px] bg-graphite text-snow hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+                    className="px-3 py-2 sm:py-1.5 rounded-full text-[12px] bg-graphite text-snow hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
                   >
                     <Icon name="Check" size={12} /> Обработана
                   </button>
                 ) : (
                   <button
                     onClick={() => onChangeStatus(p.id, 'new')}
-                    className="px-3 py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+                    className="px-3 py-2 sm:py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
                   >
                     <Icon name="RotateCcw" size={12} /> Вернуть в новые
                   </button>
                 )}
                 <a
                   href={`tel:${p.phone}`}
-                  className="px-3 py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
+                  className="px-3 py-2 sm:py-1.5 rounded-full text-[12px] border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center gap-1.5"
                 >
                   <Icon name="Phone" size={12} /> Позвонить
                 </a>
                 <button
                   onClick={() => onDeletePreorder(p.id)}
-                  className="ml-auto px-3 py-1.5 rounded-full text-[12px] text-ash hover:text-accent2 transition inline-flex items-center gap-1.5"
+                  className="ml-auto w-9 h-9 sm:w-auto sm:h-auto sm:px-3 sm:py-1.5 rounded-full text-[12px] text-ash hover:text-accent2 transition inline-flex items-center justify-center gap-1.5"
                 >
-                  <Icon name="Trash2" size={12} /> Удалить
+                  <Icon name="Trash2" size={13} /> <span className="hidden sm:inline">Удалить</span>
                 </button>
               </div>
             </div>

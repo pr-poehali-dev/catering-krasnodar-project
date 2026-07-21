@@ -54,11 +54,11 @@ const AdminCatalog = ({
   onDelReview,
 }: Props) => {
   return (
-    <main className="container mx-auto py-8 grid lg:grid-cols-5 gap-6">
+    <main className="container mx-auto py-5 sm:py-8 grid lg:grid-cols-5 gap-4 sm:gap-6">
       {/* Form */}
-      <form onSubmit={onSave} className="lg:col-span-2 bento-card bg-snow p-6 lg:sticky lg:top-24 lg:self-start space-y-3">
+      <form onSubmit={onSave} className="lg:col-span-2 bento-card bg-snow p-4 sm:p-6 lg:sticky lg:top-24 lg:self-start space-y-3">
         <div className="flex items-center justify-between mb-2">
-          <h2 className="font-sans text-2xl tracking-tightest font-medium">
+          <h2 className="font-sans text-xl sm:text-2xl tracking-tightest font-medium">
             {editId ? 'Редактирование' : 'Новый товар'}
           </h2>
           {editId && (
@@ -71,14 +71,14 @@ const AdminCatalog = ({
         {/* Images */}
         <div>
           <label className="text-[12px] text-ash mb-2 block">Фото товара</label>
-          <div className="grid grid-cols-4 gap-2 mb-2">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 mb-2">
             {form.images.map((url) => (
               <div key={url} className="relative aspect-square rounded-xl overflow-hidden bg-stone group">
                 <img src={url} alt="" className="w-full h-full object-cover" />
                 <button
                   type="button"
                   onClick={() => removeImg(url)}
-                  className="absolute top-1 right-1 w-6 h-6 rounded-full bg-graphite/80 text-snow opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+                  className="absolute top-1 right-1 w-6 h-6 rounded-full bg-graphite/80 text-snow opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition flex items-center justify-center"
                 >
                   <Icon name="X" size={12} />
                 </button>
@@ -100,7 +100,7 @@ const AdminCatalog = ({
           <textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className={inputCls} />
         </Field>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
           <Field label="Цена, ₽">
             <input type="number" value={form.price} onChange={(e) => setForm({ ...form, price: +e.target.value })} className={inputCls} />
           </Field>
@@ -109,7 +109,7 @@ const AdminCatalog = ({
           </Field>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
           <Field label="Категория">
             <input type="text" placeholder="Канапе" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className={inputCls} />
           </Field>
@@ -136,9 +136,9 @@ const AdminCatalog = ({
           </div>
         )}
         {products.map((p) => (
-          <article key={p.id} className="bento-card bg-snow p-5">
-            <div className="flex gap-4">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-stone shrink-0 relative">
+          <article key={p.id} className="bento-card bg-snow p-4 sm:p-5">
+            <div className="flex gap-3 sm:gap-4">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-stone shrink-0 relative">
                 {p.images[0] ? (
                   <img src={p.images[0].url} alt={p.name} className="w-full h-full object-cover" />
                 ) : (
@@ -148,9 +148,9 @@ const AdminCatalog = ({
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <h3 className="font-sans text-lg tracking-tight font-medium truncate">{p.name}</h3>
+                    <h3 className="font-sans text-base sm:text-lg tracking-tight font-medium truncate">{p.name}</h3>
                     <div className="text-[12px] text-ash mt-0.5 flex flex-wrap gap-x-2 gap-y-0.5">
                       {p.category && <span>{p.category}</span>}
                       {p.portion && <span>· {p.portion}</span>}
@@ -160,13 +160,13 @@ const AdminCatalog = ({
                       <p className="text-[13px] text-graphite/70 mt-1.5 line-clamp-2">{p.description}</p>
                     )}
                   </div>
-                  <div className="text-right shrink-0">
-                    {p.price > 0 && <div className="font-semibold">{p.price} ₽</div>}
-                    <div className="flex gap-1 mt-2">
-                      <button onClick={() => startEdit(p)} className="w-8 h-8 rounded-full bg-stone hover:bg-graphite hover:text-snow transition flex items-center justify-center">
+                  <div className="flex items-center justify-between sm:flex-col sm:items-end shrink-0 gap-2">
+                    {p.price > 0 && <div className="font-semibold text-[14px] sm:text-base">{p.price} ₽</div>}
+                    <div className="flex gap-1.5 sm:mt-2">
+                      <button onClick={() => startEdit(p)} className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-stone hover:bg-graphite hover:text-snow transition flex items-center justify-center">
                         <Icon name="Pencil" size={13} />
                       </button>
-                      <button onClick={() => onDelete(p.id)} className="w-8 h-8 rounded-full bg-stone hover:bg-red-500 hover:text-snow transition flex items-center justify-center">
+                      <button onClick={() => onDelete(p.id)} className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-stone hover:bg-red-500 hover:text-snow transition flex items-center justify-center">
                         <Icon name="Trash2" size={13} />
                       </button>
                     </div>
@@ -193,7 +193,7 @@ const AdminCatalog = ({
                         </div>
                         <p className="text-graphite/80 mt-0.5">{r.text}</p>
                       </div>
-                      <button onClick={() => onDelReview(r.id)} className="w-7 h-7 rounded-full hover:bg-red-500/10 text-red-500 transition flex items-center justify-center shrink-0">
+                      <button onClick={() => onDelReview(r.id)} className="w-8 h-8 sm:w-7 sm:h-7 rounded-full hover:bg-red-500/10 text-red-500 transition flex items-center justify-center shrink-0">
                         <Icon name="X" size={13} />
                       </button>
                     </div>

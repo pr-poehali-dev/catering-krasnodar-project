@@ -8,17 +8,17 @@ type Props = {
 const AdminLogin = ({ password, setPassword, loading, onLogin }: Props) => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-stone p-6">
-      <form onSubmit={onLogin} className="w-full max-w-sm bento-card p-8 bg-snow">
+      <form onSubmit={onLogin} className="w-full max-w-sm bento-card p-6 sm:p-8 bg-snow">
         <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4">
           <span className="w-6 h-px bg-ash" /> Админка
         </div>
-        <h1 className="font-sans text-3xl tracking-tightest font-medium mb-6">Вход</h1>
+        <h1 className="font-sans text-2xl sm:text-3xl tracking-tightest font-medium mb-6">Вход</h1>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Пароль"
-          className="w-full px-4 py-3.5 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px]"
+          className="w-full px-4 py-3.5 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-base"
           autoFocus
         />
         <button
