@@ -79,15 +79,6 @@ const ContactsSection = () => {
                       <div className="font-sans text-xl tracking-tight font-medium">hi@vkus-co.ru</div>
                     </div>
                   </a>
-                  <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-full bg-stone flex items-center justify-center">
-                      <Icon name="MapPin" size={16} />
-                    </div>
-                    <div>
-                      <div className="text-[12px] text-ash">Офис и производство</div>
-                      <div className="font-sans text-xl tracking-tight font-medium">Краснодар, ул. Красная, 100</div>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="mt-10 flex flex-wrap gap-2">
