@@ -82,44 +82,41 @@ const ContactsSection = () => {
                       <div className="font-sans text-xl tracking-tight font-medium">hi@vkus-co.ru</div>
                     </div>
                   </a>
-                </div>
-
-                <div className="mt-10 flex flex-wrap gap-2">
-                  <a
-                    href={VK_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-[#0077FF] text-snow border border-[#0077FF] text-[13px] hover:bg-[#0077FF]/90 transition inline-flex items-center gap-1.5"
-                  >
-                    <Icon name="Send" size={12} />
-                    ВКонтакте
+                  <a href={VK_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
+                      <Icon name="Send" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-[12px] text-ash">ВКонтакте</div>
+                      <div className="font-sans text-xl tracking-tight font-medium">Написать в сообщения</div>
+                    </div>
                   </a>
-                  <a
-                    href={MAX_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-[#7C4DFF] text-snow border border-[#7C4DFF] text-[13px] hover:bg-[#7C4DFF]/90 transition inline-flex items-center gap-1.5"
-                  >
-                    <Icon name="MessageCircle" size={12} />
-                    Max
+                  <a href={MAX_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
+                      <Icon name="MessageCircle" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-[12px] text-ash">Max</div>
+                      <div className="font-sans text-xl tracking-tight font-medium">Написать в мессенджер</div>
+                    </div>
                   </a>
-                  <a
-                    href={TELEGRAM_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-[#26A5E4] text-snow border border-[#26A5E4] text-[13px] hover:bg-[#26A5E4]/90 transition inline-flex items-center gap-1.5"
-                  >
-                    <Icon name="Send" size={12} />
-                    Telegram
+                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
+                      <Icon name="Send" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-[12px] text-ash">Telegram</div>
+                      <div className="font-sans text-xl tracking-tight font-medium">Написать в Telegram</div>
+                    </div>
                   </a>
-                  <a
-                    href={INSTAGRAM_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-gradient-to-tr from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-snow border border-transparent text-[13px] hover:opacity-90 transition inline-flex items-center gap-1.5"
-                  >
-                    <Icon name="Instagram" size={12} />
-                    Instagram
+                  <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
+                      <Icon name="Instagram" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-[12px] text-ash">Instagram</div>
+                      <div className="font-sans text-xl tracking-tight font-medium">Смотреть профиль</div>
+                    </div>
                   </a>
                 </div>
               </div>
