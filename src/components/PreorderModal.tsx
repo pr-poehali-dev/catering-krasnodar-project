@@ -113,63 +113,63 @@ const PreorderModal = ({ open, onClose }: Props) => {
             </button>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="p-6 sm:p-10 pt-2 sm:pt-4">
+          <form onSubmit={onSubmit} className="p-5 sm:p-10 pt-2 sm:pt-4">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-3">
               <span className="w-6 h-px bg-ash" />
               Предзаказ
             </div>
-            <h2 className="font-sans text-3xl sm:text-4xl tracking-tightest font-medium leading-[1.05] mb-2">
+            <h2 className="font-sans text-[28px] sm:text-4xl tracking-tightest font-medium leading-[1.05] mb-2">
               Расскажите о <span className="font-serif italic font-normal">торжестве</span>
             </h2>
-            <p className="text-graphite/70 text-[14px] mb-6 sm:mb-7">
+            <p className="text-graphite/70 text-[15px] sm:text-[14px] leading-snug mb-5 sm:mb-7">
               Заполните форму — Галина свяжется за 15 минут и подберёт меню под бюджет.
             </p>
 
             {/* Блок: контакты */}
             <div className="rounded-3xl bg-stone/60 p-4 sm:p-5">
-              <div className="text-[11px] uppercase tracking-[0.15em] text-ash font-medium mb-3 flex items-center gap-1.5">
+              <div className="text-[12px] sm:text-[11px] uppercase tracking-[0.15em] text-graphite/80 font-bold mb-3 flex items-center gap-1.5">
                 <Icon name="User" size={13} /> Ваши контакты
               </div>
               <div className="grid sm:grid-cols-2 gap-3">
                 <div className="relative">
-                  <Icon name="User" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <Icon name="User" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
                   <input
                     type="text"
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Ваше имя *"
-                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                    className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
                   />
                 </div>
                 <div className="relative">
-                  <Icon name="Phone" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <Icon name="Phone" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
                   <input
                     type="tel"
                     required
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="+7 (___) ___-__-__ *"
-                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                    className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
                   />
                 </div>
               </div>
 
               <div className="mt-4">
-                <div className="text-[12px] text-graphite/70 mb-2">Как удобнее связаться</div>
+                <div className="text-[13px] sm:text-[12px] text-graphite/70 font-medium mb-2">Как удобнее связаться</div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {CONTACT_METHODS.map((m) => (
                     <button
                       type="button"
                       key={m.v}
                       onClick={() => setForm({ ...form, contact_method: m.v })}
-                      className={`px-3 py-2.5 rounded-xl text-[13px] border transition inline-flex items-center justify-center gap-1.5 ${
+                      className={`px-3 py-3 sm:py-2.5 rounded-xl text-[14px] sm:text-[13px] font-medium border-2 transition inline-flex items-center justify-center gap-1.5 ${
                         form.contact_method === m.v
                           ? 'bg-graphite text-snow border-graphite'
-                          : 'bg-snow border-graphite/10 hover:border-graphite/30'
+                          : 'bg-snow border-graphite/15 hover:border-graphite/40'
                       }`}
                     >
-                      <Icon name={m.icon} size={13} />
+                      <Icon name={m.icon} size={14} />
                       {m.l}
                     </button>
                   ))}
@@ -179,21 +179,21 @@ const PreorderModal = ({ open, onClose }: Props) => {
 
             {/* Блок: событие */}
             <div className="rounded-3xl bg-stone/60 p-4 sm:p-5 mt-3">
-              <div className="text-[11px] uppercase tracking-[0.15em] text-ash font-medium mb-3 flex items-center gap-1.5">
+              <div className="text-[12px] sm:text-[11px] uppercase tracking-[0.15em] text-graphite/80 font-bold mb-3 flex items-center gap-1.5">
                 <Icon name="PartyPopper" size={13} /> О торжестве
               </div>
 
-              <div className="text-[12px] text-graphite/70 mb-2">Тип события</div>
+              <div className="text-[13px] sm:text-[12px] text-graphite/70 font-medium mb-2">Тип события</div>
               <div className="flex flex-wrap gap-2">
                 {EVENT_TYPES.map((t) => (
                   <button
                     type="button"
                     key={t}
                     onClick={() => setForm({ ...form, event_type: t })}
-                    className={`px-4 py-2 rounded-full text-[13px] border transition ${
+                    className={`px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
                       form.event_type === t
                         ? 'bg-graphite text-snow border-graphite'
-                        : 'bg-snow border-graphite/10 hover:border-graphite/30'
+                        : 'bg-snow border-graphite/15 hover:border-graphite/40'
                     }`}
                   >
                     {t}
@@ -203,39 +203,39 @@ const PreorderModal = ({ open, onClose }: Props) => {
 
               <div className="grid sm:grid-cols-2 gap-3 mt-4">
                 <div className="relative">
-                  <Icon name="Calendar" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash pointer-events-none" />
+                  <Icon name="Calendar" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash pointer-events-none" />
                   <input
                     type="date"
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
-                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                    className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
                   />
                 </div>
                 <div className="relative">
-                  <Icon name="Users" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <Icon name="Users" size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
                   <input
                     type="number"
                     min={1}
                     value={form.guests_count}
                     onChange={(e) => setForm({ ...form, guests_count: e.target.value })}
                     placeholder="Количество гостей"
-                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                    className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
                   />
                 </div>
               </div>
 
               <div className="mt-4">
-                <div className="text-[12px] text-graphite/70 mb-2">Ориентировочный бюджет</div>
+                <div className="text-[13px] sm:text-[12px] text-graphite/70 font-medium mb-2">Ориентировочный бюджет</div>
                 <div className="flex flex-wrap gap-2">
                   {BUDGETS.map((b) => (
                     <button
                       type="button"
                       key={b}
                       onClick={() => setForm({ ...form, budget: b })}
-                      className={`px-4 py-2 rounded-full text-[13px] border transition ${
+                      className={`px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
                         form.budget === b
                           ? 'bg-lime text-graphite border-lime'
-                          : 'bg-snow border-graphite/10 hover:border-graphite/30'
+                          : 'bg-snow border-graphite/15 hover:border-graphite/40'
                       }`}
                     >
                       {b}
@@ -248,13 +248,13 @@ const PreorderModal = ({ open, onClose }: Props) => {
             {/* Блок: детали */}
             <div className="mt-3">
               <div className="relative">
-                <Icon name="MessageSquareText" size={16} className="absolute left-4 top-4 text-ash" />
+                <Icon name="MessageSquareText" size={17} className="absolute left-4 top-4 text-ash" />
                 <textarea
                   rows={3}
                   value={form.details}
                   onChange={(e) => setForm({ ...form, details: e.target.value })}
                   placeholder="Формат, локация, особые пожелания по меню…"
-                  className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-stone/60 border border-transparent focus:border-graphite focus:bg-snow focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] resize-none transition"
+                  className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-stone/60 border-2 border-transparent focus:border-graphite focus:bg-snow focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium resize-none transition"
                 />
               </div>
             </div>
@@ -262,7 +262,7 @@ const PreorderModal = ({ open, onClose }: Props) => {
             <button
               type="submit"
               disabled={sending}
-              className="mt-5 w-full bg-graphite text-snow py-4 rounded-2xl font-semibold text-[14px] hover:bg-graphite/90 active:scale-[0.99] transition flex items-center justify-center gap-2 disabled:opacity-60"
+              className="mt-5 w-full bg-graphite text-snow py-4 sm:py-4 rounded-2xl font-bold text-[16px] sm:text-[14px] hover:bg-graphite/90 active:scale-[0.99] transition flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {sending ? (
                 <>
@@ -277,7 +277,7 @@ const PreorderModal = ({ open, onClose }: Props) => {
                 </>
               )}
             </button>
-            <p className="text-[11px] text-ash text-center mt-3">
+            <p className="text-[12px] sm:text-[11px] text-ash text-center mt-3">
               Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
             </p>
           </form>
