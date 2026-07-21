@@ -4,6 +4,9 @@ import Logo from '@/components/Logo';
 import { useReveal } from '@/hooks/use-reveal';
 
 const VK_LINK = 'https://vk.com/galina.cherepanova';
+const MAX_LINK = '#';
+const TELEGRAM_LINK = '#';
+const INSTAGRAM_LINK = '#';
 
 const ContactsSection = () => {
   const head = useReveal();
@@ -90,6 +93,33 @@ const ContactsSection = () => {
                   >
                     <Icon name="Send" size={12} />
                     ВКонтакте
+                  </a>
+                  <a
+                    href={MAX_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full bg-[#7C4DFF] text-snow border border-[#7C4DFF] text-[13px] hover:bg-[#7C4DFF]/90 transition inline-flex items-center gap-1.5"
+                  >
+                    <Icon name="MessageCircle" size={12} />
+                    Max
+                  </a>
+                  <a
+                    href={TELEGRAM_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full bg-[#26A5E4] text-snow border border-[#26A5E4] text-[13px] hover:bg-[#26A5E4]/90 transition inline-flex items-center gap-1.5"
+                  >
+                    <Icon name="Send" size={12} />
+                    Telegram
+                  </a>
+                  <a
+                    href={INSTAGRAM_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 rounded-full bg-gradient-to-tr from-[#FEDA75] via-[#D62976] to-[#4F5BD5] text-snow border border-transparent text-[13px] hover:opacity-90 transition inline-flex items-center gap-1.5"
+                  >
+                    <Icon name="Instagram" size={12} />
+                    Instagram
                   </a>
                 </div>
               </div>
