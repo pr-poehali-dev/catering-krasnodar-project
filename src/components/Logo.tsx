@@ -72,9 +72,7 @@ const Logo = ({
       {showTagline && (
         <span
           className={`mt-1 sm:mt-1.5 ${s.tagline} ${accent} font-bold uppercase tracking-[0.45em] whitespace-nowrap`}
-        >
-          Premium service
-        </span>
+        ></span>
       )}
     </span>
   );
