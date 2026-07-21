@@ -1,12 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
+import PreorderModal from '@/components/PreorderModal';
 import { getEventById, events } from '@/data/events';
 
 const EventPage = () => {
   const { id } = useParams<{ id: string }>();
   const event = id ? getEventById(id) : undefined;
+  const [preorderOpen, setPreorderOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,10 +38,14 @@ const EventPage = () => {
             <Icon name="ArrowLeft" size={13} />
             Все события
           </Link>
-          <Link to="/#contacts" className="text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setPreorderOpen(true)}
+            className="text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+          >
             Заказать
             <Icon name="ArrowUpRight" size={13} />
-          </Link>
+          </button>
         </div>
       </nav>
 
@@ -140,15 +146,16 @@ const EventPage = () => {
                 ))}
               </ul>
 
-              <Link
-                to="/#contacts"
+              <button
+                type="button"
+                onClick={() => setPreorderOpen(true)}
                 className="mt-8 w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
               >
                 Заказать {event.title.toLowerCase()}
                 <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
                   <Icon name="ArrowRight" size={11} />
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -265,6 +272,8 @@ const EventPage = () => {
           </div>
         </div>
       </footer>
+
+      <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
     </div>
   );
 };

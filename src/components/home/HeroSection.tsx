@@ -23,7 +23,6 @@ const HeroSection = () => {
               { l: 'События', h: '#events' },
               { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
-              { l: 'Контакты', h: '#contacts' },
             ].map((i) => (
               <a key={i.h} href={i.h} className="px-3 py-1.5 rounded-full hover:bg-graphite/5 transition">
                 {i.l}
@@ -55,7 +54,6 @@ const HeroSection = () => {
               { l: 'События', h: '#events' },
               { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
-              { l: 'Контакты', h: '#contacts' },
             ].map((i) => (
               <a
                 key={i.h}

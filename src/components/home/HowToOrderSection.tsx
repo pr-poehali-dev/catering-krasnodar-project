@@ -81,12 +81,13 @@ const HowToOrderSection = () => {
               <Icon name="ArrowRight" size={11} className="text-graphite" />
             </span>
           </button>
-          <a
-            href="#contacts"
+          <button
+            type="button"
+            onClick={() => setPreorderOpen(true)}
             className="w-full sm:w-auto px-6 py-3.5 rounded-full text-[15px] sm:text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
           >
             Задать вопрос
-          </a>
+          </button>
         </div>
 
         <div className="mt-10 sm:mt-12 flex items-center justify-center gap-3">
