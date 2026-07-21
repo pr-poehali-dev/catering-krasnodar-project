@@ -5,7 +5,6 @@ import { useReveal } from '@/hooks/use-reveal';
 
 const VK_LINK = 'https://vk.com/galina.cherepanova';
 const MAX_LINK = '#';
-const TELEGRAM_LINK = '#';
 const INSTAGRAM_LINK = '#';
 
 const ContactsSection = () => {
@@ -80,15 +79,6 @@ const ContactsSection = () => {
                     <div>
                       <div className="text-[12px] text-ash">Max</div>
                       <div className="font-sans text-xl tracking-tight font-medium">Написать в мессенджер</div>
-                    </div>
-                  </a>
-                  <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
-                      <Icon name="Send" size={16} />
-                    </div>
-                    <div>
-                      <div className="text-[12px] text-ash">Telegram</div>
-                      <div className="font-sans text-xl tracking-tight font-medium">Написать в Telegram</div>
                     </div>
                   </a>
                   <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
