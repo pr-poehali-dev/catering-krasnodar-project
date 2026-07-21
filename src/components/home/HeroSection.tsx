@@ -86,10 +86,7 @@ const HeroSection = () => {
 
                 {/* Бейдж на фото */}
                 <div className="absolute top-4 right-4 flex items-start justify-end">
-                  <span className="glass-dark text-snow px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5">
-                    <Icon name="Heart" size={11} className="text-lime fill-lime" />
-                    Галина
-                  </span>
+                  <span className="glass-dark text-snow px-3 py-1.5 rounded-full text-[11px] border hairline-light flex items-center gap-1.5"></span>
                 </div>
               </div>
 
