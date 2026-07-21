@@ -73,15 +73,6 @@ const ContactsSection = () => {
                       <div className="font-sans text-xl tracking-tight font-medium">+7 (914) 482-15-55</div>
                     </div>
                   </a>
-                  <a href="mailto:hi@vkus-co.ru" className="group flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
-                      <Icon name="Mail" size={16} />
-                    </div>
-                    <div>
-                      <div className="text-[12px] text-ash">Почта</div>
-                      <div className="font-sans text-xl tracking-tight font-medium">hi@vkus-co.ru</div>
-                    </div>
-                  </a>
                   <a href={VK_LINK} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
                     <div className="w-11 h-11 rounded-full bg-stone group-hover:bg-lime transition flex items-center justify-center">
                       <Icon name="Send" size={16} />
