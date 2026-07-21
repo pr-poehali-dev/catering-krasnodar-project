@@ -70,7 +70,7 @@ const ContactsSection = () => {
                     className="w-11 h-11 rounded-full object-cover object-top ring-2 ring-lime/40"
                   />
                   <div className="flex-1">
-                    <div className="font-serif italic text-[15px] leading-tight text-snow">«Жду вашу заявку 🤍»</div>
+                    <div className="font-serif italic text-[15px] leading-tight text-snow">«Furshet in Box🤍»</div>
                     <div className="text-[11px] text-snow/60 mt-1 uppercase tracking-[0.15em]">Галина · фуршетный мастер</div>
                   </div>
                 </div>
