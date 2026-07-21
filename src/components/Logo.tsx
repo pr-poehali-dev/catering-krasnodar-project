@@ -64,7 +64,7 @@ const Logo = ({
             className={`relative font-sans font-semibold tracking-tighter ${s.text} ${wordClr} whitespace-nowrap leading-[0.95]`}
             style={{ fontFamily: '"Inter", "Manrope", "Helvetica Neue", system-ui, sans-serif' }}
           >
-            Furshet in <span className={accent}>Box</span>
+            Furshet in <span className="inline-block bg-graphite text-snow px-2.5 rounded-full">Box</span>
           </span>
         )}
         <ClocheIcon size={s.icon} accent={accent} />
