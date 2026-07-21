@@ -36,7 +36,7 @@ const AdminHeader = ({ tab, setTab, productsCount, newPreordersCount, onLogout }
           </button>
         </div>
         <div className="flex gap-1.5 sm:gap-2 shrink-0">
-          <a href="/" className="w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center justify-center gap-1.5 text-[13px]">
+          <a href="/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center justify-center gap-1.5 text-[13px]">
             <Icon name="ExternalLink" size={14} /> <span className="hidden sm:inline">Сайт</span>
           </a>
           <button onClick={onLogout} className="w-9 h-9 sm:w-auto sm:h-auto sm:px-4 sm:py-2 rounded-full border border-graphite/15 hover:bg-graphite/5 transition inline-flex items-center justify-center gap-1.5 text-[13px]">
