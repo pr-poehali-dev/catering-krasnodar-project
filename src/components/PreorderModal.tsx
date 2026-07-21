@@ -125,54 +125,65 @@ const PreorderModal = ({ open, onClose }: Props) => {
               Заполните форму — Галина свяжется за 15 минут и подберёт меню под бюджет.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-3">
-              <div>
-                <label className="text-[12px] text-ash block mb-1.5">Ваше имя *</label>
-                <input
-                  type="text"
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  placeholder="Анна"
-                  className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] transition"
-                />
+            {/* Блок: контакты */}
+            <div className="rounded-3xl bg-stone/60 p-4 sm:p-5">
+              <div className="text-[11px] uppercase tracking-[0.15em] text-ash font-medium mb-3 flex items-center gap-1.5">
+                <Icon name="User" size={13} /> Ваши контакты
               </div>
-              <div>
-                <label className="text-[12px] text-ash block mb-1.5">Телефон *</label>
-                <input
-                  type="tel"
-                  required
-                  value={form.phone}
-                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                  placeholder="+7 (___) ___-__-__"
-                  className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] transition"
-                />
+              <div className="grid sm:grid-cols-2 gap-3">
+                <div className="relative">
+                  <Icon name="User" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <input
+                    type="text"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    placeholder="Ваше имя *"
+                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                  />
+                </div>
+                <div className="relative">
+                  <Icon name="Phone" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <input
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                    placeholder="+7 (___) ___-__-__ *"
+                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <div className="text-[12px] text-graphite/70 mb-2">Как удобнее связаться</div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {CONTACT_METHODS.map((m) => (
+                    <button
+                      type="button"
+                      key={m.v}
+                      onClick={() => setForm({ ...form, contact_method: m.v })}
+                      className={`px-3 py-2.5 rounded-xl text-[13px] border transition inline-flex items-center justify-center gap-1.5 ${
+                        form.contact_method === m.v
+                          ? 'bg-graphite text-snow border-graphite'
+                          : 'bg-snow border-graphite/10 hover:border-graphite/30'
+                      }`}
+                    >
+                      <Icon name={m.icon} size={13} />
+                      {m.l}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="mt-5">
-              <label className="text-[12px] text-ash block mb-2">Как удобнее связаться</label>
-              <div className="flex flex-wrap gap-2">
-                {CONTACT_METHODS.map((m) => (
-                  <button
-                    type="button"
-                    key={m.v}
-                    onClick={() => setForm({ ...form, contact_method: m.v })}
-                    className={`px-4 py-2 rounded-full text-[13px] border transition inline-flex items-center gap-1.5 ${
-                      form.contact_method === m.v
-                        ? 'bg-graphite text-snow border-graphite'
-                        : 'border-graphite/15 hover:border-graphite/40'
-                    }`}
-                  >
-                    <Icon name={m.icon} size={13} />
-                    {m.l}
-                  </button>
-                ))}
+            {/* Блок: событие */}
+            <div className="rounded-3xl bg-stone/60 p-4 sm:p-5 mt-3">
+              <div className="text-[11px] uppercase tracking-[0.15em] text-ash font-medium mb-3 flex items-center gap-1.5">
+                <Icon name="PartyPopper" size={13} /> О торжестве
               </div>
-            </div>
 
-            <div className="mt-5">
-              <label className="text-[12px] text-ash block mb-2">Тип события</label>
+              <div className="text-[12px] text-graphite/70 mb-2">Тип события</div>
               <div className="flex flex-wrap gap-2">
                 {EVENT_TYPES.map((t) => (
                   <button
@@ -182,73 +193,76 @@ const PreorderModal = ({ open, onClose }: Props) => {
                     className={`px-4 py-2 rounded-full text-[13px] border transition ${
                       form.event_type === t
                         ? 'bg-graphite text-snow border-graphite'
-                        : 'border-graphite/15 hover:border-graphite/40'
+                        : 'bg-snow border-graphite/10 hover:border-graphite/30'
                     }`}
                   >
                     {t}
                   </button>
                 ))}
               </div>
+
+              <div className="grid sm:grid-cols-2 gap-3 mt-4">
+                <div className="relative">
+                  <Icon name="Calendar" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash pointer-events-none" />
+                  <input
+                    type="date"
+                    value={form.event_date}
+                    onChange={(e) => setForm({ ...form, event_date: e.target.value })}
+                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                  />
+                </div>
+                <div className="relative">
+                  <Icon name="Users" size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-ash" />
+                  <input
+                    type="number"
+                    min={1}
+                    value={form.guests_count}
+                    onChange={(e) => setForm({ ...form, guests_count: e.target.value })}
+                    placeholder="Количество гостей"
+                    className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-snow border border-graphite/10 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] transition"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <div className="text-[12px] text-graphite/70 mb-2">Ориентировочный бюджет</div>
+                <div className="flex flex-wrap gap-2">
+                  {BUDGETS.map((b) => (
+                    <button
+                      type="button"
+                      key={b}
+                      onClick={() => setForm({ ...form, budget: b })}
+                      className={`px-4 py-2 rounded-full text-[13px] border transition ${
+                        form.budget === b
+                          ? 'bg-lime text-graphite border-lime'
+                          : 'bg-snow border-graphite/10 hover:border-graphite/30'
+                      }`}
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3 mt-5">
-              <div>
-                <label className="text-[12px] text-ash block mb-1.5">Дата мероприятия</label>
-                <input
-                  type="date"
-                  value={form.event_date}
-                  onChange={(e) => setForm({ ...form, event_date: e.target.value })}
-                  className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] transition"
+            {/* Блок: детали */}
+            <div className="mt-3">
+              <div className="relative">
+                <Icon name="MessageSquareText" size={16} className="absolute left-4 top-4 text-ash" />
+                <textarea
+                  rows={3}
+                  value={form.details}
+                  onChange={(e) => setForm({ ...form, details: e.target.value })}
+                  placeholder="Формат, локация, особые пожелания по меню…"
+                  className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-stone/60 border border-transparent focus:border-graphite focus:bg-snow focus:ring-2 focus:ring-graphite/5 outline-none text-[14px] resize-none transition"
                 />
               </div>
-              <div>
-                <label className="text-[12px] text-ash block mb-1.5">Количество гостей</label>
-                <input
-                  type="number"
-                  min={1}
-                  value={form.guests_count}
-                  onChange={(e) => setForm({ ...form, guests_count: e.target.value })}
-                  placeholder="например, 30"
-                  className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] transition"
-                />
-              </div>
-            </div>
-
-            <div className="mt-5">
-              <label className="text-[12px] text-ash block mb-2">Ориентировочный бюджет</label>
-              <div className="flex flex-wrap gap-2">
-                {BUDGETS.map((b) => (
-                  <button
-                    type="button"
-                    key={b}
-                    onClick={() => setForm({ ...form, budget: b })}
-                    className={`px-4 py-2 rounded-full text-[13px] border transition ${
-                      form.budget === b
-                        ? 'bg-lime text-graphite border-lime'
-                        : 'border-graphite/15 hover:border-graphite/40'
-                    }`}
-                  >
-                    {b}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-5">
-              <label className="text-[12px] text-ash block mb-1.5">Пожелания и детали</label>
-              <textarea
-                rows={3}
-                value={form.details}
-                onChange={(e) => setForm({ ...form, details: e.target.value })}
-                placeholder="Формат, локация, особые пожелания по меню…"
-                className="w-full px-4 py-3 rounded-2xl bg-stone border border-graphite/10 focus:border-graphite outline-none text-[14px] resize-none transition"
-              />
             </div>
 
             <button
               type="submit"
               disabled={sending}
-              className="mt-7 w-full bg-graphite text-snow py-4 rounded-2xl font-semibold text-[14px] hover:bg-graphite/90 transition flex items-center justify-center gap-2 disabled:opacity-60"
+              className="mt-5 w-full bg-graphite text-snow py-4 rounded-2xl font-semibold text-[14px] hover:bg-graphite/90 active:scale-[0.99] transition flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {sending ? (
                 <>
