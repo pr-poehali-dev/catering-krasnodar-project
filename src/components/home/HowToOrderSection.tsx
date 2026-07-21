@@ -88,6 +88,18 @@ const HowToOrderSection = () => {
             Задать вопрос
           </a>
         </div>
+
+        <div className="mt-10 sm:mt-12 flex items-center justify-center gap-3">
+          <img
+            src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
+            alt="Галина"
+            className="w-11 h-11 rounded-full object-cover object-top ring-2 ring-lime/40"
+          />
+          <div>
+            <div className="font-serif italic text-[15px] leading-tight">«Furshet in Box🤍»</div>
+            <div className="text-[11px] text-ash mt-1 uppercase tracking-[0.15em]">Галина · фуршетный мастер</div>
+          </div>
+        </div>
       </div>
 
       <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
