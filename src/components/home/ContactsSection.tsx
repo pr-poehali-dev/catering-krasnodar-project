@@ -105,7 +105,7 @@ const ContactsSection = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={onSubmit} className="col-span-12 lg:col-span-5 bento-card p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
+            <form onSubmit={onSubmit} className="col-span-12 lg:col-span-5 bento-card p-6 sm:p-8 lg:p-10 bg-graphite text-snow relative overflow-hidden">
               <img
                 src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/8023e15d-f418-4b05-9642-8982b7773886.jpg"
                 alt="Фуршет"
@@ -114,8 +114,8 @@ const ContactsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-graphite/60 via-graphite/85 to-graphite" />
 
               <div className="relative">
-                <h3 className="font-sans text-2xl tracking-tight font-medium">Расскажите о празднике</h3>
-                <p className="text-snow/70 text-[13px] mt-1 mb-7 sm:mb-8 leading-relaxed">Галина свяжется за 15 минут — подберём меню и предложим стоимость без обязательств</p>
+                <h3 className="font-sans text-xl sm:text-2xl tracking-tight font-medium">Расскажите о празднике</h3>
+                <p className="text-snow/70 text-[14px] sm:text-[13px] mt-1 mb-6 sm:mb-8 leading-relaxed">Галина свяжется за 15 минут — подберём меню и предложим стоимость без обязательств</p>
 
                 <div className="space-y-3">
                   <input
@@ -124,7 +124,7 @@ const ContactsSection = () => {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Ваше имя"
-                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
+                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50"
                   />
                   <input
                     type="tel"
@@ -132,12 +132,12 @@ const ContactsSection = () => {
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
                     placeholder="+7 (___) ___-__-__"
-                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50"
+                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50"
                   />
                   <select
                     value={form.type}
                     onChange={(e) => setForm({ ...form, type: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] text-snow/70"
+                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium text-snow/70"
                   >
                     <option className="bg-graphite" value="">Тип события</option>
                     <option className="bg-graphite">Свадьба</option>
@@ -150,12 +150,12 @@ const ContactsSection = () => {
                     value={form.details}
                     onChange={(e) => setForm({ ...form, details: e.target.value })}
                     placeholder="Дата, количество гостей, пожелания"
-                    className="w-full px-4 py-3.5 rounded-2xl bg-snow/10 backdrop-blur border border-snow/15 focus:border-lime outline-none transition text-[14px] placeholder:text-snow/50 resize-none"
+                    className="w-full px-4 py-4 sm:py-3.5 rounded-2xl bg-snow/10 backdrop-blur border-2 border-snow/20 focus:border-lime outline-none transition text-base sm:text-[14px] font-medium placeholder:text-snow/50 resize-none"
                   />
                   <button
                     type="button"
                     onClick={onSendVK}
-                    className="w-full bg-[#0077FF] text-snow py-4 rounded-2xl font-semibold text-[14px] hover:bg-[#0077FF]/90 transition flex items-center justify-center gap-2 group"
+                    className="w-full bg-[#0077FF] text-snow py-4 rounded-2xl font-bold text-[16px] sm:text-[14px] hover:bg-[#0077FF]/90 active:scale-[0.99] transition flex items-center justify-center gap-2 group"
                   >
                     <Icon name="Send" size={14} />
                     Написать во ВКонтакте
@@ -163,7 +163,7 @@ const ContactsSection = () => {
                       <Icon name="ArrowRight" size={11} />
                     </span>
                   </button>
-                  <p className="text-[11px] text-snow/50 text-center pt-2">
+                  <p className="text-[12px] sm:text-[11px] text-snow/50 text-center pt-2">
                     Откроется чат во ВКонтакте. Текст заявки скопирован — просто вставьте его в сообщение
                   </p>
                 </div>

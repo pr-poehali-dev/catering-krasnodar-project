@@ -298,24 +298,24 @@ const ProductPage = () => {
                     placeholder="Ваше имя *"
                     value={form.author_name}
                     onChange={(e) => setForm({ ...form, author_name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-snow border border-graphite/10 text-[14px] outline-none focus:border-graphite"
+                    className="w-full px-4 py-3.5 sm:py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base sm:text-[14px] font-medium outline-none focus:border-graphite transition"
                   />
                   <input
                     type="text"
                     placeholder="Событие (напр. Свадьба, 50 гостей)"
                     value={form.event}
                     onChange={(e) => setForm({ ...form, event: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-snow border border-graphite/10 text-[14px] outline-none focus:border-graphite"
+                    className="w-full px-4 py-3.5 sm:py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base sm:text-[14px] font-medium outline-none focus:border-graphite transition"
                   />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[13px] text-ash">Оценка:</span>
+                  <span className="text-[14px] sm:text-[13px] text-graphite/70 font-medium">Оценка:</span>
                   {[1, 2, 3, 4, 5].map((n) => (
                     <button
                       type="button"
                       key={n}
                       onClick={() => setForm({ ...form, rating: n })}
-                      className="text-2xl leading-none hover:scale-110 transition"
+                      className="text-3xl sm:text-2xl leading-none hover:scale-110 transition p-0.5"
                     >
                       <span className={n <= form.rating ? 'text-lime' : 'text-graphite/20'}>★</span>
                     </button>
@@ -327,12 +327,12 @@ const ProductPage = () => {
                   placeholder="Расскажите впечатления о блюде и сервисе…"
                   value={form.text}
                   onChange={(e) => setForm({ ...form, text: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-snow border border-graphite/10 text-[14px] outline-none focus:border-graphite resize-none"
+                  className="w-full px-4 py-3.5 sm:py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base sm:text-[14px] font-medium outline-none focus:border-graphite resize-none transition"
                 />
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-full sm:w-auto bg-graphite text-snow px-6 py-3 rounded-xl text-[14px] font-medium hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto bg-graphite text-snow px-6 py-3.5 sm:py-3 rounded-xl text-[16px] sm:text-[14px] font-bold hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2"
                 >
                   <Icon name="Send" size={14} />
                   {sending ? 'Отправляем…' : 'Опубликовать отзыв'}

@@ -159,30 +159,30 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
         )}
 
         {reviewOpen && (
-          <form onSubmit={submitReview} className="mt-4 space-y-2 bg-stone rounded-2xl p-3">
+          <form onSubmit={submitReview} className="mt-4 space-y-2.5 bg-stone rounded-2xl p-3.5">
             <input
               type="text"
               required
               placeholder="Ваше имя"
               value={form.author_name}
               onChange={(e) => setForm({ ...form, author_name: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite"
+              className="w-full px-3.5 py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base font-medium outline-none focus:border-graphite transition"
             />
             <input
               type="text"
               placeholder="Событие (например: Свадьба, 50 гостей)"
               value={form.event}
               onChange={(e) => setForm({ ...form, event: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite"
+              className="w-full px-3.5 py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base font-medium outline-none focus:border-graphite transition"
             />
             <div className="flex items-center gap-2">
-              <span className="text-[12px] text-ash">Оценка:</span>
+              <span className="text-[13px] text-graphite/70 font-medium">Оценка:</span>
               {[1, 2, 3, 4, 5].map((n) => (
                 <button
                   type="button"
                   key={n}
                   onClick={() => setForm({ ...form, rating: n })}
-                  className="text-lg leading-none"
+                  className="text-2xl leading-none p-0.5"
                 >
                   <span className={n <= form.rating ? 'text-lime' : 'text-graphite/20'}>★</span>
                 </button>
@@ -194,13 +194,13 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
               placeholder="Ваш отзыв"
               value={form.text}
               onChange={(e) => setForm({ ...form, text: e.target.value })}
-              className="w-full px-3 py-2 rounded-xl bg-snow border border-graphite/10 text-[13px] outline-none focus:border-graphite resize-none"
+              className="w-full px-3.5 py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base font-medium outline-none focus:border-graphite resize-none transition"
             />
             <div className="flex gap-2">
-              <button type="submit" disabled={sending} className="flex-1 bg-graphite text-snow py-2.5 rounded-xl text-[13px] font-medium hover:bg-graphite/85 transition disabled:opacity-50">
+              <button type="submit" disabled={sending} className="flex-1 bg-graphite text-snow py-3 rounded-xl text-[15px] font-bold hover:bg-graphite/85 transition disabled:opacity-50">
                 {sending ? 'Отправляем…' : 'Отправить'}
               </button>
-              <button type="button" onClick={() => setReviewOpen(false)} className="px-4 py-2.5 rounded-xl text-[13px] border border-graphite/15 hover:bg-graphite/5">
+              <button type="button" onClick={() => setReviewOpen(false)} className="px-4 py-3 rounded-xl text-[15px] font-medium border-2 border-graphite/15 hover:bg-graphite/5">
                 Отмена
               </button>
             </div>
