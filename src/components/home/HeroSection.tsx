@@ -21,6 +21,7 @@ const HeroSection = () => {
             {[
               { l: 'Полное меню', h: '/menu' },
               { l: 'События', h: '#events' },
+              { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
               { l: 'Контакты', h: '#contacts' },
             ].map((i) => (
@@ -52,6 +53,7 @@ const HeroSection = () => {
             {[
               { l: 'Полное меню', h: '/menu' },
               { l: 'События', h: '#events' },
+              { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
               { l: 'Контакты', h: '#contacts' },
             ].map((i) => (
