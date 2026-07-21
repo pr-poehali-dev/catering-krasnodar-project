@@ -10,9 +10,9 @@ type LogoProps = {
 };
 
 const sizeMap = {
-  sm: { text: 'text-[22px] sm:text-[24px]', tagline: 'text-[8px] sm:text-[9px]', icon: 18, gap: 'gap-2' },
-  md: { text: 'text-[28px]', tagline: 'text-[10px]', icon: 22, gap: 'gap-2.5' },
-  lg: { text: 'text-[38px] sm:text-[46px]', tagline: 'text-[11px] sm:text-[13px]', icon: 30, gap: 'gap-3' },
+  sm: { text: 'text-[32px] sm:text-[36px]', tagline: 'text-[8px] sm:text-[9px]', icon: 18, gap: 'gap-1.5' },
+  md: { text: 'text-[42px]', tagline: 'text-[10px]', icon: 22, gap: 'gap-2' },
+  lg: { text: 'text-[56px] sm:text-[68px]', tagline: 'text-[11px] sm:text-[13px]', icon: 30, gap: 'gap-2.5' },
 };
 
 const ClocheIcon = ({ size, accent }: { size: number; accent: string }) => (
@@ -61,10 +61,10 @@ const Logo = ({
       <span className={`inline-flex items-end ${s.gap}`}>
         {showWordmark && (
           <span
-            className={`relative font-sans font-semibold tracking-tighter ${s.text} ${wordClr} whitespace-nowrap leading-[0.95]`}
-            style={{ fontFamily: '"Inter", "Manrope", "Helvetica Neue", system-ui, sans-serif' }}
+            className={`relative font-normal tracking-tight ${s.text} ${wordClr} whitespace-nowrap leading-[0.9]`}
+            style={{ fontFamily: '"Allura", cursive' }}
           >
-            Furshet in <span className="inline-block bg-graphite text-snow px-2.5 rounded-full">Box</span>
+            Furshet in Box
           </span>
         )}
         <ClocheIcon size={s.icon} accent={accent} />
