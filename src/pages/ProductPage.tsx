@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
+import PreorderModal from '@/components/PreorderModal';
 import { toast } from 'sonner';
 import { Product, addReview, fetchProducts } from '@/lib/api';
 
@@ -18,6 +19,7 @@ const ProductPage = () => {
   const [sending, setSending] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [all, setAll] = useState<Product[]>([]);
+  const [preorderOpen, setPreorderOpen] = useState(false);
 
   const load = async () => {
     try {
@@ -208,18 +210,17 @@ const ProductPage = () => {
               )}
 
               <div className="mt-5 grid grid-cols-1 gap-2">
-                <a
-                  href={`${WHATSAPP}?text=${orderText}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => setPreorderOpen(true)}
                   className="group bg-graphite text-snow px-5 py-4 rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                 >
-                  <Icon name="MessageCircle" size={16} />
-                  Заказать в WhatsApp
+                  <Icon name="ClipboardList" size={16} />
+                  Оформить предзаказ
                   <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
                     <Icon name="ArrowRight" size={11} className="text-graphite" />
                   </span>
-                </a>
+                </button>
                 <div className="grid grid-cols-2 gap-2">
                   <a href={PHONE} className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">
                     <Icon name="Phone" size={13} /> Позвонить
@@ -463,6 +464,12 @@ const ProductPage = () => {
           {product.price > 0 && <span className="text-snow/70">· {product.price} ₽</span>}
         </a>
       </div>
+
+      <PreorderModal
+        open={preorderOpen}
+        onClose={() => setPreorderOpen(false)}
+        prefillDetails={`Хочу заказать «${product.name}»`}
+      />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { createPreorder } from '@/lib/api';
 type Props = {
   open: boolean;
   onClose: () => void;
+  prefillDetails?: string;
 };
 
 const EVENT_TYPES = ['Свадьба', 'День рождения', 'Корпоратив', 'Фуршет', 'Романтический ужин', 'Другое'];
@@ -28,7 +29,7 @@ const initialForm = {
   contact_method: 'phone',
 };
 
-const PreorderModal = ({ open, onClose }: Props) => {
+const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
   const [form, setForm] = useState(initialForm);
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
@@ -36,6 +37,9 @@ const PreorderModal = ({ open, onClose }: Props) => {
   useEffect(() => {
     if (!open) return;
     document.body.style.overflow = 'hidden';
+    if (prefillDetails) {
+      setForm((f) => (f.details ? f : { ...f, details: prefillDetails }));
+    }
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
     return () => {
