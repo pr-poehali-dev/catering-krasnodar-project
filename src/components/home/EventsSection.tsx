@@ -45,18 +45,19 @@ const EventsSection = () => {
             >
               <img src={e.img} alt={e.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1500ms] ease-out" />
               <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/30 to-graphite/10" />
-              <div className="absolute top-4 right-4">
-                <span className="glass-dark text-snow text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full border hairline-light">
+              <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4">
+                <span className="glass-dark text-snow text-[9px] sm:text-[11px] uppercase tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border hairline-light">
                   {e.badge}
                 </span>
               </div>
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-snow">
-                <div>
-                  <div className="font-sans text-2xl lg:text-3xl tracking-tighter font-medium">{e.title}</div>
-                  <div className="text-[13px] text-snow/80 mt-1">{e.price}</div>
+              <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-end justify-between text-snow gap-2">
+                <div className="min-w-0">
+                  <div className="font-sans text-[17px] sm:text-2xl lg:text-3xl tracking-tighter font-medium leading-tight truncate">{e.title}</div>
+                  <div className="text-[11px] sm:text-[13px] text-snow/80 mt-0.5 sm:mt-1 truncate">{e.price}</div>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-lime text-graphite flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all">
-                  <Icon name="ArrowUpRight" size={16} />
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-lime text-graphite flex items-center justify-center shrink-0 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all">
+                  <Icon name="ArrowUpRight" size={14} className="sm:hidden" />
+                  <Icon name="ArrowUpRight" size={16} className="hidden sm:block" />
                 </div>
               </div>
             </Link>
