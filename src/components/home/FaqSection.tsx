@@ -46,24 +46,36 @@ const FaqSection = () => {
           </h2>
         </div>
 
-        <div className="max-w-3xl bento-card bg-snow p-4 sm:p-6">
-          <Accordion type="single" collapsible className="w-full">
-            {FAQ.map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-graphite/10">
-                <AccordionTrigger className="text-left text-[15px] sm:text-[16px] font-medium hover:no-underline py-4 sm:py-5">
-                  {item.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-[14px] text-graphite/70 leading-relaxed">
-                  {item.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+        <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
+          <div className="w-full lg:max-w-3xl">
+            <div className="bento-card bg-snow p-4 sm:p-6">
+              <Accordion type="single" collapsible className="w-full">
+                {FAQ.map((item, i) => (
+                  <AccordionItem key={i} value={`item-${i}`} className="border-graphite/10">
+                    <AccordionTrigger className="text-left text-[15px] sm:text-[16px] font-medium hover:no-underline py-4 sm:py-5">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-[14px] text-graphite/70 leading-relaxed">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
 
-        <div className="mt-6 flex items-center gap-2 text-[13px] text-ash">
-          <Icon name="MessageCircleQuestion" size={15} />
-          Не нашли ответ? Напишите Галине — она ответит за 15 минут.
+            <div className="mt-6 flex items-center gap-2 text-[13px] text-ash">
+              <Icon name="MessageCircleQuestion" size={15} />
+              Не нашли ответ? Напишите Галине — она ответит за 15 минут.
+            </div>
+          </div>
+
+          <div className="hidden lg:block w-full max-w-xs shrink-0 self-center">
+            <img
+              src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/8eed2270-f2cf-4b36-a09e-2463370e4360.jpg"
+              alt="Иллюстрация фуршета"
+              className="w-full h-auto rounded-3xl"
+            />
+          </div>
         </div>
       </div>
     </section>
