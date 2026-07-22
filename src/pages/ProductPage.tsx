@@ -97,15 +97,23 @@ const ProductPage = () => {
             <span className="hidden sm:inline">К меню</span>
           </Link>
           <Logo size="sm" to="/" />
-          <a
-            href={`${WHATSAPP}?text=${orderText}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
-          >
-            <Icon name="CircleHelp" size={13} />
-            <span className="hidden sm:inline">Как оформить заказ?</span>
-          </a>
+          <div className="group relative">
+            <button
+              type="button"
+              className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            >
+              <Icon name="CircleHelp" size={13} />
+              <span className="hidden sm:inline">Как оформить заказ?</span>
+            </button>
+            <div className="pointer-events-none absolute right-0 top-full mt-2 w-72 opacity-0 scale-95 origin-top-right group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 z-50">
+              <div className="glass-dark text-snow rounded-2xl p-4 border hairline-light shadow-xl text-[13px] leading-relaxed space-y-2">
+                <div className="font-medium text-[14px] mb-1">Как оформить заказ:</div>
+                <p>1. Нажмите «Оформить предзаказ» и заполните короткую форму.</p>
+                <p>2. Галина свяжется с вами за 15 минут для уточнения деталей.</p>
+                <p>3. Согласуете меню, дату и стоимость — без предоплаты вслепую.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
