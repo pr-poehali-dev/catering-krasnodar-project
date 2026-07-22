@@ -104,7 +104,7 @@ const ProductPage = () => {
             className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
             <Icon name="CircleHelp" size={13} />
-            <span className="hidden sm:inline">Написать</span>
+            <span className="hidden sm:inline">Как оформить заказ?</span>
           </a>
         </div>
       </header>
