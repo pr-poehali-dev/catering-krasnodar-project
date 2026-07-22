@@ -222,7 +222,7 @@ const ProductPage = () => {
                   </span>
                 </button>
                 <div className="grid grid-cols-2 gap-2">
-                  <a href={PHONE} className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">Оформить предзаказ</a>
+                  <a href={PHONE} className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">Max</a>
                   <a href={TELEGRAM} target="_blank" rel="noopener noreferrer" className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">ВКонтакте </a>
                 </div>
               </div>
