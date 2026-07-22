@@ -263,12 +263,7 @@ const EventPage = () => {
       <footer className="border-t border-graphite/10 py-10">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-[13px] text-ash">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-graphite flex items-center justify-center">
-                <Icon name="Package" size={12} className="text-lime" />
-              </span>
-              <span className="font-semibold text-graphite tracking-[0.08em] uppercase text-[12px]">Furshet in Box</span>
-            </Link>
+            <Logo size="md" to="/" />
             <div>© 2026 Кейтеринг в Краснодаре</div>
             <div className="flex gap-2">
               <a href="#" className="w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center hover:bg-graphite hover:text-snow transition">
