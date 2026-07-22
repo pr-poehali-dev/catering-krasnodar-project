@@ -35,20 +35,29 @@ const HowToOrderSection = () => {
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
-          className={`max-w-2xl mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >
-          <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
-            <span className="w-6 h-px bg-ash" />
-            Как заказать
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
+              <span className="w-6 h-px bg-ash" />
+              Как заказать
+            </div>
+            <h2 className="font-sans text-[clamp(2rem,7vw,4.5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
+              Заказать <span className="font-serif italic font-normal">просто</span>
+            </h2>
+            <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
+              От заявки до вкусного стола — четыре понятных шага, никакой бюрократии.
+            </p>
           </div>
-          <h2 className="font-sans text-[clamp(2rem,7vw,4.5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
-            Заказать <span className="font-serif italic font-normal">просто</span>
-          </h2>
-          <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
-            От заявки до вкусного стола — четыре понятных шага, никакой бюрократии.
-          </p>
+          <div className="hidden lg:block w-full max-w-[220px] shrink-0">
+            <img
+              src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/262c536e-2bf0-47fd-ab38-43e8b8be34be.jpg"
+              alt="Иллюстрация оформления заказа"
+              className="w-full h-auto rounded-3xl"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
