@@ -100,7 +100,7 @@ const ProductPage = () => {
           <div className="group relative">
             <button
               type="button"
-              className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+              className="btn-shadow-sm text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
             >
               <Icon name="CircleHelp" size={13} />
               <span className="hidden sm:inline">Как оформить заказ?</span>
@@ -221,7 +221,7 @@ const ProductPage = () => {
                 <button
                   type="button"
                   onClick={() => setPreorderOpen(true)}
-                  className="group bg-graphite text-snow px-5 py-4 rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                  className="btn-shadow group bg-graphite text-snow px-5 py-4 rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                 >
                   <Icon name="ClipboardList" size={16} />
                   Оформить предзаказ
@@ -287,7 +287,7 @@ const ProductPage = () => {
               </div>
               <button
                 onClick={() => setShowForm(!showForm)}
-                className="bg-graphite text-snow px-4 py-2.5 rounded-full text-[13px] font-medium hover:bg-graphite/85 transition inline-flex items-center gap-2"
+                className="btn-shadow-sm bg-graphite text-snow px-4 py-2.5 rounded-full text-[13px] font-medium hover:bg-graphite/85 transition inline-flex items-center gap-2"
               >
                 <Icon name={showForm ? 'X' : 'PenLine'} size={13} />
                 {showForm ? 'Отменить' : 'Оставить отзыв'}
@@ -337,7 +337,7 @@ const ProductPage = () => {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-full sm:w-auto bg-graphite text-snow px-6 py-3.5 sm:py-3 rounded-xl text-[16px] sm:text-[14px] font-bold hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2"
+                  className="btn-shadow-sm w-full sm:w-auto bg-graphite text-snow px-6 py-3.5 sm:py-3 rounded-xl text-[16px] sm:text-[14px] font-bold hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2"
                 >
                   <Icon name="Send" size={14} />
                   {sending ? 'Отправляем…' : 'Опубликовать отзыв'}

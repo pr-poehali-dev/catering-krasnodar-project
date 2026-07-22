@@ -124,7 +124,7 @@ const ReviewsSection = () => {
             href="https://vk.com/foodinboxvrn"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 bg-snow text-graphite px-6 py-4 rounded-full text-[14px] font-medium hover:bg-lime transition"
+            className="btn-shadow-sm group inline-flex items-center gap-3 bg-snow text-graphite px-6 py-4 rounded-full text-[14px] font-medium hover:bg-lime transition"
           >
             <span className="w-7 h-7 rounded-full bg-graphite text-snow flex items-center justify-center text-[11px] font-bold tracking-tight">
               VK

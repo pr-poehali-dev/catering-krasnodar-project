@@ -111,7 +111,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
             </p>
             <button
               onClick={onClose}
-              className="mt-7 bg-graphite text-snow px-6 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/90 transition"
+              className="btn-shadow-sm mt-7 bg-graphite text-snow px-6 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/90 transition"
             >
               Хорошо
             </button>
@@ -266,7 +266,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
             <button
               type="submit"
               disabled={sending}
-              className="mt-5 w-full bg-graphite text-snow py-4 sm:py-4 rounded-2xl font-bold text-[16px] sm:text-[14px] hover:bg-graphite/90 active:scale-[0.99] transition flex items-center justify-center gap-2 disabled:opacity-60"
+              className="btn-shadow mt-5 w-full bg-graphite text-snow py-4 sm:py-4 rounded-2xl font-bold text-[16px] sm:text-[14px] hover:bg-graphite/90 active:scale-[0.99] transition flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {sending ? (
                 <>

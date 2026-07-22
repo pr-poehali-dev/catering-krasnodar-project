@@ -122,7 +122,7 @@ const AdminCatalog = ({
           <input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: +e.target.value })} className={inputCls} />
         </Field>
 
-        <button type="submit" disabled={loading} className="w-full bg-graphite text-snow py-3.5 rounded-2xl text-[14px] font-medium hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2">
+        <button type="submit" disabled={loading} className="btn-shadow-sm w-full bg-graphite text-snow py-3.5 rounded-2xl text-[14px] font-medium hover:bg-graphite/85 transition disabled:opacity-50 inline-flex items-center justify-center gap-2">
           <Icon name={editId ? 'Save' : 'Plus'} size={15} />
           {loading ? 'Сохраняем…' : editId ? 'Сохранить' : 'Добавить товар'}
         </button>

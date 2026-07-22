@@ -61,7 +61,7 @@ const MenuPage = () => {
             href={MAX_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            className="btn-shadow-sm text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
             <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center"></span>
             <span className="hidden sm:inline">Заказать</span>
@@ -141,7 +141,7 @@ const MenuPage = () => {
                 setSearch('');
                 setActiveCat('Все');
               }}
-              className="mt-4 px-5 py-2.5 rounded-full bg-graphite text-snow text-[13px] hover:bg-graphite/85 transition"
+              className="btn-shadow-sm mt-4 px-5 py-2.5 rounded-full bg-graphite text-snow text-[13px] hover:bg-graphite/85 transition"
             >
               Сбросить фильтры
             </button>
@@ -229,7 +229,7 @@ const MenuPage = () => {
             href={MAX_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-flex items-center gap-3 bg-lime text-graphite px-6 py-4 rounded-full text-[14px] font-semibold hover:bg-snow transition group"
+            className="btn-shadow-lime mt-7 inline-flex items-center gap-3 bg-lime text-graphite px-6 py-4 rounded-full text-[14px] font-semibold hover:bg-snow transition group"
           >
             <span className="w-5 h-5 rounded-md bg-graphite text-lime text-[10px] font-bold flex items-center justify-center">M</span>
             Написать в MAX

@@ -18,7 +18,7 @@ const EventPage = () => {
     return (
       <div className="min-h-screen bg-snow text-graphite flex flex-col items-center justify-center px-6 text-center">
         <h1 className="font-sans text-4xl lg:text-5xl tracking-tightest font-medium">Событие не найдено</h1>
-        <Link to="/#events" className="mt-6 inline-flex items-center gap-2 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium">
+        <Link to="/#events" className="btn-shadow-sm mt-6 inline-flex items-center gap-2 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium">
           <Icon name="ArrowLeft" size={15} />
           Все события
         </Link>
@@ -41,7 +41,7 @@ const EventPage = () => {
           <button
             type="button"
             onClick={() => setPreorderOpen(true)}
-            className="text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            className="btn-shadow-sm text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
             Заказать
             <Icon name="ArrowUpRight" size={13} />
@@ -157,7 +157,7 @@ const EventPage = () => {
                 <button
                   type="button"
                   onClick={() => setPreorderOpen(true)}
-                  className="mt-8 w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
+                  className="btn-shadow-lime mt-8 w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
                 >
                   Заказать {event.title.toLowerCase()}
                   <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">

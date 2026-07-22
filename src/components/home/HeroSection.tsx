@@ -34,7 +34,7 @@ const HeroSection = () => {
             <button
               type="button"
               onClick={() => setPreorderOpen(true)}
-              className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+              className="btn-shadow-sm text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
             >
               Заказать
               <Icon name="ArrowUpRight" size={13} />
@@ -122,7 +122,7 @@ const HeroSection = () => {
                 <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
                   <a
                     href="#menu"
-                    className="group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                    className="btn-shadow group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                   >
                     Смотреть боксы
                     <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
@@ -132,7 +132,7 @@ const HeroSection = () => {
                   <button
                     type="button"
                     onClick={() => setPreorderOpen(true)}
-                    className="px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
+                    className="btn-shadow-sm px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
                   >Оформить предзаказ</button>
                 </div>
 

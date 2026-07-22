@@ -131,7 +131,7 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
           </button>
           <Link
             to={`/product/${product.id}`}
-            className="text-[12px] font-medium bg-graphite text-snow px-3.5 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            className="btn-shadow-sm text-[12px] font-medium bg-graphite text-snow px-3.5 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
             Подробнее
             <Icon name="ArrowRight" size={11} />
@@ -197,7 +197,7 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
               className="w-full px-3.5 py-3 rounded-xl bg-snow border-2 border-graphite/15 text-base font-medium outline-none focus:border-graphite resize-none transition"
             />
             <div className="flex gap-2">
-              <button type="submit" disabled={sending} className="flex-1 bg-graphite text-snow py-3 rounded-xl text-[15px] font-bold hover:bg-graphite/85 transition disabled:opacity-50">
+              <button type="submit" disabled={sending} className="btn-shadow-sm flex-1 bg-graphite text-snow py-3 rounded-xl text-[15px] font-bold hover:bg-graphite/85 transition disabled:opacity-50">
                 {sending ? 'Отправляем…' : 'Отправить'}
               </button>
               <button type="button" onClick={() => setReviewOpen(false)} className="px-4 py-3 rounded-xl text-[15px] font-medium border-2 border-graphite/15 hover:bg-graphite/5">
@@ -298,7 +298,7 @@ const MenuSection = () => {
           <div className="bento-card bg-snow p-12 text-center">
             <Icon name="UtensilsCrossed" size={32} className="mx-auto text-ash mb-3" />
             <p className="text-ash">Каталог скоро появится. Свяжитесь с Галиной для индивидуального меню.</p>
-            <a href="#contacts" className="inline-flex items-center gap-2 mt-4 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition">
+            <a href="#contacts" className="btn-shadow-sm inline-flex items-center gap-2 mt-4 bg-graphite text-snow px-5 py-3 rounded-full text-[14px] font-medium hover:bg-graphite/85 transition">
               Написать Галине
               <Icon name="ArrowRight" size={13} />
             </a>
