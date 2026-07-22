@@ -77,7 +77,7 @@ const MenuPage = () => {
             <span className="w-6 h-px bg-ash" /> Каталог
           </div>
           <h1 className="font-sans text-[clamp(2.2rem,8vw,5.5rem)] leading-[0.95] tracking-tightest font-medium text-balance max-w-3xl">
-            Полное <span className="font-serif italic font-normal">меню</span> от Галины
+            <span className="font-serif italic font-normal">Меню</span> от Галины
           </h1>
           <p className="mt-4 sm:mt-5 text-graphite/70 max-w-xl text-[15px] leading-relaxed">
             Готовим в день мероприятия из свежих сезонных продуктов. Сборка и подача — как на обложке журнала.
