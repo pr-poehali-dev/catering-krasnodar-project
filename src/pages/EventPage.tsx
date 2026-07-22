@@ -129,33 +129,42 @@ const EventPage = () => {
             </div>
 
             {/* Menu */}
-            <div className="col-span-12 lg:col-span-5 bento-card p-7 lg:p-10 bg-graphite text-snow">
-              <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-snow/50 mb-5">
-                <span className="w-6 h-px bg-snow/30" />
-                Пример меню
-              </div>
-              <h3 className="font-sans text-2xl lg:text-3xl tracking-tightest font-medium mb-6">
-                Меню <span className="font-serif italic font-normal text-lime">от шефа</span>
-              </h3>
-              <ul className="space-y-4">
-                {event.menu.map((item, i) => (
-                  <li key={i} className="flex gap-4 pb-4 border-b border-snow/10 last:border-0 last:pb-0">
-                    <span className="text-[12px] text-lime font-mono mt-1 shrink-0">0{i + 1}</span>
-                    <span className="text-[14px] lg:text-[15px] text-snow/90 leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="col-span-12 lg:col-span-5 bento-card p-7 lg:p-10 text-snow relative overflow-hidden">
+              <img
+                src={event.gallery.find((g) => g !== event.img) || event.img}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-graphite/75 via-graphite/90 to-graphite" />
 
-              <button
-                type="button"
-                onClick={() => setPreorderOpen(true)}
-                className="mt-8 w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
-              >
-                Заказать {event.title.toLowerCase()}
-                <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
-                  <Icon name="ArrowRight" size={11} />
-                </span>
-              </button>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-snow/50 mb-5">
+                  <span className="w-6 h-px bg-snow/30" />
+                  Пример меню
+                </div>
+                <h3 className="font-sans text-2xl lg:text-3xl tracking-tightest font-medium mb-6">
+                  Меню <span className="font-serif italic font-normal text-lime">от шефа</span>
+                </h3>
+                <ul className="space-y-4">
+                  {event.menu.map((item, i) => (
+                    <li key={i} className="flex gap-4 pb-4 border-b border-snow/10 last:border-0 last:pb-0">
+                      <span className="text-[12px] text-lime font-mono mt-1 shrink-0">0{i + 1}</span>
+                      <span className="text-[14px] lg:text-[15px] text-snow/90 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  type="button"
+                  onClick={() => setPreorderOpen(true)}
+                  className="mt-8 w-full bg-lime text-graphite py-4 rounded-2xl font-semibold text-[14px] hover:bg-lime/90 transition flex items-center justify-center gap-2 group"
+                >
+                  Заказать {event.title.toLowerCase()}
+                  <span className="w-5 h-5 rounded-full bg-graphite text-lime flex items-center justify-center group-hover:translate-x-1 transition">
+                    <Icon name="ArrowRight" size={11} />
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
