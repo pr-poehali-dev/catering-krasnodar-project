@@ -32,7 +32,7 @@ const AdminHeader = ({ tab, setTab, productsCount, newPreordersCount, onLogout }
               tab === 'catalog' ? 'bg-graphite text-snow' : 'text-graphite hover:bg-graphite/5'
             }`}
           >
-            <Icon name="Package" size={14} /> <span className="hidden xs:inline sm:inline">Каталог ·</span> {productsCount}
+            <Icon name="Package" size={14} /> Каталог · {productsCount}
           </button>
         </div>
         <div className="flex gap-1.5 sm:gap-2 shrink-0">
