@@ -63,7 +63,7 @@ const MenuPage = () => {
             rel="noopener noreferrer"
             className="text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
-            <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center">M</span>
+            <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center"></span>
             <span className="hidden sm:inline">Заказать</span>
           </a>
         </div>
