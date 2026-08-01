@@ -121,7 +121,7 @@ const ReviewsSection = () => {
 
         <div className="mt-10 sm:mt-12 flex justify-center">
           <a
-            href="https://vk.com/foodinboxvrn"
+            href="https://vk.ru/foodinboxkrd"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-shadow-sm group inline-flex items-center gap-3 bg-snow text-graphite px-6 py-4 rounded-full text-[14px] font-medium hover:bg-lime transition"
