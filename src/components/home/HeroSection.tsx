@@ -148,7 +148,7 @@ const HeroSection = () => {
                   </div>
 
                   {/* sticker: гости */}
-                  <div className="btn-shadow absolute bottom-7 left-6 sm:bottom-9 sm:left-8 bg-graphite text-snow rounded-2xl px-3.5 py-2.5 rotate-[3deg]">
+                  <div className="btn-shadow absolute bottom-20 left-6 sm:bottom-24 sm:left-8 bg-graphite text-snow rounded-2xl px-3.5 py-2.5 rotate-[3deg]">
                     <div className="text-[15px] font-semibold leading-none">100+</div>
                     <div className="text-[10px] text-snow/70 mt-0.5">гостей довольны</div>
                   </div>
