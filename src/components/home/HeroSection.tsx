@@ -74,7 +74,7 @@ const HeroSection = () => {
       </nav>
 
       {/* HERO — единый блок, sticker-collage стиль */}
-      <section className="relative pt-20 pb-6 sm:pt-28 sm:pb-8 lg:pt-32 lg:pb-10 overflow-hidden">
+      <section className="relative sm:pt-28 sm:pb-8 lg:pt-32 lg:pb-10 overflow-hidden py-[65px]">
         <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
         <div className="container mx-auto relative">
