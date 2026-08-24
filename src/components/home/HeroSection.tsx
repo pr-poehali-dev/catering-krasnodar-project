@@ -83,7 +83,7 @@ const HeroSection = () => {
           <div className="bento-card overflow-hidden bg-stone animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
             <div className="grid lg:grid-cols-2">
               {/* Фото Галины */}
-              <div className="relative aspect-[4/5] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[560px] overflow-hidden">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden">
                 <img
                   src={GALINA_IMG}
                   alt="Галина — фуршетный мастер"
