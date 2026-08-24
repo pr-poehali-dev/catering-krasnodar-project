@@ -41,18 +41,18 @@ const MobileTabBar = () => {
         style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
       >
         <div className="mx-3">
-          <div className="glass border border-graphite/10 rounded-[28px] shadow-lg px-2 pt-2 pb-1.5 grid grid-cols-4 items-end gap-1">
+          <div className="glass border border-graphite/10 rounded-[28px] shadow-lg px-2 py-1.5 grid grid-cols-4 items-center gap-1">
             <TabLink to="/" icon="Home" label="Главная" active={isHome} />
             <TabLink to="/menu" icon="UtensilsCrossed" label="Меню" active={isMenu} />
 
-            <div className="flex flex-col items-center justify-end gap-1 py-1">
+            <div className="flex flex-col items-center justify-center gap-1 py-1.5">
               <button
                 type="button"
                 onClick={() => setPreorderOpen(true)}
-                className="btn-shadow tap-scale w-14 h-14 -mt-7 rounded-full bg-graphite text-snow flex items-center justify-center ring-4 ring-snow"
+                className="tap-scale relative flex items-center justify-center w-9 h-9 rounded-full bg-graphite text-snow"
                 aria-label="Оформить предзаказ"
               >
-                <Icon name="ShoppingBag" size={22} />
+                <Icon name="ShoppingBag" size={20} />
               </button>
               <span className="text-[10px] font-medium text-ash leading-none">Заказ</span>
             </div>
