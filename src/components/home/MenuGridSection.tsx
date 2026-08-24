@@ -1,12 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Icon from '@/components/ui/icon';
 import { Product, fetchProducts } from '@/lib/api';
 import { useReveal } from '@/hooks/use-reveal';
+
+const CATEGORY_ORDER = ['Канапе', 'Бранчи', 'Тарталетки', 'Ассорти боксы', 'Брускетты', 'Детское меню'];
 
 const MenuGridSection = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const head = useReveal();
+  const grid = useReveal();
 
   useEffect(() => {
     fetchProducts()
@@ -15,17 +19,29 @@ const MenuGridSection = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const grouped = useMemo(() => {
-    const map = new Map<string, Product[]>();
+  const categories = useMemo(() => {
+    const map = new Map<string, { count: number; img: string }>();
     products.forEach((p) => {
       const c = p.category || 'Другое';
-      if (!map.has(c)) map.set(c, []);
-      map.get(c)!.push(p);
+      const existing = map.get(c);
+      const img = p.images[0]?.url || '';
+      if (existing) {
+        existing.count += 1;
+        if (!existing.img && img) existing.img = img;
+      } else {
+        map.set(c, { count: 1, img });
+      }
     });
-    return Array.from(map.entries()).slice(0, 2);
+
+    const known = CATEGORY_ORDER.filter((c) => map.has(c)).map((c) => ({ name: c, ...map.get(c)! }));
+    const rest = Array.from(map.entries())
+      .filter(([c]) => !CATEGORY_ORDER.includes(c))
+      .map(([name, v]) => ({ name, ...v }));
+
+    return [...known, ...rest];
   }, [products]);
 
-  if (!loading && grouped.length === 0) return null;
+  if (!loading && categories.length === 0) return null;
 
   return (
     <section className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10 bg-snow relative scroll-mt-24">
@@ -47,49 +63,51 @@ const MenuGridSection = () => {
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-3 animate-pulse">
-                <div className="w-28 h-20 sm:w-32 sm:h-24 rounded-[50%] bg-stone" />
-                <div className="h-3 w-20 bg-stone rounded" />
-              </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bento-card aspect-[3/4] animate-pulse bg-stone" />
             ))}
           </div>
         ) : (
-          grouped.map(([cat, items]) => (
-            <div key={cat} className="mb-12 sm:mb-16 last:mb-0">
-              <div className="text-center mb-6 sm:mb-8">
-                <span className="inline-block bg-graphite text-snow text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.1em] px-4 py-1.5 rounded-full">
-                  {cat}
-                </span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-y-10">
-                {items.slice(0, 8).map((p) => (
-                  <Link
-                    key={p.id}
-                    to={`/product/${p.id}`}
-                    className="group flex flex-col items-center gap-3 text-center"
-                  >
-                    <div className="w-28 h-20 sm:w-32 sm:h-24 lg:w-36 lg:h-28 rounded-[50%] overflow-hidden bg-stone shadow-md ring-1 ring-graphite/5 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
-                      {p.images[0] ? (
-                        <img
-                          src={p.images[0].url}
-                          alt={p.name}
-                          loading="lazy"
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-stone" />
-                      )}
-                    </div>
-                    <span className="text-[11px] sm:text-[12px] font-extrabold uppercase tracking-[0.02em] leading-tight max-w-[9rem] group-hover:text-accent2 transition-colors">
-                      {p.name}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))
+          <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {categories.map((c, i) => (
+              <Link
+                key={c.name}
+                to={`/menu#${c.name}`}
+                className="group bento-card aspect-[3/4] relative overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{
+                  transitionDelay: `${i * 80}ms`,
+                  opacity: grid.visible ? 1 : 0,
+                  transform: grid.visible ? 'translateY(0)' : 'translateY(30px)',
+                }}
+              >
+                {c.img ? (
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-stone" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/20 to-transparent" />
+
+                <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all">
+                  <Icon name="ArrowUpRight" size={14} />
+                </div>
+
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 text-snow">
+                  <div className="font-sans text-[15px] sm:text-lg lg:text-xl tracking-tight font-medium leading-tight">
+                    {c.name}
+                  </div>
+                  <div className="text-[11px] sm:text-[12px] text-snow/70 mt-0.5">
+                    {c.count} {c.count === 1 ? 'позиция' : 'позиций'}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         )}
 
         <div className="text-center mt-8 sm:mt-10">
