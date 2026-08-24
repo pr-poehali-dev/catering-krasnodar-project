@@ -81,7 +81,7 @@ const HeroSection = () => {
 
         <div className="container mx-auto relative">
           <div className="animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
-            <div className="bento-card overflow-hidden bg-stone">
+            <div className="bento-card overflow-hidden bg-[#e6e6e4]">
               <div className="grid lg:grid-cols-2">
                 {/* Контент */}
                 <div className="order-2 lg:order-1 p-4 sm:p-6 lg:p-8 xl:p-10 flex flex-col justify-center relative">
