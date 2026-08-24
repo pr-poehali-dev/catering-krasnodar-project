@@ -90,7 +90,7 @@ const HeroSection = () => {
                     Фуршетный мастер · Краснодар
                   </div>
 
-                  <h1 className="font-sans text-[clamp(1.6rem,6vw,3.5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
+                  <h1 className="font-sans text-[clamp(1.6rem,6vw,3.5rem)] lg:text-[2.75rem] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
                     Гастробоксы,
                     <br />
                     в которые&nbsp;
