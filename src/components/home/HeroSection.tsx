@@ -172,7 +172,7 @@ const HeroSection = () => {
       </section>
 
       {/* MARQUEE */}
-      <section className="py-6 sm:py-8 border-y border-graphite/10 bg-snow overflow-hidden">
+      <section className="hidden sm:block py-6 sm:py-8 border-y border-graphite/10 bg-snow overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-8 sm:gap-12 px-4 sm:px-6 text-xl sm:text-2xl lg:text-3xl font-medium tracking-tighter">
