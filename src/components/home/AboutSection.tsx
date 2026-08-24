@@ -71,9 +71,9 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-12 gap-3 sm:gap-4">
           <div className="lg:col-span-5 bento-card overflow-hidden relative min-h-[260px] sm:min-h-[320px] lg:min-h-0">
             <img
-              src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
-              alt="Галина — фуршетный мастер"
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/5881ded0-18cf-4899-ab9c-e36dacd85746.jpg"
+              alt="Кейтеринг Furshet in Box"
+              className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/10 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-snow">
