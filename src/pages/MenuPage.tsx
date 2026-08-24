@@ -199,9 +199,6 @@ const MenuPage = () => {
                           <div className="text-[11px] sm:text-[15px] font-semibold whitespace-nowrap">{p.price} ₽</div>
                         )}
                       </div>
-                      {p.description && (
-                        <p className="hidden sm:block text-[13px] text-graphite/70 mt-2 line-clamp-2 flex-1">{p.description}</p>
-                      )}
                       {p.reviews.length > 0 && (
                         <div className="mt-1.5 sm:mt-3 pt-1.5 sm:pt-3 border-t border-graphite/10 flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[12px] text-ash">
                           <Icon name="Star" size={10} className="text-lime fill-lime sm:hidden" />
