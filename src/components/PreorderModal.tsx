@@ -130,7 +130,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
             </p>
 
             {/* Блок: контакты */}
-            <div className="rounded-3xl bg-stone/60 p-4 sm:p-5">
+            <div className="card-shadow rounded-3xl bg-stone/60 p-4 sm:p-5">
               <div className="text-[12px] sm:text-[11px] uppercase tracking-[0.15em] text-graphite/80 font-bold mb-3 flex items-center gap-1.5">
                 <Icon name="User" size={13} /> Ваши контакты
               </div>
@@ -182,7 +182,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
             </div>
 
             {/* Блок: событие */}
-            <div className="rounded-3xl bg-stone/60 p-4 sm:p-5 mt-3">
+            <div className="card-shadow rounded-3xl bg-stone/60 p-4 sm:p-5 mt-3">
               <div className="text-[12px] sm:text-[11px] uppercase tracking-[0.15em] text-graphite/80 font-bold mb-3 flex items-center gap-1.5">
                 <Icon name="PartyPopper" size={13} /> О торжестве
               </div>

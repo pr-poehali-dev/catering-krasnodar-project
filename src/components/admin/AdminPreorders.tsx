@@ -110,7 +110,7 @@ const AdminPreorders = ({
               </div>
 
               {p.details && (
-                <div className="text-[13px] text-graphite/80 bg-stone rounded-2xl p-3 mb-3 whitespace-pre-line">
+                <div className="card-shadow text-[13px] text-graphite/80 bg-stone rounded-2xl p-3 mb-3 whitespace-pre-line">
                   {p.details}
                 </div>
               )}

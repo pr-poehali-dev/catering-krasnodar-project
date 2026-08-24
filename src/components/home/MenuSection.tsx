@@ -141,7 +141,7 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
         {product.reviews.length > 0 && (
           <div className="mt-4 space-y-2.5">
             {product.reviews.slice(0, open ? undefined : 2).map((r) => (
-              <div key={r.id} className="bg-stone rounded-2xl p-3 text-[13px]">
+              <div key={r.id} className="card-shadow bg-stone rounded-2xl p-3 text-[13px]">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="font-medium">{r.author_name}</span>
                   <span className="text-lime text-[11px]">{'★'.repeat(r.rating)}</span>
@@ -159,7 +159,7 @@ const ProductCard = ({ product, onReviewAdded }: { product: Product; onReviewAdd
         )}
 
         {reviewOpen && (
-          <form onSubmit={submitReview} className="mt-4 space-y-2.5 bg-stone rounded-2xl p-3.5">
+          <form onSubmit={submitReview} className="card-shadow mt-4 space-y-2.5 bg-stone rounded-2xl p-3.5">
             <input
               type="text"
               required

@@ -297,7 +297,7 @@ const ProductPage = () => {
             </div>
 
             {showForm && (
-              <form onSubmit={submitReview} className="bg-stone rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
+              <form onSubmit={submitReview} className="card-shadow bg-stone rounded-2xl p-4 sm:p-5 mb-5 space-y-3">
                 <div className="grid sm:grid-cols-2 gap-3">
                   <input
                     type="text"
@@ -355,7 +355,7 @@ const ProductPage = () => {
             ) : (
               <div className="grid md:grid-cols-2 gap-3">
                 {product.reviews.map((r) => (
-                  <div key={r.id} className="bg-stone rounded-2xl p-4 sm:p-5">
+                  <div key={r.id} className="card-shadow bg-stone rounded-2xl p-4 sm:p-5">
                     <div className="flex items-center justify-between gap-3 mb-2">
                       <div className="flex items-center gap-3 min-w-0">
                         <div className="w-9 h-9 rounded-full bg-lime text-graphite flex items-center justify-center font-semibold text-[14px] shrink-0">
