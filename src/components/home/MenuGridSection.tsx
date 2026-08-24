@@ -62,15 +62,13 @@ const MenuGridSection = () => {
           </h2>
         </div>
 
-        {loading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {[...Array(6)].map((_, i) => (
+        <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          {loading ? (
+            [...Array(6)].map((_, i) => (
               <div key={i} className="bento-card aspect-[3/4] animate-pulse bg-stone" />
-            ))}
-          </div>
-        ) : (
-          <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {categories.map((c, i) => (
+            ))
+          ) : (
+            categories.map((c, i) => (
               <Link
                 key={c.name}
                 to={`/menu#${c.name}`}
@@ -106,9 +104,9 @@ const MenuGridSection = () => {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          )}
+        </div>
 
         <div className="text-center mt-8 sm:mt-10">
           <Link
