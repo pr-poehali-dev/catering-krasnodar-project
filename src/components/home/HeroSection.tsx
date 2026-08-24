@@ -74,7 +74,7 @@ const HeroSection = () => {
       </nav>
 
       {/* HERO — единый блок, sticker-collage стиль */}
-      <section className="relative pt-20 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-6 sm:pt-28 sm:pb-8 lg:pt-32 lg:pb-10 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
         <div className="container mx-auto relative">
@@ -82,8 +82,8 @@ const HeroSection = () => {
             <div className="bento-card overflow-hidden bg-stone">
               <div className="grid lg:grid-cols-2">
                 {/* Контент */}
-                <div className="order-2 lg:order-1 p-6 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative">
-                  <div className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 px-3 py-1.5 rounded-full bg-stone animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
+                <div className="order-2 lg:order-1 p-5 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative">
+                  <div className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-3 sm:mb-5 px-3 py-1.5 rounded-full bg-stone animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
                     <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
                     Фуршетный мастер · Краснодар
                   </div>
@@ -108,11 +108,11 @@ const HeroSection = () => {
                     <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
                   </h1>
 
-                  <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
+                  <p className="mt-3 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
                     Меня зовут <span className="font-semibold text-graphite">Галина</span> — собираю авторские гастробоксы и выездные фуршеты. От мини-сета для двоих до банкета на 100+ гостей. Красиво, вкусно и точно в срок.
                   </p>
 
-                  <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
+                  <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
                     <a
                       href="#menu"
                       className="btn-shadow group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Фото + sticker-бейджи */}
-                <div className="order-1 lg:order-2 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden p-3 sm:p-4">
+                <div className="order-1 lg:order-2 relative aspect-[16/9] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden p-3 sm:p-4">
                   <div className="relative w-full h-full rounded-[1.6rem] overflow-hidden">
                     <img
                       src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/f7c242c7-3207-4c6a-9901-daa28201b26c.jpg"
@@ -158,18 +158,18 @@ const HeroSection = () => {
           </div>
 
           {/* sticker-collage: мини-карточки */}
-          <div className="mt-3 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+          <div className="mt-2 sm:mt-3 grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-3">
             {[
               { icon: 'Leaf', label: 'Всегда свежие продукты', bg: 'bg-lime/20', color: 'text-lime-700', rotate: '-rotate-1' },
               { icon: 'Truck', label: 'Доставка по краю', bg: 'bg-accent2/15', color: 'text-accent2', rotate: 'rotate-1' },
               { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-lime/20', color: 'text-lime-700', rotate: 'rotate-1' },
               { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-accent2/15', color: 'text-accent2', rotate: '-rotate-1' },
             ].map((t, i) => (
-              <div key={i} className={`bento-card p-4 sm:p-5 flex items-center gap-3 transition-transform hover:rotate-0 hover:scale-[1.02] ${t.rotate}`}>
-                <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
-                  <Icon name={t.icon} size={14} className={t.color} />
+              <div key={i} className={`bento-card p-2.5 sm:p-5 flex items-center gap-2 sm:gap-3 transition-transform hover:rotate-0 hover:scale-[1.02] ${t.rotate}`}>
+                <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
+                  <Icon name={t.icon} size={12} className={t.color} />
                 </div>
-                <span className="text-[13px] sm:text-[14px] font-medium leading-tight">{t.label}</span>
+                <span className="text-[11px] sm:text-[14px] font-medium leading-tight">{t.label}</span>
               </div>
             ))}
           </div>
