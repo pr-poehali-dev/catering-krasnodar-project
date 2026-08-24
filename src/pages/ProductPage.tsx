@@ -151,14 +151,14 @@ const ProductPage = () => {
                 <>
                   <button
                     onClick={() => setActive((a) => (a - 1 + images.length) % images.length)}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-snow/90 backdrop-blur shadow-lg flex items-center justify-center hover:bg-snow transition"
+                    className="tap-scale absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-snow/90 backdrop-blur shadow-lg flex items-center justify-center hover:bg-snow transition"
                     aria-label="Назад"
                   >
                     <Icon name="ChevronLeft" size={18} />
                   </button>
                   <button
                     onClick={() => setActive((a) => (a + 1) % images.length)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-snow/90 backdrop-blur shadow-lg flex items-center justify-center hover:bg-snow transition"
+                    className="tap-scale absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-snow/90 backdrop-blur shadow-lg flex items-center justify-center hover:bg-snow transition"
                     aria-label="Вперёд"
                   >
                     <Icon name="ChevronRight" size={18} />
@@ -223,7 +223,7 @@ const ProductPage = () => {
                 <button
                   type="button"
                   onClick={() => setPreorderOpen(true)}
-                  className="btn-shadow group bg-graphite text-snow px-5 py-4 rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                  className="tap-scale btn-shadow group bg-graphite text-snow px-5 py-4 rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                 >
                   <Icon name="ClipboardList" size={16} />
                   Оформить предзаказ
@@ -456,7 +456,7 @@ const ProductPage = () => {
 
       {/* Sticky CTA mobile */}
       <div className="lg:hidden sticky bottom-0 z-40 bg-snow/95 backdrop-blur border-t border-graphite/10 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex gap-2">
-        <a href={PHONE} className="tap-scale w-12 h-12 rounded-2xl border border-graphite/15 flex items-center justify-center shrink-0">
+        <a href={PHONE} className="tap-scale btn-shadow-sm w-12 h-12 rounded-2xl border border-graphite/15 flex items-center justify-center shrink-0">
           <Icon name="Phone" size={16} />
         </a>
         <a

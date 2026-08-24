@@ -44,7 +44,7 @@ const EventPage = () => {
           <button
             type="button"
             onClick={() => setPreorderOpen(true)}
-            className="btn-shadow-sm text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+            className="tap-scale btn-shadow-sm text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
           >
             Заказать
             <Icon name="ArrowUpRight" size={13} />

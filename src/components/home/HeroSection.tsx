@@ -115,7 +115,7 @@ const HeroSection = () => {
                   <div className="mt-3 sm:mt-6 flex flex-col sm:flex-row gap-2 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
                     <a
                       href="#menu"
-                      className="btn-shadow group bg-graphite text-snow px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                      className="tap-scale btn-shadow group bg-graphite text-snow px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                     >
                       Смотреть боксы
                       <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
@@ -125,7 +125,7 @@ const HeroSection = () => {
                     <button
                       type="button"
                       onClick={() => setPreorderOpen(true)}
-                      className="btn-shadow-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
+                      className="tap-scale btn-shadow-sm px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
                     >Оформить предзаказ</button>
                   </div>
                 </div>

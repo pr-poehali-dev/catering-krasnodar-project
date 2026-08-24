@@ -167,7 +167,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
                       type="button"
                       key={m.v}
                       onClick={() => setForm({ ...form, contact_method: m.v })}
-                      className={`px-3 py-3 sm:py-2.5 rounded-xl text-[14px] sm:text-[13px] font-medium border-2 transition inline-flex items-center justify-center gap-1.5 ${
+                      className={`tap-scale px-3 py-3 sm:py-2.5 rounded-xl text-[14px] sm:text-[13px] font-medium border-2 transition inline-flex items-center justify-center gap-1.5 ${
                         form.contact_method === m.v
                           ? 'bg-graphite text-snow border-graphite'
                           : 'bg-snow border-graphite/15 hover:border-graphite/40'
@@ -194,7 +194,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
                     type="button"
                     key={t}
                     onClick={() => setForm({ ...form, event_type: t })}
-                    className={`px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
+                    className={`tap-scale px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
                       form.event_type === t
                         ? 'bg-graphite text-snow border-graphite'
                         : 'bg-snow border-graphite/15 hover:border-graphite/40'
@@ -236,7 +236,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
                       type="button"
                       key={b}
                       onClick={() => setForm({ ...form, budget: b })}
-                      className={`px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
+                      className={`tap-scale px-4 py-2.5 sm:py-2 rounded-full text-[14px] sm:text-[13px] font-medium border-2 transition ${
                         form.budget === b
                           ? 'bg-lime text-graphite border-lime'
                           : 'bg-snow border-graphite/15 hover:border-graphite/40'

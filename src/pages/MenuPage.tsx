@@ -106,7 +106,7 @@ const MenuPage = () => {
               <button
                 key={c.name}
                 onClick={() => setActiveCat(c.name)}
-                className={`px-4 py-2 rounded-full text-[13px] font-medium border whitespace-nowrap shrink-0 transition inline-flex items-center gap-1.5 ${
+                className={`tap-scale px-4 py-2.5 sm:py-2 rounded-full text-[13px] font-medium border whitespace-nowrap shrink-0 transition inline-flex items-center gap-1.5 ${
                   activeCat === c.name
                     ? 'bg-graphite text-snow border-graphite'
                     : 'bg-snow border-graphite/15 hover:border-graphite/40'
@@ -162,7 +162,7 @@ const MenuPage = () => {
                   <Link
                     key={p.id}
                     to={`/product/${p.id}`}
-                    className="bento-card group bg-snow overflow-hidden flex flex-col"
+                    className="tap-scale bento-card group bg-snow overflow-hidden flex flex-col"
                   >
                     <div className="aspect-[4/3] bg-stone relative overflow-hidden">
                       {p.images[0] ? (
