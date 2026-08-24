@@ -77,8 +77,6 @@ const HeroSection = () => {
 
       {/* HERO — единый блок, sticker-collage стиль */}
       <section className="relative sm:pt-28 sm:pb-8 lg:pt-20 lg:pb-10 overflow-hidden pt-[68px] pb-[65px]">
-        <div className="absolute inset-0 gradient-mesh pointer-events-none" />
-
         <div className="container mx-auto relative">
           <div className="animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
             <div className="bento-card overflow-hidden bg-[#e6e6e4]">

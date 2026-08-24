@@ -58,32 +58,8 @@
     text-rendering: optimizeLegibility;
     overscroll-behavior-y: contain;
     -webkit-tap-highlight-color: transparent;
-    background-color: #fcfcfa;
-    background-image:
-      radial-gradient(at 15% 0%, rgba(212, 245, 66, 0.09) 0px, transparent 55%),
-      radial-gradient(at 85% 15%, rgba(255, 92, 43, 0.06) 0px, transparent 50%),
-      radial-gradient(at 10% 60%, rgba(255, 92, 43, 0.04) 0px, transparent 45%),
-      radial-gradient(
-        at 90% 90%,
-        rgba(212, 245, 66, 0.07) 0px,
-        transparent 50%
-      ),
-      linear-gradient(180deg, #fefefc 0%, #fdfdfb 40%, #fbfbf9 100%);
-    background-attachment: fixed;
+    background-color: #ffffff;
     position: relative;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image: url("./assets/catering-pattern.png");
-    background-size: 420px 420px;
-    background-repeat: repeat;
-    opacity: 0.05;
-    mix-blend-mode: multiply;
   }
 
   #root {
@@ -180,8 +156,16 @@
   }
 
   .bento-card {
-    @apply relative overflow-hidden rounded-3xl border bg-card transition-all duration-500;
+    @apply relative overflow-hidden rounded-3xl border transition-all duration-500;
     border-color: rgba(0, 0, 0, 0.06);
+    background-image:
+      radial-gradient(at 10% 0%, rgba(212, 245, 66, 0.1) 0px, transparent 55%),
+      radial-gradient(
+        at 100% 100%,
+        rgba(255, 92, 43, 0.07) 0px,
+        transparent 55%
+      );
+    background-color: #ffffff;
     box-shadow:
       0 1px 2px rgba(10, 10, 10, 0.04),
       0 6px 20px rgba(10, 10, 10, 0.06);
