@@ -103,7 +103,7 @@ const EventPage = () => {
       </section>
 
       {/* CONTENT */}
-      <section className="pb-24 lg:pb-32">
+      <section className="pb-12 lg:pb-16">
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-3 lg:gap-5">
             {/* About */}

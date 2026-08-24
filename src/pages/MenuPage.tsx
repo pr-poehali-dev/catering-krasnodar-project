@@ -48,7 +48,7 @@ const MenuPage = () => {
   }, [products, activeCat, search]);
 
   return (
-    <div className="min-h-screen pb-24 md:pb-0">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10 safe-top">
         <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">

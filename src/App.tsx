@@ -10,7 +10,6 @@ import Admin from "./pages/Admin";
 import ProductPage from "./pages/ProductPage";
 import MenuPage from "./pages/MenuPage";
 import NotFound from "./pages/NotFound";
-import MobileTabBar from "@/components/MobileTabBar";
 import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
 
 const queryClient = new QueryClient();
@@ -29,7 +28,6 @@ const AppRoutes = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <MobileTabBar />
     </>
   );
 };

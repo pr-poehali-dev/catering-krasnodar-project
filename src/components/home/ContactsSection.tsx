@@ -5,7 +5,7 @@ const ContactsSection = () => {
   return (
     <>
       {/* FOOTER */}
-      <footer id="contacts" className="border-t border-graphite/10 py-10 pb-28 md:pb-10 scroll-mt-24">
+      <footer id="contacts" className="border-t border-graphite/10 py-10 scroll-mt-24">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-[13px] text-ash">
             <Logo size="md" to="/" showTagline />
