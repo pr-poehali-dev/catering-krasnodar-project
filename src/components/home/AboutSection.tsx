@@ -93,7 +93,7 @@ const AboutSection = () => {
             {PRINCIPLES.map((p, i) => (
               <div
                 key={p.title}
-                className="bento-card bg-snow p-3 sm:p-6 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                className="bento-card bg-snow border-2 border-graphite/15 p-3 sm:p-6 transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                 style={{
                   transitionDelay: `${i * 100}ms`,
                   opacity: grid.visible ? 1 : 0,
