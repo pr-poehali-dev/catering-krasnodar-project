@@ -104,7 +104,7 @@ const HeroSection = () => {
 
                   <div className="mt-3 sm:mt-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <a
-                      href="#menu"
+                      href="/menu"
                       className="tap-scale btn-shadow group bg-graphite text-snow px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-[13px] sm:text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
                     >
                       Смотреть боксы
