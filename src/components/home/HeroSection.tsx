@@ -108,7 +108,7 @@ const HeroSection = () => {
                     <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
                   </h1>
 
-                  <p className="mt-2 sm:mt-4 text-[13px] sm:text-[15px] lg:text-base text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
+                  <p className="mt-2 sm:mt-4 text-[16px] sm:text-[19px] lg:text-[21px] text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0 font-serif italic" style={{ animationDelay: '0.7s' }}>
                     Меня зовут <span className="font-semibold text-graphite">Галина</span> — собираю авторские гастробоксы и выездные фуршеты. От мини-сета для двоих до банкета на 100+ гостей. Красиво, вкусно и точно в срок.
                   </p>
 
