@@ -162,10 +162,10 @@ const HeroSection = () => {
       </section>
 
       {/* MARQUEE */}
-      <section className="hidden sm:block py-6 sm:py-8 border-y border-graphite/10 bg-snow overflow-hidden">
+      <section className="hidden sm:block py-4 sm:py-5 border-y border-graphite/10 bg-snow overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
-            <div key={i} className="flex items-center gap-8 sm:gap-12 px-4 sm:px-6 text-xl sm:text-2xl lg:text-3xl font-medium tracking-tighter">
+            <div key={i} className="flex items-center gap-6 sm:gap-8 px-3 sm:px-4 text-base sm:text-lg lg:text-xl font-medium tracking-tighter">
               <span>Свадьбы</span>
               <span className="text-lime">●</span>
               <span className="font-serif italic text-ash">Корпоративы</span>
