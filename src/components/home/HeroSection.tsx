@@ -21,6 +21,7 @@ const HeroSection = () => {
             {[
               { l: 'Меню', h: '/menu' },
               { l: 'События', h: '#events' },
+              { l: 'О нас', h: '#about' },
               { l: 'Как заказать', h: '#how-to-order' },
               { l: 'Отзывы', h: '#reviews' },
               { l: 'Вопрос-ответ', h: '#faq' },
@@ -53,6 +54,7 @@ const HeroSection = () => {
             {[
               { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
               { l: 'События', h: '#events', icon: 'PartyPopper' },
+              { l: 'О нас', h: '#about', icon: 'Heart' },
               { l: 'Как заказать', h: '#how-to-order', icon: 'ClipboardList' },
               { l: 'Отзывы', h: '#reviews', icon: 'Star' },
               { l: 'Вопрос-ответ', h: '#faq', icon: 'MessageCircleQuestion' },
