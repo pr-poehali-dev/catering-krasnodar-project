@@ -3,8 +3,6 @@ import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
 import PreorderModal from '@/components/PreorderModal';
 
-const GALINA_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/36795b0f-4957-461e-ae4a-b8d8c106b9ed.jpg';
-
 const HeroSection = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [preorderOpen, setPreorderOpen] = useState(false);
@@ -85,19 +83,11 @@ const HeroSection = () => {
               {/* Фото Галины */}
               <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden">
                 <img
-                  src={GALINA_IMG}
-                  alt="Галина — фуршетный мастер"
+                  src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/9c31a504-3262-43a2-8bfd-48dd4de999cf.jpg"
+                  alt="Иллюстрация кейтеринга"
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
-
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden ring-2 ring-snow/70 shadow-lg bg-snow">
-                  <img
-                    src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/524c636a-59b8-4909-81dc-0297f4e79c29.jpg"
-                    alt="Иллюстрация кейтеринга"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
               </div>
 
               {/* Контент */}
