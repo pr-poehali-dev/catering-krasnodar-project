@@ -73,99 +73,99 @@ const HeroSection = () => {
         )}
       </nav>
 
-      {/* HERO — единый блок */}
+      {/* HERO — единый блок, sticker-collage стиль */}
       <section className="relative pt-20 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
         <div className="container mx-auto relative">
-          <div className="bento-card overflow-hidden bg-stone animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
-            <div className="grid lg:grid-cols-2">
-              {/* Фото Галины */}
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden">
-                <img
-                  src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/9c31a504-3262-43a2-8bfd-48dd4de999cf.jpg"
-                  alt="Иллюстрация кейтеринга"
-                  className="absolute inset-0 w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
-              </div>
+          <div className="rounded-[2rem] border-2 border-dashed border-graphite/15 p-2 sm:p-3 animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
+            <div className="bento-card overflow-hidden bg-stone">
+              <div className="grid lg:grid-cols-2">
+                {/* Контент */}
+                <div className="order-2 lg:order-1 p-6 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative">
+                  <div className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 px-3 py-1.5 rounded-full border border-dashed border-graphite/20 animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
+                    Фуршетный мастер · Краснодар
+                  </div>
 
-              {/* Контент */}
-              <div className="p-6 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center">
-                <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
-                  <span className="w-6 h-px bg-ash" />
-                  Фуршетный мастер · Краснодар
+                  <h1 className="font-sans text-[clamp(2rem,8vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
+                    <span className="inline-block overflow-hidden align-bottom">
+                      <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.2s' }}>
+                        Гастробоксы,
+                      </span>
+                    </span>
+                    <br />
+                    <span className="inline-block overflow-hidden align-bottom">
+                      <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.35s' }}>
+                        в которые&nbsp;
+                      </span>
+                    </span>
+                    <span className="inline-block overflow-hidden align-bottom">
+                      <span className="inline-block font-serif italic font-normal animate-reveal-up opacity-0" style={{ animationDelay: '0.5s' }}>
+                        влюбляются
+                      </span>
+                    </span>
+                    <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
+                  </h1>
+
+                  <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
+                    Меня зовут <span className="font-semibold text-graphite">Галина</span> — собираю авторские гастробоксы и выездные фуршеты. От мини-сета для двоих до банкета на 100+ гостей. Красиво, вкусно и точно в срок.
+                  </p>
+
+                  <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
+                    <a
+                      href="#menu"
+                      className="btn-shadow group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
+                    >
+                      Смотреть боксы
+                      <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
+                        <Icon name="ArrowRight" size={11} className="text-graphite" />
+                      </span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setPreorderOpen(true)}
+                      className="btn-shadow-sm px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
+                    >Оформить предзаказ</button>
+                  </div>
                 </div>
 
-                <h1 className="font-sans text-[clamp(2rem,8vw,5rem)] leading-[0.95] tracking-tightest font-medium text-balance text-graphite">
-                  <span className="inline-block overflow-hidden align-bottom">
-                    <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.2s' }}>
-                      Гастробоксы,
-                    </span>
-                  </span>
-                  <br />
-                  <span className="inline-block overflow-hidden align-bottom">
-                    <span className="inline-block animate-reveal-up opacity-0" style={{ animationDelay: '0.35s' }}>
-                      в которые&nbsp;
-                    </span>
-                  </span>
-                  <span className="inline-block overflow-hidden align-bottom">
-                    <span className="inline-block font-serif italic font-normal animate-reveal-up opacity-0" style={{ animationDelay: '0.5s' }}>
-                      влюбляются
-                    </span>
-                  </span>
-                  <span className="inline-block ml-2 align-middle w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-accent2 animate-pulse-glow" />
-                </h1>
-
-                <p className="mt-5 sm:mt-6 text-[15px] sm:text-base lg:text-lg text-graphite/75 leading-relaxed max-w-md animate-reveal-blur opacity-0" style={{ animationDelay: '0.7s' }}>
-                  Меня зовут <span className="font-semibold text-graphite">Галина</span> — собираю авторские гастробоксы и выездные фуршеты. От мини-сета для двоих до банкета на 100+ гостей. Красиво, вкусно и точно в срок.
-                </p>
-
-                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 animate-reveal-up opacity-0" style={{ animationDelay: '0.9s' }}>
-                  <a
-                    href="#menu"
-                    className="btn-shadow group bg-graphite text-snow px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium inline-flex items-center justify-center gap-2 hover:bg-graphite/85 transition"
-                  >
-                    Смотреть боксы
-                    <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center group-hover:rotate-45 transition">
-                      <Icon name="ArrowRight" size={11} className="text-graphite" />
-                    </span>
-                  </a>
-                  <button
-                    type="button"
-                    onClick={() => setPreorderOpen(true)}
-                    className="btn-shadow-sm px-5 sm:px-6 py-3.5 rounded-full text-[14px] font-medium border border-graphite/20 bg-snow text-graphite hover:bg-graphite hover:text-snow hover:border-graphite transition inline-flex items-center justify-center gap-2"
-                  >Оформить предзаказ</button>
-                </div>
-
-                {/* Mini-stats */}
-                <div className="mt-7 sm:mt-9 pt-6 border-t border-graphite/10 grid grid-cols-3 gap-3 sm:gap-4 animate-reveal-up opacity-0" style={{ animationDelay: '1.1s' }}>
-                  <div>
-                    <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">100+</div>
-                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">довольных гостей</div>
+                {/* Фото + sticker-бейджи */}
+                <div className="order-1 lg:order-2 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden p-3 sm:p-4">
+                  <div className="relative w-full h-full rounded-[1.6rem] overflow-hidden">
+                    <img
+                      src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/files/9c31a504-3262-43a2-8bfd-48dd4de999cf.jpg"
+                      alt="Иллюстрация кейтеринга"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
                   </div>
-                  <div>
-                    <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">4.9 ★</div>
-                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">320+ отзывов</div>
+
+                  {/* sticker: рейтинг */}
+                  <div className="btn-shadow absolute top-6 right-6 sm:top-8 sm:right-8 bg-snow rounded-2xl px-3 py-2 flex items-center gap-1.5 rotate-[-4deg]">
+                    <Icon name="Star" size={14} className="fill-lime text-lime" />
+                    <span className="text-[13px] font-semibold text-graphite">4.9</span>
                   </div>
-                  <div>
-                    <div className="font-sans text-xl sm:text-2xl tracking-tighter font-medium">15 мин</div>
-                    <div className="text-[11px] sm:text-[12px] text-ash mt-0.5">отвечу лично</div>
+
+                  {/* sticker: гости */}
+                  <div className="btn-shadow absolute bottom-7 left-6 sm:bottom-9 sm:left-8 bg-graphite text-snow rounded-2xl px-3.5 py-2.5 rotate-[3deg]">
+                    <div className="text-[15px] font-semibold leading-none">100+</div>
+                    <div className="text-[10px] text-snow/70 mt-0.5">гостей довольны</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* trust strip */}
+          {/* sticker-collage: мини-карточки */}
           <div className="mt-3 grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
             {[
-              { icon: 'Leaf', label: 'Всегда свежие продукты', bg: 'bg-lime/20', color: 'text-lime-700' },
-              { icon: 'Truck', label: 'Доставка по краю', bg: 'bg-stone', color: 'text-graphite' },
-              { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-stone', color: 'text-graphite' },
-              { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-stone', color: 'text-graphite' },
+              { icon: 'Leaf', label: 'Всегда свежие продукты', bg: 'bg-lime/20', color: 'text-lime-700', rotate: '-rotate-1' },
+              { icon: 'Truck', label: 'Доставка по краю', bg: 'bg-accent2/15', color: 'text-accent2', rotate: 'rotate-1' },
+              { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-lime/20', color: 'text-lime-700', rotate: 'rotate-1' },
+              { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-accent2/15', color: 'text-accent2', rotate: '-rotate-1' },
             ].map((t, i) => (
-              <div key={i} className="bento-card p-4 sm:p-5 flex items-center gap-3">
+              <div key={i} className={`bento-card p-4 sm:p-5 flex items-center gap-3 transition-transform hover:rotate-0 hover:scale-[1.02] ${t.rotate}`}>
                 <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
                   <Icon name={t.icon} size={14} className={t.color} />
                 </div>
