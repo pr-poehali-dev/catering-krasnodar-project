@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
+import PreorderModal from '@/components/PreorderModal';
+import ContactsSection from '@/components/home/ContactsSection';
 import { Product, fetchProducts } from '@/lib/api';
 
 const MAX_LINK = 'https://max.ru/join/IXMk3u0BPhokEDCdyrtOZn591m-jXLVNcrU02S-hkxo';
@@ -11,6 +13,8 @@ const MenuPage = () => {
   const [loading, setLoading] = useState(true);
   const [activeCat, setActiveCat] = useState<string>('Все');
   const [search, setSearch] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [preorderOpen, setPreorderOpen] = useState(false);
 
   useEffect(() => {
     fetchProducts()
@@ -49,30 +53,72 @@ const MenuPage = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10 safe-top">
-        <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">
-          <Link to="/" className="tap-scale flex items-center gap-2 text-[13px] hover:opacity-70 transition">
-            <span className="w-9 h-9 sm:w-auto sm:h-auto rounded-full bg-graphite/5 sm:bg-transparent flex items-center justify-center">
-              <Icon name="ArrowLeft" size={16} />
-            </span>
-            <span className="hidden sm:inline">На главную</span>
-          </Link>
-          <Logo size="sm" to="/" />
-          <a
-            href={MAX_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-shadow-sm text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
-          >
-            <span className="w-4 h-4 rounded-sm bg-lime text-graphite text-[9px] font-bold flex items-center justify-center"></span>
-            <span className="hidden sm:inline">Заказать</span>
-          </a>
+      {/* NAV — как на главной */}
+      <nav className="fixed top-0 inset-x-0 z-50 md:top-3 md:left-1/2 md:-translate-x-1/2 md:inset-x-auto md:w-[calc(100%-1.5rem)] md:max-w-5xl">
+        <div className="glass border-b md:border border-graphite/10 md:rounded-full pl-3 pr-2 py-2.5 md:py-1.5 md:pl-2 md:pr-2 flex items-center justify-between md:shadow-sm safe-top">
+          <div className="pl-1 md:pl-2">
+            <Logo size="sm" to="/" />
+          </div>
+          <div className="hidden md:flex items-center gap-1 text-[13px]">
+            {[
+              { l: 'Меню', h: '/menu' },
+              { l: 'События', h: '/#events' },
+              { l: 'О нас', h: '/#about' },
+              { l: 'Как заказать', h: '/#how-to-order' },
+              { l: 'Отзывы', h: '/#reviews' },
+              { l: 'Вопрос-ответ', h: '/#faq' },
+            ].map((i) => (
+              <a key={i.h} href={i.h} className="px-3 py-1.5 rounded-full hover:bg-graphite/5 transition">
+                {i.l}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setPreorderOpen(true)}
+              className="hidden md:inline-flex btn-shadow-sm text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition items-center gap-1.5"
+            >
+              Заказать
+              <Icon name="ArrowUpRight" size={13} />
+            </button>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="tap-scale md:hidden w-9 h-9 rounded-full bg-graphite/5 flex items-center justify-center"
+              aria-label="Меню"
+            >
+              <Icon name={menuOpen ? 'X' : 'Menu'} size={17} />
+            </button>
+          </div>
         </div>
-      </header>
+        {menuOpen && (
+          <div className="md:hidden bg-snow border-b border-graphite/10 shadow-lg p-3 animate-in fade-in slide-in-from-top-2 duration-200">
+            {[
+              { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
+              { l: 'События', h: '/#events', icon: 'PartyPopper' },
+              { l: 'О нас', h: '/#about', icon: 'Heart' },
+              { l: 'Как заказать', h: '/#how-to-order', icon: 'ClipboardList' },
+              { l: 'Отзывы', h: '/#reviews', icon: 'Star' },
+              { l: 'Вопрос-ответ', h: '/#faq', icon: 'MessageCircleQuestion' },
+            ].map((i) => (
+              <a
+                key={i.h}
+                href={i.h}
+                onClick={() => setMenuOpen(false)}
+                className="tap-scale flex items-center gap-3 px-3 py-3.5 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
+              >
+                <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
+                  <Icon name={i.icon} size={16} />
+                </span>
+                {i.l}
+              </a>
+            ))}
+          </div>
+        )}
+      </nav>
 
       {/* Hero */}
-      <section className="py-10 sm:py-14 lg:py-20 border-b border-graphite/10 relative overflow-hidden">
+      <section className="pt-app-header pb-8 sm:pb-14 lg:pb-20 border-b border-graphite/10 relative overflow-hidden">
         <div className="absolute -top-32 -right-20 w-96 h-96 bg-lime/20 rounded-full blur-[120px] pointer-events-none" />
         <div className="container mx-auto relative">
           <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4">
@@ -99,7 +145,7 @@ const MenuPage = () => {
       </section>
 
       {/* Categories sticky bar */}
-      <div className="sticky top-[57px] sm:top-[65px] z-30 bg-stone/95 backdrop-blur border-b border-graphite/10">
+      <div className="sticky top-0 z-30 bg-stone/95 backdrop-blur border-b border-graphite/10">
         <div className="container mx-auto py-3">
           <div className="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((c) => (
@@ -252,6 +298,10 @@ const MenuPage = () => {
           </a>
         </div>
       </section>
+
+      <ContactsSection />
+
+      <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
     </div>
   );
 };
