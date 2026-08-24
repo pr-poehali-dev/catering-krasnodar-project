@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product, fetchProducts } from '@/lib/api';
 import { useReveal } from '@/hooks/use-reveal';
+import cateringPattern from '@/assets/catering-pattern.png';
 
 const CATEGORY_ORDER = ['Бранчи', 'Тарталетки', 'Ассорти боксы', 'Брускетты', 'Детское меню'];
 const EXCLUDED_CATEGORIES = ['Канапе'];
@@ -44,8 +45,16 @@ const MenuGridSection = () => {
   if (!loading && categories.length === 0) return null;
 
   return (
-    <section className="pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 border-t border-graphite/10 relative scroll-mt-24">
-      <div className="container mx-auto">
+    <section className="pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 border-t border-graphite/10 relative overflow-hidden scroll-mt-24">
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        style={{
+          backgroundImage: `url(${cateringPattern})`,
+          backgroundSize: '380px 380px',
+          backgroundRepeat: 'repeat',
+        }}
+      />
+      <div className="container mx-auto relative">
         <div
           ref={head.ref as never}
           className={`text-center mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
