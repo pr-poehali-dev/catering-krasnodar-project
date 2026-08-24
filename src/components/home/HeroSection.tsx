@@ -83,7 +83,7 @@ const HeroSection = () => {
               <div className="grid lg:grid-cols-2">
                 {/* Контент */}
                 <div className="order-2 lg:order-1 p-4 sm:p-6 lg:p-8 xl:p-10 flex flex-col justify-center relative">
-                  <div className="inline-flex w-fit items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-ash mb-2 sm:mb-4 px-2.5 py-1 rounded-full bg-stone animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
+                  <div className="inline-flex w-fit items-center gap-1.5 text-[9px] uppercase tracking-[0.2em] text-ash mb-2 sm:mb-4 px-2 py-0.5 rounded-full bg-stone animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
                     <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
                     Фуршетный мастер · Краснодар
                   </div>
