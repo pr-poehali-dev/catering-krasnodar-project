@@ -51,13 +51,44 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overscroll-behavior-y: contain;
     -webkit-tap-highlight-color: transparent;
+    background-color: #fafafa;
+    background-image:
+      radial-gradient(at 15% 0%, rgba(212, 245, 66, 0.16) 0px, transparent 55%),
+      radial-gradient(at 85% 15%, rgba(255, 92, 43, 0.12) 0px, transparent 50%),
+      radial-gradient(at 10% 60%, rgba(255, 92, 43, 0.08) 0px, transparent 45%),
+      radial-gradient(
+        at 90% 90%,
+        rgba(212, 245, 66, 0.14) 0px,
+        transparent 50%
+      ),
+      linear-gradient(180deg, #fdfdf9 0%, #fafaf6 40%, #f7f6f1 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("./assets/catering-pattern.png");
+    background-size: 420px 420px;
+    background-repeat: repeat;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
   }
 
   h1,

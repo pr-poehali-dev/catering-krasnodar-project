@@ -88,7 +88,7 @@ const ProductPage = () => {
   const orderText = encodeURIComponent(`Здравствуйте, Галина! Хочу заказать «${product.name}».`);
 
   return (
-    <div className="min-h-screen bg-stone">
+    <div className="min-h-screen">
       {/* Top bar */}
       <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10 safe-top">
         <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">

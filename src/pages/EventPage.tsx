@@ -27,7 +27,7 @@ const EventPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-snow text-graphite">
+    <div className="min-h-screen text-graphite">
       {/* NAV */}
       <nav className="fixed top-0 inset-x-0 z-50 md:top-4 md:left-1/2 md:-translate-x-1/2 md:inset-x-auto md:w-[calc(100%-2rem)] md:max-w-5xl">
         <div className="glass border-b md:border border-graphite/10 md:rounded-full px-3 py-2 flex items-center justify-between md:shadow-sm safe-top">
