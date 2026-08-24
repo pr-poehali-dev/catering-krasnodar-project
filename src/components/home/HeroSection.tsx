@@ -161,7 +161,7 @@ const HeroSection = () => {
           <div className="mt-2 sm:mt-3 grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-3">
             {[
               { icon: 'Leaf', label: 'Всегда свежие продукты', bg: 'bg-lime/20', color: 'text-lime-700', rotate: '-rotate-1' },
-              { icon: 'Truck', label: 'Доставка по краю', bg: 'bg-accent2/15', color: 'text-accent2', rotate: 'rotate-1' },
+              { icon: 'Truck', label: 'Доставка по Краснодару', bg: 'bg-accent2/15', color: 'text-accent2', rotate: 'rotate-1' },
               { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-lime/20', color: 'text-lime-700', rotate: 'rotate-1' },
               { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-accent2/15', color: 'text-accent2', rotate: '-rotate-1' },
             ].map((t, i) => (
