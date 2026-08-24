@@ -29,9 +29,12 @@ const EventPage = () => {
   return (
     <div className="min-h-screen bg-snow text-graphite">
       {/* NAV */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
-        <div className="glass border border-graphite/10 rounded-full px-3 py-2 flex items-center justify-between shadow-sm">
-          <div className="pl-3">
+      <nav className="fixed top-0 inset-x-0 z-50 md:top-4 md:left-1/2 md:-translate-x-1/2 md:inset-x-auto md:w-[calc(100%-2rem)] md:max-w-5xl">
+        <div className="glass border-b md:border border-graphite/10 md:rounded-full px-3 py-2 flex items-center justify-between md:shadow-sm safe-top">
+          <Link to="/" className="tap-scale w-9 h-9 md:hidden rounded-full bg-graphite/5 flex items-center justify-center">
+            <Icon name="ArrowLeft" size={16} />
+          </Link>
+          <div className="hidden md:block pl-3">
             <Logo size="sm" to="/" />
           </div>
           <Link to="/#events" className="hidden md:inline-flex text-[13px] text-graphite/80 hover:text-graphite transition items-center gap-1.5">
@@ -50,7 +53,7 @@ const EventPage = () => {
       </nav>
 
       {/* HERO */}
-      <section className="pt-28 lg:pt-32 pb-8 relative">
+      <section className="pt-app-header pb-8 relative">
         <div className="container mx-auto">
           <Link to="/#events" className="inline-flex items-center gap-2 text-[13px] text-ash hover:text-graphite transition mb-6">
             <Icon name="ArrowLeft" size={14} />
@@ -260,7 +263,7 @@ const EventPage = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-graphite/10 py-10">
+      <footer className="border-t border-graphite/10 py-10 pb-28 md:pb-10">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-[13px] text-ash">
             <Logo size="md" to="/" />

@@ -15,11 +15,12 @@ type TabLinkProps = {
 const TabLink = ({ to, icon, label, active }: TabLinkProps) => (
   <Link
     to={to}
-    className="flex flex-col items-center justify-center gap-1 py-1.5 rounded-2xl transition"
+    className="tap-scale relative flex flex-col items-center justify-center gap-1 py-1.5 rounded-2xl transition"
   >
-    <Icon name={icon} size={20} className={active ? 'text-graphite' : 'text-ash'} />
-    <span className={`text-[10px] font-medium ${active ? 'text-graphite' : 'text-ash'}`}>{label}</span>
-    <span className={`w-1 h-1 rounded-full transition ${active ? 'bg-lime' : 'bg-transparent'}`} />
+    <div className={`relative flex items-center justify-center w-9 h-9 rounded-full transition-colors ${active ? 'bg-graphite/8' : ''}`}>
+      <Icon name={icon} size={20} className={active ? 'text-graphite' : 'text-ash'} />
+    </div>
+    <span className={`text-[10px] font-medium leading-none transition-colors ${active ? 'text-graphite' : 'text-ash'}`}>{label}</span>
   </Link>
 );
 
@@ -29,36 +30,34 @@ const MobileTabBar = () => {
 
   if (HIDDEN_PREFIXES.some((p) => location.pathname.startsWith(p))) return null;
 
-  const isActive = (to: string) => {
-    if (to === '/') return location.pathname === '/' && !location.hash;
-    if (to.startsWith('/#')) return location.pathname === '/' && location.hash === to.slice(1);
-    return location.pathname === to;
-  };
+  const isHome = location.pathname === '/' && !location.hash;
+  const isMenu = location.pathname === '/menu' || location.pathname.startsWith('/events');
+  const isContacts = location.pathname === '/' && location.hash === '#contacts';
 
   return (
     <>
       <nav
         className="md:hidden fixed bottom-0 inset-x-0 z-50"
-        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
+        style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
       >
-        <div className="relative mx-3">
-          <div className="glass border border-graphite/10 rounded-[28px] shadow-lg px-2 py-2 grid grid-cols-4 items-end gap-1">
-            <TabLink to="/" icon="Home" label="Главная" active={isActive('/')} />
-            <TabLink to="/menu" icon="UtensilsCrossed" label="Меню" active={isActive('/menu')} />
+        <div className="mx-3">
+          <div className="glass border border-graphite/10 rounded-[28px] shadow-lg px-2 pt-2 pb-1.5 grid grid-cols-4 items-end gap-1">
+            <TabLink to="/" icon="Home" label="Главная" active={isHome} />
+            <TabLink to="/menu" icon="UtensilsCrossed" label="Меню" active={isMenu} />
 
-            <div className="flex flex-col items-center justify-end gap-1 py-1.5">
+            <div className="flex flex-col items-center justify-end gap-1 py-1">
               <button
                 type="button"
                 onClick={() => setPreorderOpen(true)}
-                className="btn-shadow w-14 h-14 -mt-8 rounded-full bg-graphite text-snow flex items-center justify-center ring-4 ring-snow active:scale-95 transition"
+                className="btn-shadow tap-scale w-14 h-14 -mt-7 rounded-full bg-graphite text-snow flex items-center justify-center ring-4 ring-snow"
                 aria-label="Оформить предзаказ"
               >
                 <Icon name="ShoppingBag" size={22} />
               </button>
-              <span className="text-[10px] font-medium text-ash">Заказ</span>
+              <span className="text-[10px] font-medium text-ash leading-none">Заказ</span>
             </div>
 
-            <TabLink to="/#contacts" icon="MessageCircle" label="Контакты" active={isActive('/#contacts')} />
+            <TabLink to="/#contacts" icon="MessageCircle" label="Контакты" active={isContacts} />
           </div>
         </div>
       </nav>

@@ -11,10 +11,12 @@ const HeroSection = () => {
 
   return (
     <>
-      {/* NAV */}
-      <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] max-w-5xl">
-        <div className="glass border border-graphite/10 rounded-full pl-2 pr-2 py-2 flex items-center justify-between shadow-sm">
-          <div className="pl-2">
+      {/* NAV — mobile: app-style full-width bar / desktop: floating pill */}
+      <nav className="fixed top-0 inset-x-0 z-50 md:top-3 md:left-1/2 md:-translate-x-1/2 md:inset-x-auto md:w-[calc(100%-1.5rem)] md:max-w-5xl">
+        <div
+          className="glass border-b md:border border-graphite/10 md:rounded-full pl-3 pr-2 py-2 md:pl-2 md:pr-2 flex items-center justify-between md:shadow-sm safe-top"
+        >
+          <div className="pl-1 md:pl-2">
             <Logo size="sm" to="/" />
           </div>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
@@ -34,35 +36,38 @@ const HeroSection = () => {
             <button
               type="button"
               onClick={() => setPreorderOpen(true)}
-              className="btn-shadow-sm text-[12px] sm:text-[13px] bg-graphite text-snow px-3 sm:px-4 py-2 rounded-full hover:bg-graphite/85 transition inline-flex items-center gap-1.5"
+              className="hidden md:inline-flex btn-shadow-sm text-[13px] bg-graphite text-snow px-4 py-2 rounded-full hover:bg-graphite/85 transition items-center gap-1.5"
             >
               Заказать
               <Icon name="ArrowUpRight" size={13} />
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center"
+              className="tap-scale md:hidden w-9 h-9 rounded-full bg-graphite/5 flex items-center justify-center"
               aria-label="Меню"
             >
-              <Icon name={menuOpen ? 'X' : 'Menu'} size={16} />
+              <Icon name={menuOpen ? 'X' : 'Menu'} size={17} />
             </button>
           </div>
         </div>
         {menuOpen && (
-          <div className="md:hidden mt-2 glass border border-graphite/10 rounded-3xl p-3 shadow-sm">
+          <div className="md:hidden bg-snow border-b border-graphite/10 shadow-lg p-3 animate-in fade-in slide-in-from-top-2 duration-200">
             {[
-              { l: 'Меню', h: '/menu' },
-              { l: 'События', h: '#events' },
-              { l: 'Как заказать', h: '#how-to-order' },
-              { l: 'Отзывы', h: '#reviews' },
-              { l: 'Вопрос-ответ', h: '#faq' },
+              { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
+              { l: 'События', h: '#events', icon: 'PartyPopper' },
+              { l: 'Как заказать', h: '#how-to-order', icon: 'ClipboardList' },
+              { l: 'Отзывы', h: '#reviews', icon: 'Star' },
+              { l: 'Вопрос-ответ', h: '#faq', icon: 'MessageCircleQuestion' },
             ].map((i) => (
               <a
                 key={i.h}
                 href={i.h}
                 onClick={() => setMenuOpen(false)}
-                className="block px-4 py-3 text-[14px] rounded-2xl hover:bg-graphite/5 transition"
+                className="tap-scale flex items-center gap-3 px-3 py-3.5 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
               >
+                <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
+                  <Icon name={i.icon} size={16} />
+                </span>
                 {i.l}
               </a>
             ))}
@@ -71,7 +76,7 @@ const HeroSection = () => {
       </nav>
 
       {/* HERO — единый блок */}
-      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 overflow-hidden">
         <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
         <div className="container mx-auto relative">

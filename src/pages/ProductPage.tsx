@@ -90,10 +90,12 @@ const ProductPage = () => {
   return (
     <div className="min-h-screen bg-stone">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10">
+      <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10 safe-top">
         <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">
-          <Link to="/menu" className="flex items-center gap-2 text-[13px] hover:opacity-70 transition">
-            <Icon name="ArrowLeft" size={16} />
+          <Link to="/menu" className="tap-scale flex items-center gap-2 text-[13px] hover:opacity-70 transition">
+            <span className="w-9 h-9 sm:w-auto sm:h-auto rounded-full bg-graphite/5 sm:bg-transparent flex items-center justify-center">
+              <Icon name="ArrowLeft" size={16} />
+            </span>
             <span className="hidden sm:inline">К меню</span>
           </Link>
           <Logo size="sm" to="/" />
@@ -453,15 +455,15 @@ const ProductPage = () => {
       </main>
 
       {/* Sticky CTA mobile */}
-      <div className="lg:hidden sticky bottom-0 z-40 bg-snow/95 backdrop-blur border-t border-graphite/10 p-3 flex gap-2">
-        <a href={PHONE} className="w-12 h-12 rounded-2xl border border-graphite/15 flex items-center justify-center shrink-0">
+      <div className="lg:hidden sticky bottom-0 z-40 bg-snow/95 backdrop-blur border-t border-graphite/10 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex gap-2">
+        <a href={PHONE} className="tap-scale w-12 h-12 rounded-2xl border border-graphite/15 flex items-center justify-center shrink-0">
           <Icon name="Phone" size={16} />
         </a>
         <a
           href={`${WHATSAPP}?text=${orderText}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-graphite text-snow rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2"
+          className="btn-shadow tap-scale flex-1 bg-graphite text-snow rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2"
         >
           <Icon name="MessageCircle" size={15} />
           Заказать

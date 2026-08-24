@@ -48,12 +48,14 @@ const MenuPage = () => {
   }, [products, activeCat, search]);
 
   return (
-    <div className="min-h-screen bg-stone">
+    <div className="min-h-screen bg-stone pb-24 md:pb-0">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10">
+      <header className="sticky top-0 z-40 bg-snow/95 backdrop-blur border-b border-graphite/10 safe-top">
         <div className="container mx-auto py-3 sm:py-4 flex items-center justify-between gap-3">
-          <Link to="/" className="flex items-center gap-2 text-[13px] hover:opacity-70 transition">
-            <Icon name="ArrowLeft" size={16} />
+          <Link to="/" className="tap-scale flex items-center gap-2 text-[13px] hover:opacity-70 transition">
+            <span className="w-9 h-9 sm:w-auto sm:h-auto rounded-full bg-graphite/5 sm:bg-transparent flex items-center justify-center">
+              <Icon name="ArrowLeft" size={16} />
+            </span>
             <span className="hidden sm:inline">На главную</span>
           </Link>
           <Logo size="sm" to="/" />
