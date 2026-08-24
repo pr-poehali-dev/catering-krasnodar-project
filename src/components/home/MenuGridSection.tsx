@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Product, fetchProducts } from '@/lib/api';
 import { useReveal } from '@/hooks/use-reveal';
 
-const CATEGORY_ORDER = ['Канапе', 'Бранчи', 'Тарталетки', 'Ассорти боксы', 'Брускетты', 'Детское меню'];
+const CATEGORY_ORDER = ['Бранчи', 'Тарталетки', 'Ассорти боксы', 'Брускетты', 'Детское меню'];
+const EXCLUDED_CATEGORIES = ['Канапе'];
 
 const MenuGridSection = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -34,7 +35,7 @@ const MenuGridSection = () => {
 
     const known = CATEGORY_ORDER.filter((c) => map.has(c)).map((c) => ({ name: c, ...map.get(c)! }));
     const rest = Array.from(map.entries())
-      .filter(([c]) => !CATEGORY_ORDER.includes(c))
+      .filter(([c]) => !CATEGORY_ORDER.includes(c) && !EXCLUDED_CATEGORIES.includes(c))
       .map(([name, v]) => ({ name, ...v }));
 
     return [...known, ...rest];
