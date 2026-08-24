@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Icon from '@/components/ui/icon';
 import { Product, fetchProducts } from '@/lib/api';
 import { useReveal } from '@/hooks/use-reveal';
 
@@ -62,46 +61,40 @@ const MenuGridSection = () => {
           </h2>
         </div>
 
-        <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+        <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8 sm:gap-y-10">
           {loading ? (
             [...Array(6)].map((_, i) => (
-              <div key={i} className="bento-card aspect-[3/4] animate-pulse bg-stone" />
+              <div key={i} className="flex flex-col items-center gap-3 animate-pulse">
+                <div className="w-full aspect-square rounded-2xl bg-stone" />
+                <div className="h-3 w-20 bg-stone rounded" />
+              </div>
             ))
           ) : (
             categories.map((c, i) => (
               <Link
                 key={c.name}
                 to={`/menu#${c.name}`}
-                className="group bento-card aspect-[3/4] relative overflow-hidden transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                className="group flex flex-col items-center text-center transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                 style={{
                   transitionDelay: `${i * 80}ms`,
                   opacity: grid.visible ? 1 : 0,
                   transform: grid.visible ? 'translateY(0)' : 'translateY(30px)',
                 }}
               >
-                {c.img ? (
-                  <img
-                    src={c.img}
-                    alt={c.name}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-stone" />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/90 via-graphite/20 to-transparent" />
-
-                <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all">
-                  <Icon name="ArrowUpRight" size={14} />
+                <div className="relative w-full aspect-square flex items-center justify-center">
+                  {c.img ? (
+                    <img
+                      src={c.img}
+                      alt={c.name}
+                      loading="lazy"
+                      className="w-[85%] h-[85%] object-contain drop-shadow-md group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-500 ease-out"
+                    />
+                  ) : (
+                    <div className="w-[70%] h-[70%] rounded-full bg-stone" />
+                  )}
                 </div>
-
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 text-snow">
-                  <div className="font-sans text-[15px] sm:text-lg lg:text-xl tracking-tight font-medium leading-tight">
-                    {c.name}
-                  </div>
-                  <div className="text-[11px] sm:text-[12px] text-snow/70 mt-0.5">
-                    {c.count} {c.count === 1 ? 'позиция' : 'позиций'}
-                  </div>
+                <div className="mt-3 sm:mt-4 font-sans text-[12px] sm:text-[14px] lg:text-[15px] font-black uppercase tracking-tight leading-tight group-hover:text-accent2 transition-colors">
+                  {c.name}
                 </div>
               </Link>
             ))
