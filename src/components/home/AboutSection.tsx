@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+import PreorderModal from '@/components/PreorderModal';
 import { useReveal } from '@/hooks/use-reveal';
 
 const PRINCIPLES = [
@@ -34,6 +36,7 @@ const STATS = [
 const AboutSection = () => {
   const head = useReveal();
   const grid = useReveal();
+  const [preorderOpen, setPreorderOpen] = useState(false);
 
   return (
     <section id="about" className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10 scroll-mt-24">
@@ -112,7 +115,22 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
+
+        <div className="mt-6 sm:mt-10 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setPreorderOpen(true)}
+            className="tap-scale btn-shadow bg-graphite text-snow px-6 py-3.5 rounded-full text-[14px] sm:text-[15px] font-semibold hover:bg-graphite/85 transition inline-flex items-center justify-center gap-2"
+          >
+            Оформить предзаказ
+            <span className="w-5 h-5 rounded-full bg-lime flex items-center justify-center">
+              <Icon name="ArrowRight" size={11} className="text-graphite" />
+            </span>
+          </button>
+        </div>
       </div>
+
+      <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
     </section>
   );
 };
