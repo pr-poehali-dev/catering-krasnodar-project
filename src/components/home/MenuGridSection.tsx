@@ -59,7 +59,7 @@ const MenuGridSection = () => {
           grouped.map(([cat, items]) => (
             <div key={cat} className="mb-12 sm:mb-16 last:mb-0">
               <div className="text-center mb-6 sm:mb-8">
-                <span className="inline-block bg-snow text-graphite text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.1em] px-4 py-1.5 rounded-full border-2 border-graphite">
+                <span className="inline-block bg-graphite text-snow text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.1em] px-4 py-1.5 rounded-full">
                   {cat}
                 </span>
               </div>
