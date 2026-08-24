@@ -131,7 +131,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Фото + sticker-бейджи */}
-                <div className="order-1 lg:order-2 relative aspect-[16/9] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[560px] overflow-hidden p-3 sm:p-4">
+                <div className="order-1 lg:order-2 relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[620px] overflow-hidden p-3 sm:p-4">
                   <div className="relative w-full h-full rounded-[1.6rem] overflow-hidden">
                     <img
                       src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/f7c242c7-3207-4c6a-9901-daa28201b26c.jpg"
