@@ -78,12 +78,12 @@ const HeroSection = () => {
         <div className="absolute inset-0 gradient-mesh pointer-events-none" />
 
         <div className="container mx-auto relative">
-          <div className="rounded-[2rem] border-2 border-dashed border-graphite/15 p-2 sm:p-3 animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
+          <div className="animate-scale-in opacity-0" style={{ animationDelay: '0.1s' }}>
             <div className="bento-card overflow-hidden bg-stone">
               <div className="grid lg:grid-cols-2">
                 {/* Контент */}
                 <div className="order-2 lg:order-1 p-6 sm:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative">
-                  <div className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 px-3 py-1.5 rounded-full border border-dashed border-graphite/20 animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
+                  <div className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5 px-3 py-1.5 rounded-full bg-stone animate-reveal-blur opacity-0" style={{ animationDelay: '0.1s' }}>
                     <span className="w-1.5 h-1.5 rounded-full bg-accent2" />
                     Фуршетный мастер · Краснодар
                   </div>
