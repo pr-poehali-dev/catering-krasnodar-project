@@ -53,7 +53,7 @@ const EventsSection = () => {
               <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-end justify-between text-snow gap-2">
                 <div className="min-w-0">
                   <div className="font-sans text-[17px] sm:text-2xl lg:text-3xl tracking-tighter font-medium leading-tight truncate">{e.title}</div>
-                  <p className="hidden sm:block text-[12px] text-snow/70 mt-1 leading-snug line-clamp-2">{e.subtitle}</p>
+                  <p className="text-[10px] sm:text-[12px] text-snow/70 mt-0.5 sm:mt-1 leading-snug line-clamp-2">{e.subtitle}</p>
                   <div className="text-[11px] sm:text-[13px] text-snow/80 mt-0.5 sm:mt-1 truncate">{e.price}</div>
                 </div>
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-lime text-graphite flex items-center justify-center shrink-0 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all">
