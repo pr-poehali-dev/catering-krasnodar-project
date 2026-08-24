@@ -157,7 +157,7 @@ const MenuPage = () => {
                 <span className="flex-1 h-px bg-graphite/10" />
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4">
                 {items.map((p) => (
                   <Link
                     key={p.id}
