@@ -51,21 +51,22 @@ const HowToOrderSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
           {STEPS.map((s, i) => (
-            <div key={s.title} className="bento-card bg-snow p-5 sm:p-6 relative">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-lime/25 flex items-center justify-center">
-                  <Icon name={s.icon} size={20} className="text-graphite" />
+            <div key={s.title} className="bento-card bg-snow p-3 sm:p-6 relative">
+              <div className="flex items-center justify-between mb-2 sm:mb-4">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-lime/25 flex items-center justify-center">
+                  <Icon name={s.icon} size={16} className="text-graphite sm:hidden" />
+                  <Icon name={s.icon} size={20} className="hidden sm:block text-graphite" />
                 </div>
-                <span className="font-serif italic text-3xl sm:text-4xl text-graphite/15 leading-none">
+                <span className="font-serif italic text-xl sm:text-4xl text-graphite/15 leading-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
               </div>
-              <h3 className="font-sans text-[16px] sm:text-[17px] font-medium tracking-tight mb-1.5">
+              <h3 className="font-sans text-[12px] sm:text-[17px] font-medium tracking-tight mb-1 sm:mb-1.5">
                 {s.title}
               </h3>
-              <p className="text-[13px] sm:text-[14px] text-graphite/70 leading-relaxed">{s.text}</p>
+              <p className="text-[10px] sm:text-[14px] text-graphite/70 leading-relaxed">{s.text}</p>
             </div>
           ))}
         </div>

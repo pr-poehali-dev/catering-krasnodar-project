@@ -48,14 +48,14 @@ const FaqSection = () => {
 
         <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
           <div className="w-full lg:max-w-3xl">
-            <div className="bento-card bg-snow p-4 sm:p-6">
+            <div className="bento-card bg-snow p-3 sm:p-6">
               <Accordion type="single" collapsible className="w-full">
                 {FAQ.map((item, i) => (
                   <AccordionItem key={i} value={`item-${i}`} className="border-graphite/10">
-                    <AccordionTrigger className="text-left text-[15px] sm:text-[16px] font-medium hover:no-underline py-4 sm:py-5">
+                    <AccordionTrigger className="text-left text-[13px] sm:text-[16px] font-medium hover:no-underline py-3 sm:py-5">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-[14px] text-graphite/70 leading-relaxed">
+                    <AccordionContent className="text-[12px] sm:text-[14px] text-graphite/70 leading-relaxed">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -63,8 +63,8 @@ const FaqSection = () => {
               </Accordion>
             </div>
 
-            <div className="mt-6 flex items-center gap-2 text-[13px] text-ash">
-              <Icon name="MessageCircleQuestion" size={15} />
+            <div className="mt-4 sm:mt-6 flex items-center gap-2 text-[11px] sm:text-[13px] text-ash">
+              <Icon name="MessageCircleQuestion" size={14} className="shrink-0" />
               Не нашли ответ? Напишите Галине — она ответит за 15 минут.
             </div>
           </div>

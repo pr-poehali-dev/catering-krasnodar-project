@@ -64,28 +64,28 @@ const ReviewsSection = () => {
               <span className="font-serif italic font-normal text-lime"> греют сердце</span>
             </h2>
           </div>
-          <div className="flex items-center gap-3 sm:gap-4 bg-snow/5 border hairline-light rounded-2xl px-5 py-3.5 backdrop-blur">
-            <div className="font-sans text-4xl sm:text-5xl tracking-tightest font-medium leading-none">4.9</div>
+          <div className="flex items-center gap-2 sm:gap-4 bg-snow/5 border hairline-light rounded-2xl px-3 sm:px-5 py-2 sm:py-3.5 backdrop-blur">
+            <div className="font-sans text-2xl sm:text-5xl tracking-tightest font-medium leading-none">4.9</div>
             <div>
               <div className="flex gap-0.5 mb-1">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <Icon key={j} name="Star" size={12} className="fill-lime text-lime" />
                 ))}
               </div>
-              <div className="text-[12px] text-snow/60">320+ отзывов Вконтакте</div>
+              <div className="text-[10px] sm:text-[12px] text-snow/60">320+ отзывов Вконтакте</div>
             </div>
           </div>
         </div>
 
-        <div ref={grid.ref as never} className="grid md:grid-cols-3 gap-3 sm:gap-4">
+        <div ref={grid.ref as never} className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
           {reviews.map((r, i) => (
             <button
               key={i}
               type="button"
               onClick={() => open(i)}
-              className={`group relative rounded-3xl overflow-hidden border hairline-light bg-snow/[0.04] aspect-[9/16] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-left ${
+              className={`group relative rounded-2xl sm:rounded-3xl overflow-hidden border hairline-light bg-snow/[0.04] aspect-[9/16] transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-left ${
                 i === 1 ? 'md:scale-[1.03] md:-translate-y-3 shadow-2xl shadow-lime/20' : ''
-              }`}
+              } ${i === 2 ? 'hidden sm:block' : ''}`}
               style={{
                 transitionDelay: `${i * 150}ms`,
                 opacity: grid.visible ? 1 : 0,
@@ -101,18 +101,22 @@ const ReviewsSection = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1000ms] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-graphite/85 via-graphite/10 to-transparent pointer-events-none" />
-              <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-snow/95 text-graphite text-[11px] font-semibold px-2.5 py-1 rounded-full backdrop-blur">
+              <div className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 inline-flex items-center gap-1 sm:gap-1.5 bg-snow/95 text-graphite text-[8px] sm:text-[11px] font-semibold px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full backdrop-blur">
                 <span className="flex">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <Icon key={j} name="Star" size={9} className="fill-lime text-lime" />
+                    <Icon key={j} name="Star" size={7} className="fill-lime text-lime sm:hidden" />
+                  ))}
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Icon key={j} name="Star" size={9} className="fill-lime text-lime hidden sm:block" />
                   ))}
                 </span>
-                Реальный отзыв
+                <span className="hidden sm:inline">Реальный отзыв</span>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex items-end justify-between gap-3">
-                <div className="text-snow text-[13px] font-medium">{r.caption}</div>
-                <div className="w-9 h-9 rounded-full bg-lime flex items-center justify-center group-hover:scale-110 transition shrink-0">
-                  <Icon name="Maximize2" size={13} className="text-graphite" />
+              <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-5 flex items-end justify-between gap-2 sm:gap-3">
+                <div className="text-snow text-[10px] sm:text-[13px] font-medium">{r.caption}</div>
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-lime flex items-center justify-center group-hover:scale-110 transition shrink-0">
+                  <Icon name="Maximize2" size={10} className="text-graphite sm:hidden" />
+                  <Icon name="Maximize2" size={13} className="text-graphite hidden sm:block" />
                 </div>
               </div>
             </button>

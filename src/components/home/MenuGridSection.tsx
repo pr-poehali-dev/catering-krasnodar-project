@@ -62,12 +62,12 @@ const MenuGridSection = () => {
           </h2>
         </div>
 
-        <div ref={grid.ref as never} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8 sm:gap-y-10">
+        <div ref={grid.ref as never} className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-x-2 sm:gap-x-4 gap-y-4 sm:gap-y-10">
           {loading ? (
             [...Array(6)].map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-3 animate-pulse">
+              <div key={i} className="flex flex-col items-center gap-2 sm:gap-3 animate-pulse">
                 <div className="w-full aspect-square rounded-2xl bg-stone" />
-                <div className="h-3 w-20 bg-stone rounded" />
+                <div className="h-3 w-14 sm:w-20 bg-stone rounded" />
               </div>
             ))
           ) : (
@@ -94,7 +94,7 @@ const MenuGridSection = () => {
                     <div className="w-[70%] h-[70%] rounded-full bg-stone" />
                   )}
                 </div>
-                <div className="mt-3 sm:mt-4 font-sans text-[12px] sm:text-[14px] lg:text-[15px] font-black uppercase tracking-tight leading-tight group-hover:text-accent2 transition-colors">
+                <div className="mt-1.5 sm:mt-4 font-sans text-[9px] sm:text-[14px] lg:text-[15px] font-black uppercase tracking-tight leading-tight group-hover:text-accent2 transition-colors">
                   {c.name}
                 </div>
               </Link>

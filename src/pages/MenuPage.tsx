@@ -150,14 +150,14 @@ const MenuPage = () => {
           </div>
         ) : (
           grouped.map(([cat, items]) => (
-            <section key={cat} id={cat} className="mb-12 sm:mb-16 last:mb-0 scroll-mt-32">
-              <div className="flex items-baseline gap-3 sm:gap-4 mb-5 sm:mb-6">
-                <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl tracking-tightest font-medium">{cat}</h2>
-                <span className="text-[12px] text-ash">{items.length} {items.length === 1 ? 'позиция' : 'позиций'}</span>
+            <section key={cat} id={cat} className="mb-8 sm:mb-16 last:mb-0 scroll-mt-32">
+              <div className="flex items-baseline gap-2 sm:gap-4 mb-3 sm:mb-6">
+                <h2 className="font-sans text-lg sm:text-3xl lg:text-4xl tracking-tightest font-medium">{cat}</h2>
+                <span className="text-[10px] sm:text-[12px] text-ash">{items.length} {items.length === 1 ? 'позиция' : 'позиций'}</span>
                 <span className="flex-1 h-px bg-graphite/10" />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4">
                 {items.map((p) => (
                   <Link
                     key={p.id}
@@ -178,34 +178,36 @@ const MenuPage = () => {
                         </div>
                       )}
                       {p.badge && (
-                        <span className="absolute top-3 left-3 bg-lime text-graphite text-[11px] font-semibold px-3 py-1 rounded-full">
+                        <span className="absolute top-1.5 left-1.5 sm:top-3 sm:left-3 bg-lime text-graphite text-[9px] sm:text-[11px] font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">
                           {p.badge}
                         </span>
                       )}
-                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition">
-                        <Icon name="ArrowUpRight" size={14} />
+                      <div className="absolute top-1.5 right-1.5 sm:top-3 sm:right-3 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-snow/90 backdrop-blur flex items-center justify-center sm:opacity-0 sm:group-hover:opacity-100 transition">
+                        <Icon name="ArrowUpRight" size={11} className="sm:hidden" />
+                        <Icon name="ArrowUpRight" size={14} className="hidden sm:block" />
                       </div>
                     </div>
-                    <div className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between gap-3">
+                    <div className="p-2.5 sm:p-5 flex-1 flex flex-col">
+                      <div className="flex items-start justify-between gap-2 sm:gap-3">
                         <div className="min-w-0">
-                          <h3 className="font-sans text-[16px] tracking-tight font-medium leading-snug group-hover:text-accent2 transition">
+                          <h3 className="font-sans text-[12px] sm:text-[16px] tracking-tight font-medium leading-snug group-hover:text-accent2 transition">
                             {p.name}
                           </h3>
-                          {p.portion && <div className="text-[12px] text-ash mt-0.5">{p.portion}</div>}
+                          {p.portion && <div className="text-[9px] sm:text-[12px] text-ash mt-0.5">{p.portion}</div>}
                         </div>
                         {p.price > 0 && (
-                          <div className="text-[15px] font-semibold whitespace-nowrap">{p.price} ₽</div>
+                          <div className="text-[11px] sm:text-[15px] font-semibold whitespace-nowrap">{p.price} ₽</div>
                         )}
                       </div>
                       {p.description && (
-                        <p className="text-[13px] text-graphite/70 mt-2 line-clamp-2 flex-1">{p.description}</p>
+                        <p className="hidden sm:block text-[13px] text-graphite/70 mt-2 line-clamp-2 flex-1">{p.description}</p>
                       )}
                       {p.reviews.length > 0 && (
-                        <div className="mt-3 pt-3 border-t border-graphite/10 flex items-center gap-1.5 text-[12px] text-ash">
-                          <Icon name="Star" size={12} className="text-lime fill-lime" />
+                        <div className="mt-1.5 sm:mt-3 pt-1.5 sm:pt-3 border-t border-graphite/10 flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-[12px] text-ash">
+                          <Icon name="Star" size={10} className="text-lime fill-lime sm:hidden" />
+                          <Icon name="Star" size={12} className="text-lime fill-lime hidden sm:block" />
                           {(p.reviews.reduce((s, r) => s + r.rating, 0) / p.reviews.length).toFixed(1)}
-                          <span>· {p.reviews.length} отзывов</span>
+                          <span>· {p.reviews.length}</span>
                         </div>
                       )}
                     </div>
