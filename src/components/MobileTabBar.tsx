@@ -17,8 +17,8 @@ const TabLink = ({ to, icon, label, active }: TabLinkProps) => (
     to={to}
     className="tap-scale relative flex flex-col items-center justify-center gap-1 py-1.5 rounded-2xl transition"
   >
-    <div className={`relative flex items-center justify-center w-9 h-9 rounded-full transition-colors ${active ? 'bg-graphite/8' : ''}`}>
-      <Icon name={icon} size={20} className={active ? 'text-graphite' : 'text-ash'} />
+    <div className="relative flex items-center justify-center w-9 h-9 rounded-full bg-graphite transition-colors">
+      <Icon name={icon} size={20} className="text-snow" />
     </div>
     <span className={`text-[10px] font-medium leading-none transition-colors ${active ? 'text-graphite' : 'text-ash'}`}>{label}</span>
   </Link>
