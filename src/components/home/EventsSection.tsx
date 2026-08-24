@@ -8,7 +8,7 @@ const EventsSection = () => {
   const grid = useReveal();
 
   return (
-    <section id="events" className="py-16 sm:py-24 lg:py-32 relative">
+    <section id="events" className="py-16 sm:py-24 lg:py-32 relative scroll-mt-24">
       <div className="container mx-auto">
         <div
           ref={head.ref as never}

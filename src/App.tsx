@@ -10,8 +10,29 @@ import Admin from "./pages/Admin";
 import ProductPage from "./pages/ProductPage";
 import MenuPage from "./pages/MenuPage";
 import NotFound from "./pages/NotFound";
+import MobileTabBar from "@/components/MobileTabBar";
+import { useScrollToHash } from "@/hooks/use-scroll-to-hash";
 
 const queryClient = new QueryClient();
+
+const AppRoutes = () => {
+  useScrollToHash();
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/events/:id" element={<EventPage />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <MobileTabBar />
+    </>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -19,15 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/events/:id" element={<EventPage />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/menu" element={<MenuPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -29,7 +29,7 @@ const FaqSection = () => {
   const head = useReveal();
 
   return (
-    <section id="faq" className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10">
+    <section id="faq" className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10 scroll-mt-24">
       <div className="container mx-auto">
         <div
           ref={head.ref as never}

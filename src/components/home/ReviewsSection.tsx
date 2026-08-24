@@ -43,7 +43,7 @@ const ReviewsSection = () => {
   }, [active]);
 
   return (
-    <section id="reviews" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 bg-graphite text-snow relative overflow-hidden">
+    <section id="reviews" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 bg-graphite text-snow relative overflow-hidden scroll-mt-24">
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-lime/20 rounded-full blur-[120px] pointer-events-none animate-float-y" />
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-accent2/20 rounded-full blur-[120px] pointer-events-none animate-float-y" style={{ animationDelay: '2s' }} />
 

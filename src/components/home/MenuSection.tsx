@@ -244,7 +244,7 @@ const MenuSection = () => {
   );
 
   return (
-    <section id="menu" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 relative">
+    <section id="menu" className="py-16 sm:py-24 lg:py-32 border-t border-graphite/10 relative scroll-mt-24">
       <div className="absolute inset-0 dotted-bg opacity-50 pointer-events-none" />
       <div className="container mx-auto relative">
         <div
