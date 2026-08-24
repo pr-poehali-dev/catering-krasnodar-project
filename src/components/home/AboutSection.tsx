@@ -36,7 +36,7 @@ const AboutSection = () => {
   const grid = useReveal();
 
   return (
-    <section id="about" className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10 scroll-mt-24">
+    <section id="about" className="pt-8 sm:pt-12 lg:pt-14 pb-16 sm:pb-24 lg:pb-28 border-t border-graphite/10 scroll-mt-24">
       <div className="container mx-auto">
         <div
           ref={head.ref as never}

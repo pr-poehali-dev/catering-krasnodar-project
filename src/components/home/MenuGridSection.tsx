@@ -44,7 +44,7 @@ const MenuGridSection = () => {
   if (!loading && categories.length === 0) return null;
 
   return (
-    <section className="py-16 sm:py-24 lg:py-28 border-t border-graphite/10 relative scroll-mt-24">
+    <section className="pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-24 lg:pb-28 border-t border-graphite/10 relative scroll-mt-24">
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
