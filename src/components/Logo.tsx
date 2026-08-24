@@ -12,9 +12,9 @@ type LogoProps = {
 const LOGO_IMG = 'https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/0a5bdef0-5ac8-4b93-b466-85ad21e8c6a4.png';
 
 const sizeMap = {
-  sm: 'h-9 sm:h-10',
-  md: 'h-12 sm:h-14',
-  lg: 'h-16 sm:h-20',
+  sm: 'h-12 sm:h-14',
+  md: 'h-16 sm:h-20',
+  lg: 'h-24 sm:h-28',
 };
 
 const Logo = ({ size = 'md', to = '/', className = '' }: LogoProps) => {
