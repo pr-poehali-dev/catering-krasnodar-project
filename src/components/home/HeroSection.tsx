@@ -192,11 +192,11 @@ const HeroSection = () => {
               { icon: 'Clock', label: 'Ответ за 15 мин', bg: 'bg-lime/20', color: 'text-lime-700', rotate: 'rotate-1' },
               { icon: 'ShieldCheck', label: 'Договор + чеки', bg: 'bg-accent2/15', color: 'text-accent2', rotate: '-rotate-1' },
             ].map((t, i) => (
-              <div key={i} className={`bento-card border-2 border-graphite/15 p-2.5 sm:p-5 flex items-center gap-2 sm:gap-3 transition-transform hover:rotate-0 hover:scale-[1.02] ${t.rotate}`}>
-                <div className={`w-7 h-7 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
-                  <Icon name={t.icon} size={12} className={t.color} />
+              <div key={i} className={`bento-card border-2 border-graphite/15 p-3 sm:p-5 flex items-center gap-2.5 sm:gap-3 transition-transform hover:rotate-0 hover:scale-[1.02] ${t.rotate}`}>
+                <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full ${t.bg} flex items-center justify-center shrink-0`}>
+                  <Icon name={t.icon} size={14} className={t.color} />
                 </div>
-                <span className="text-[11px] sm:text-[14px] font-medium leading-tight">{t.label}</span>
+                <span className="text-[12px] sm:text-[14px] font-medium leading-tight">{t.label}</span>
               </div>
             ))}
           </div>
