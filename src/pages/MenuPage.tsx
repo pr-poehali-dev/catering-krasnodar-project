@@ -261,7 +261,7 @@ const MenuPage = () => {
           ))
         )}
 
-        <div className="mt-4 sm:mt-6 flex items-center justify-center gap-3">
+        <div className="hidden sm:flex mt-4 sm:mt-6 items-center justify-center gap-3">
           <img
             src="https://cdn.poehali.dev/projects/a8ae25f0-9542-4f49-bc05-8b8f1da19cee/bucket/617331e0-b90e-4775-ac89-e642cf275811.jpg"
             alt="Галина"
