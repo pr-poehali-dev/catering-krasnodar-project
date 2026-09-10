@@ -222,7 +222,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
                     type="date"
                     value={form.event_date}
                     onChange={(e) => setForm({ ...form, event_date: e.target.value })}
-                    className="w-full pl-11 pr-4 py-4 sm:py-3.5 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
+                    className="w-full pl-11 pr-4 py-2.5 sm:py-2 rounded-2xl bg-snow border border-graphite/15 focus:border-graphite focus:ring-2 focus:ring-graphite/5 outline-none text-base sm:text-[14px] font-medium transition"
                   />
                 </div>
                 <div className="relative">
