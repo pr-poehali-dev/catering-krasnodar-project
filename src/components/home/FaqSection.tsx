@@ -33,7 +33,7 @@ const FaqSection = () => {
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
-          className={`max-w-2xl mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`max-w-2xl mx-auto lg:mx-0 mb-10 sm:mb-14 text-center lg:text-left transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >

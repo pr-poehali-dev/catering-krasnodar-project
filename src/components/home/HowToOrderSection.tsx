@@ -35,7 +35,7 @@ const HowToOrderSection = () => {
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
-          className={`max-w-2xl mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`max-w-2xl mb-10 sm:mb-14 text-center sm:text-left transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >
@@ -46,7 +46,7 @@ const HowToOrderSection = () => {
           <h2 className="font-sans text-[clamp(2rem,7vw,4.5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
             Заказать <span className="font-serif italic font-normal">просто</span>
           </h2>
-          <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg mx-auto sm:mx-0 text-[15px] leading-relaxed">
             От заявки до вкусного стола — четыре понятных шага, никакой бюрократии.
           </p>
         </div>

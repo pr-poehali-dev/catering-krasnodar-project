@@ -12,11 +12,11 @@ const EventsSection = () => {
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 text-center lg:text-left transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto lg:mx-0">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
               <span className="w-6 h-px bg-ash" />
               События
@@ -26,7 +26,7 @@ const EventsSection = () => {
               <span className="font-serif italic font-normal"> свой характер</span>
             </h2>
           </div>
-          <p className="text-graphite/70 max-w-sm text-[15px] leading-relaxed">
+          <p className="text-graphite/70 max-w-sm mx-auto lg:mx-0 text-[15px] leading-relaxed">
             Свадьба, корпоратив, фуршет или семейный праздник — соберём меню под формат, бюджет и настроение гостей.
           </p>
         </div>

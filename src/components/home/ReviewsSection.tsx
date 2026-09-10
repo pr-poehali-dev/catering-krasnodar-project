@@ -50,11 +50,11 @@ const ReviewsSection = () => {
       <div className="container mx-auto relative">
         <div
           ref={head.ref as never}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 text-center lg:text-left transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto lg:mx-0">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-snow/50 mb-4 sm:mb-5">
               <span className="w-6 h-px bg-snow/30" />
               Отзывы клиентов
@@ -64,7 +64,7 @@ const ReviewsSection = () => {
               <span className="font-serif italic font-normal text-lime"> греют сердце</span>
             </h2>
           </div>
-          <div className="flex items-center gap-2 sm:gap-4 bg-snow/5 border hairline-light rounded-2xl px-3 sm:px-5 py-2 sm:py-3.5 backdrop-blur">
+          <div className="flex items-center gap-2 sm:gap-4 bg-snow/5 border hairline-light rounded-2xl px-3 sm:px-5 py-2 sm:py-3.5 backdrop-blur mx-auto lg:mx-0">
             <div className="font-sans text-2xl sm:text-5xl tracking-tightest font-medium leading-none">4.9</div>
             <div>
               <div className="flex gap-0.5 mb-1">

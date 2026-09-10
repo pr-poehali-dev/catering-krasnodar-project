@@ -40,11 +40,11 @@ const AboutSection = () => {
       <div className="container mx-auto">
         <div
           ref={head.ref as never}
-          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14 transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14 text-center lg:text-left transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
             head.visible ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-[6px]'
           }`}
         >
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto lg:mx-0">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ash mb-4 sm:mb-5">
               <span className="w-6 h-px bg-ash" />
               О компании
@@ -52,13 +52,13 @@ const AboutSection = () => {
             <h2 className="font-sans text-[clamp(2rem,7vw,4.5rem)] leading-[0.95] tracking-tightest font-medium text-balance">
               Как мы <span className="font-serif italic font-normal">работаем</span>
             </h2>
-            <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg text-[15px] leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-graphite/70 max-w-lg mx-auto lg:mx-0 text-[15px] leading-relaxed">
               Furshet in Box — это не безликий кейтеринг, а команда во главе с Галиной, которая лично
               ведёт каждый заказ: от идеи меню до сервировки на площадке.
             </p>
           </div>
 
-          <div className="flex gap-3 sm:gap-6 flex-wrap">
+          <div className="flex gap-3 sm:gap-6 flex-wrap justify-center lg:justify-start">
             {STATS.map((s) => (
               <div key={s.label} className="min-w-[72px] sm:min-w-[88px]">
                 <div className="font-sans text-lg sm:text-3xl tracking-tightest font-medium leading-none">{s.value}</div>
