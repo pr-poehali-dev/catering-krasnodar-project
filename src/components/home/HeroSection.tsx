@@ -42,7 +42,7 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="tap-scale md:hidden w-9 h-9 rounded-full bg-graphite/5 flex items-center justify-center"
+              className="tap-scale md:hidden w-9 h-9 rounded-full bg-graphite/5 flex items-center justify-center mt-1 mr-2"
               aria-label="Меню"
             >
               <Icon name={menuOpen ? 'X' : 'Menu'} size={17} />
