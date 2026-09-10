@@ -50,27 +50,62 @@ const HeroSection = () => {
           </div>
         </div>
         {menuOpen && (
-          <div className="md:hidden bg-snow border-b border-graphite/10 shadow-lg p-3 animate-in fade-in slide-in-from-top-2 duration-200">
-            {[
-              { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
-              { l: 'События', h: '#events', icon: 'PartyPopper' },
-              { l: 'О нас', h: '#about', icon: 'Heart' },
-              { l: 'Как заказать', h: '#how-to-order', icon: 'ClipboardList' },
-              { l: 'Отзывы', h: '#reviews', icon: 'Star' },
-              { l: 'Вопрос-ответ', h: '#faq', icon: 'MessageCircleQuestion' },
-            ].map((i) => (
-              <a
-                key={i.h}
-                href={i.h}
-                onClick={() => setMenuOpen(false)}
-                className="tap-scale flex items-center gap-3 px-3 py-2 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
-              >
-                <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
-                  <Icon name={i.icon} size={16} />
-                </span>
-                {i.l}
-              </a>
-            ))}
+          <div className="md:hidden fixed inset-0 top-0 bg-snow overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200 flex flex-col safe-top">
+            <div className="h-[68px] shrink-0" />
+            <div className="p-3 flex-1 flex flex-col">
+              {[
+                { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
+                { l: 'События', h: '#events', icon: 'PartyPopper' },
+                { l: 'О нас', h: '#about', icon: 'Heart' },
+                { l: 'Как заказать', h: '#how-to-order', icon: 'ClipboardList' },
+                { l: 'Отзывы', h: '#reviews', icon: 'Star' },
+                { l: 'Вопрос-ответ', h: '#faq', icon: 'MessageCircleQuestion' },
+              ].map((i) => (
+                <a
+                  key={i.h}
+                  href={i.h}
+                  onClick={() => setMenuOpen(false)}
+                  className="tap-scale flex items-center gap-3 px-3 py-2 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
+                >
+                  <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
+                    <Icon name={i.icon} size={16} />
+                  </span>
+                  {i.l}
+                </a>
+              ))}
+
+              <div className="mt-auto pt-6 border-t border-graphite/10 safe-bottom">
+                <a href="tel:+79144821455" className="tap-scale flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-graphite/5 transition text-[14px] font-medium">
+                  <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
+                    <Icon name="Phone" size={16} />
+                  </span>
+                  +7 914 482-14-55
+                </a>
+                <a href="mailto:info@furshetinbox.ru" className="tap-scale flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-graphite/5 transition text-[14px] font-medium">
+                  <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
+                    <Icon name="Mail" size={16} />
+                  </span>
+                  info@furshetinbox.ru
+                </a>
+
+                <div className="flex items-center gap-2 mt-3 px-3">
+                  {[
+                    { icon: 'MessageCircle', label: 'Max' },
+                    { icon: 'Send', label: 'Telegram' },
+                    { icon: 'Instagram', label: 'Instagram' },
+                    { icon: 'MessageSquare', label: 'WhatsApp' },
+                  ].map((s) => (
+                    <span
+                      key={s.label}
+                      aria-label={s.label}
+                      className="w-10 h-10 rounded-full bg-stone flex items-center justify-center shrink-0"
+                    >
+                      <Icon name={s.icon} size={16} />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </nav>
