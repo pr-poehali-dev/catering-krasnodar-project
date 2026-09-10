@@ -51,7 +51,16 @@ const HeroSection = () => {
         </div>
         {menuOpen && (
           <div className="md:hidden fixed inset-0 top-0 bg-snow overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200 flex flex-col safe-top">
-            <div className="h-[68px] shrink-0" />
+            <div className="shrink-0 border-b border-graphite/10 pl-4 pr-2 py-2.5 flex items-center justify-between">
+              <Logo size="sm" to="/" />
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="tap-scale w-9 h-9 rounded-full bg-graphite/5 flex items-center justify-center"
+                aria-label="Закрыть меню"
+              >
+                <Icon name="X" size={17} />
+              </button>
+            </div>
             <div className="p-3 flex-1 flex flex-col">
               {[
                 { l: 'Меню', h: '/menu', icon: 'UtensilsCrossed' },
