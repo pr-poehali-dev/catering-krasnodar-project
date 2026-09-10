@@ -36,6 +36,11 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
 
   useEffect(() => {
     if (!open) return;
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
     document.body.style.overflow = 'hidden';
     if (prefillDetails) {
       setForm((f) => (f.details ? f : { ...f, details: prefillDetails }));
@@ -43,7 +48,12 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
     return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
       document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
       window.removeEventListener('keydown', onKey);
     };
   }, [open, onClose]);
@@ -82,7 +92,7 @@ const PreorderModal = ({ open, onClose, prefillDetails }: Props) => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in h-[100dvh] overscroll-none"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-graphite/70 backdrop-blur-md" />
