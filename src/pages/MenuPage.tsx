@@ -56,7 +56,7 @@ const MenuPage = () => {
       {/* NAV — как на главной */}
       <nav className="fixed top-0 inset-x-0 z-50 md:top-3 md:left-1/2 md:-translate-x-1/2 md:inset-x-auto md:w-[calc(100%-1.5rem)] md:max-w-5xl">
         <div className="glass border-b md:border border-graphite/10 md:rounded-full pl-3 pr-2 py-2.5 md:py-1.5 md:pl-2 md:pr-2 flex items-center justify-between md:shadow-sm safe-top">
-          <div className="pl-1 md:pl-2">
+          <div className="pl-3 md:pl-2 mt-1">
             <Logo size="sm" to="/" />
           </div>
           <div className="hidden md:flex items-center gap-1 text-[13px]">
