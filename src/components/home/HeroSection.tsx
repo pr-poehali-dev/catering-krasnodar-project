@@ -63,7 +63,7 @@ const HeroSection = () => {
                 key={i.h}
                 href={i.h}
                 onClick={() => setMenuOpen(false)}
-                className="tap-scale flex items-center gap-3 px-3 py-3.5 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
+                className="tap-scale flex items-center gap-3 px-3 py-2 text-[15px] font-medium rounded-2xl hover:bg-graphite/5 transition"
               >
                 <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
                   <Icon name={i.icon} size={16} />
