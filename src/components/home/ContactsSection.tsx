@@ -19,7 +19,9 @@ const ContactsSection = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-[13px] text-ash">
-            <Logo size="md" to="/" showTagline />
+            <div className="hidden sm:block">
+              <Logo size="md" to="/" showTagline />
+            </div>
             <div></div>
             <div className="flex gap-2">
               <a href="#" className="w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center hover:bg-graphite hover:text-snow transition">
