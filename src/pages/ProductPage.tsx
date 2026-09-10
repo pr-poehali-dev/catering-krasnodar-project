@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
 import PreorderModal from '@/components/PreorderModal';
+import ContactsSection from '@/components/home/ContactsSection';
 import { toast } from 'sonner';
 import { Product, addReview, fetchProducts } from '@/lib/api';
 
@@ -457,6 +458,8 @@ const ProductPage = () => {
           })()}
         </div>
       </main>
+
+      <ContactsSection />
 
       {/* Sticky CTA mobile */}
       <div className="lg:hidden sticky bottom-0 z-40 bg-snow/95 backdrop-blur border-t border-graphite/10 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex gap-2">

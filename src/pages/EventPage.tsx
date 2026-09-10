@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Logo from '@/components/Logo';
 import PreorderModal from '@/components/PreorderModal';
+import ContactsSection from '@/components/home/ContactsSection';
 import { getEventById, events } from '@/data/events';
 
 const EventPage = () => {
@@ -262,23 +263,7 @@ const EventPage = () => {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-graphite/10 py-10 pb-28 md:pb-10">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-5 text-[13px] text-ash">
-            <Logo size="md" to="/" />
-            <div>© 2026 Кейтеринг в Краснодаре</div>
-            <div className="flex gap-2">
-              <a href="#" className="w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center hover:bg-graphite hover:text-snow transition">
-                <Icon name="Instagram" size={14} />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full border border-graphite/15 flex items-center justify-center hover:bg-graphite hover:text-snow transition">
-                <Icon name="Send" size={14} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <ContactsSection />
 
       <PreorderModal open={preorderOpen} onClose={() => setPreorderOpen(false)} />
     </div>
