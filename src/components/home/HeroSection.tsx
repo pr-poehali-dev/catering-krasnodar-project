@@ -84,12 +84,7 @@ const HeroSection = () => {
               ))}
 
               <div className="mt-auto pt-6 border-t border-graphite/10 safe-bottom">
-                <a href="tel:+79144821455" className="tap-scale flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-graphite/5 transition text-[14px] font-medium">
-                  <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
-                    <Icon name="Phone" size={16} />
-                  </span>
-                  +7 914 482-14-55
-                </a>
+                <a href="tel:+79144821455" className="tap-scale flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-graphite/5 transition text-[14px] font-medium">+7 914 482-15-55</a>
                 <a href="mailto:info@furshetinbox.ru" className="tap-scale flex items-center gap-3 px-3 py-2.5 rounded-2xl hover:bg-graphite/5 transition text-[14px] font-medium">
                   <span className="w-9 h-9 rounded-full bg-stone flex items-center justify-center shrink-0">
                     <Icon name="Mail" size={16} />
