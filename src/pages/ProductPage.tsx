@@ -459,16 +459,15 @@ const ProductPage = () => {
         <a href={PHONE} className="tap-scale btn-shadow-sm w-12 h-12 rounded-2xl border border-graphite/15 flex items-center justify-center shrink-0">
           <Icon name="Phone" size={16} />
         </a>
-        <a
-          href={`${WHATSAPP}?text=${orderText}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          type="button"
+          onClick={() => setPreorderOpen(true)}
           className="btn-shadow tap-scale flex-1 bg-graphite text-snow rounded-2xl text-[14px] font-medium inline-flex items-center justify-center gap-2"
         >
-          <Icon name="MessageCircle" size={15} />
+          <Icon name="ClipboardList" size={15} />
           Заказать
           {product.price > 0 && <span className="text-snow/70">· {product.price} ₽</span>}
-        </a>
+        </button>
       </div>
 
       <PreorderModal
