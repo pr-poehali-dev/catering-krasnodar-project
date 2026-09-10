@@ -8,7 +8,7 @@ import { Product, addReview, fetchProducts } from '@/lib/api';
 
 const WHATSAPP = 'https://wa.me/79997223938';
 const PHONE = 'tel:+79997223938';
-const TELEGRAM = 'https://t.me/+79997223938';
+const MAX_LINK = 'https://max.ru/join/IXMk3u0BPhokEDCdyrtOZn591m-jXLVNcrU02S-hkxo';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -231,10 +231,14 @@ const ProductPage = () => {
                     <Icon name="ArrowRight" size={11} className="text-graphite" />
                   </span>
                 </button>
-                <div className="grid grid-cols-2 gap-2">
-                  <a href={PHONE} className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">Max</a>
-                  <a href={TELEGRAM} target="_blank" rel="noopener noreferrer" className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5">ВКонтакте </a>
-                </div>
+                <a
+                  href={MAX_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-3 rounded-2xl text-[13px] font-medium border border-graphite/15 bg-snow hover:bg-graphite hover:text-snow transition inline-flex items-center justify-center gap-1.5"
+                >
+                  Написать в Max
+                </a>
               </div>
 
               <div className="mt-5 pt-5 border-t border-graphite/10 grid grid-cols-3 gap-3 text-center">
