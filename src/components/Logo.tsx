@@ -33,24 +33,32 @@ const Logo = ({ size = 'md', variant = 'dark', to = '/', showTagline = false, cl
         fill="none"
         className={`${iconSizeMap[size]} shrink-0`}
       >
-        <circle cx="20" cy="20" r="19" className="transition-colors" fill={isLight ? 'rgba(250,250,250,0.08)' : '#0A0A0A'} />
+        <rect x="0.5" y="0.5" width="39" height="39" rx="11.5" className="transition-colors" fill={isLight ? 'rgba(250,250,250,0.08)' : '#0A0A0A'} />
         <g className="logo-cloche">
           <path
-            d="M11 23c0-5.5 4-9.8 9-9.8s9 4.3 9 9.8"
+            d="M10.5 24.2c0-6.2 4.3-11 9.5-11s9.5 4.8 9.5 11"
             stroke="#D4F542"
             strokeWidth="2"
             strokeLinecap="round"
             fill="none"
           />
-          <rect x="9.5" y="23" width="21" height="2.6" rx="1.3" fill="#D4F542" />
-          <path d="M20 13.2V10" stroke="#D4F542" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="20" cy="9" r="1.6" fill="#FF5C2B" />
+          <path
+            d="M14.2 20.5c1.3-2.6 3.4-4 5.8-4"
+            stroke="#D4F542"
+            strokeOpacity="0.45"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+            fill="none"
+          />
+          <rect x="9" y="24.2" width="22" height="2.7" rx="1.35" fill="#D4F542" />
+          <path d="M20 13.4V9.6" stroke="#D4F542" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="20" cy="8.6" r="1.7" fill="#FF5C2B" />
         </g>
         <path
           className="logo-stroke"
-          d="M9.5 27.2h21"
+          d="M9 28.6h22"
           stroke={isLight ? '#FAFAFA' : '#FAFAFA'}
-          strokeOpacity="0.35"
+          strokeOpacity="0.3"
           strokeWidth="1.4"
           strokeLinecap="round"
         />
