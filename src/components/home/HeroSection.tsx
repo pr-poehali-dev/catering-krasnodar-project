@@ -165,7 +165,7 @@ const HeroSection = () => {
                       alt="Галина — фуршетный мастер"
                       className="absolute inset-0 w-full h-full object-cover object-top"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 via-graphite/5 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-stone/30" />
                   </div>
 
                   {/* sticker: рейтинг */}
